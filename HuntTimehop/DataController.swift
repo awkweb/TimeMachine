@@ -12,7 +12,16 @@ import UIKit
 
 class DataController {
     
-    class func jsonParser(json: NSDictionary) -> [(name: String, tagline: String)] {
+    class func jsonTokenParser(json: NSDictionary) -> String {
+        var accessToken: String = ""
+        
+        if json["access_token"] != nil {
+            accessToken = json["access_token"]! as String
+        }
+        return accessToken
+    }
+    
+    class func jsonPostsParser(json: NSDictionary) -> [(name: String, tagline: String)] {
         var huntsList: [(name: String, tagline: String)] = []
         var hunt: (name: String, tagline: String)
         
