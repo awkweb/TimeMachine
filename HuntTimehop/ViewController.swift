@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var tokenLabel: UILabel!
+    
     // PH API (REMOVE BEFORE PUSHING TO GITHUB)
     let kAccessToken = "removed"
     let kAPIKey = "removed"
@@ -24,13 +26,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getToken()
-        getPosts()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func getTokenButtonPressed(sender: UIButton) {
+        getToken()
+        self.tokenLabel.text = self.apiAccessToken
+        getPosts()
+        printAPIVariables()
     }
     
     // Mark - PH API Calls
@@ -61,8 +67,6 @@ class ViewController: UIViewController {
             self.jsonResponse = jsonDictionary!
             
             self.apiAccessToken = DataController.jsonTokenParser(jsonDictionary!)
-            
-            println(self.apiAccessToken)
         })
         
         task.resume()
@@ -75,6 +79,7 @@ class ViewController: UIViewController {
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "GET"
         
+        println("Using api token: \(self.apiAccessToken)")
         var params = [
             "access_token": self.apiAccessToken,
             "days_ago": "365"
@@ -93,13 +98,15 @@ class ViewController: UIViewController {
             self.jsonResponse = jsonDictionary!
             
             self.apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
-            
-            println(self.apiHuntsList)
         })
         
         task.resume()
     }
     
+    func printAPIVariables() {
+        println("Access Token: \(self.apiAccessToken)")
+        println("Hunts List: \(self.apiHuntsList)")
+    }
 }
 
 
