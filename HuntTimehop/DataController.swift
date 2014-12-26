@@ -12,13 +12,20 @@ import UIKit
 
 class DataController {
     
-    class func jsonTokenParser(json: NSDictionary) -> String {
-        var accessToken: String = ""
+    class func jsonTokenParser(json: NSDictionary) -> [(accessToken: String, expiresIn: Int)] {
+        var tokenList: [(accessToken: String, expiresIn: Int)] = []
+        var token: (accessToken: String, expiresIn: Int)
         
         if json["access_token"] != nil {
-            accessToken = json["access_token"]! as String
+            
+            let accessToken: String = json["access_token"]! as String
+            let expiresIn: Int = json["expires_in"]! as Int
+            
+            token = (accessToken: accessToken, expiresIn: expiresIn)
+            tokenList += [token]
+            
         }
-        return accessToken
+        return tokenList
     }
     
     class func jsonPostsParser(json: NSDictionary) -> [(name: String, tagline: String)] {
@@ -34,7 +41,6 @@ class DataController {
                 let tagline: String = post["tagline"]! as String
 
                 hunt = (name: name, tagline: tagline)
-                println(hunt)
                 huntsList += [hunt]
             }
         }

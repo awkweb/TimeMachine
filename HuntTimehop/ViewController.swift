@@ -11,39 +11,40 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var tokenLabel: UILabel!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     // PH API (REMOVE BEFORE PUSHING TO GITHUB)
     let kAccessToken = "removed"
     let kAPIKey = "removed"
     let kAPISecret = "removed"
     
-    let baseURL = "https://api.producthunt.com"
+    let baseURL = "https://api.producthunt.com/v1"
     
-    var apiAccessToken: String = ""
+    var apiAccessToken: [(accessToken: String, expiresIn: Int)] = []
     var apiHuntsList: [(name: String, tagline: String)] = []
     
     var jsonResponse: NSDictionary!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getToken()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func getTokenButtonPressed(sender: UIButton) {
-        getToken()
-        self.tokenLabel.text = self.apiAccessToken
+    @IBAction func getPostsButtonPressed(sender: UIButton) {
+        println("getPostsButtonPressed")
         getPosts()
-        printAPIVariables()
     }
     
     // Mark - PH API Calls
     
     func getToken() {
         
-        let url = NSURL(string: "\(baseURL)/v1/oauth/token")
+        let url = NSURL(string: "\(baseURL)/oauth/token")
         let request = NSMutableURLRequest(URL: url!)
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
@@ -64,9 +65,25 @@ class ViewController: UIViewController {
             var conversionError: NSError?
             var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
             
-            self.jsonResponse = jsonDictionary!
+            println(self.jsonResponse = jsonDictionary!)
             
-            self.apiAccessToken = DataController.jsonTokenParser(jsonDictionary!)
+            // Parsing checks
+            if conversionError != nil {
+                println(conversionError!.localizedDescription)
+                let errorString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println("Error in parsing \(errorString)")
+            }
+            else {
+                if jsonDictionary != nil {
+                    self.jsonResponse = jsonDictionary!
+                    
+                    self.apiAccessToken = DataController.jsonTokenParser(jsonDictionary!)
+                    println(self.apiAccessToken)
+                }
+                else {
+                    println("Error could not parse json")
+                }
+            }
         })
         
         task.resume()
@@ -74,14 +91,13 @@ class ViewController: UIViewController {
     
     func getPosts() {
         
-        let url = NSURL(string: "\(baseURL)/v1/posts/")
+        let url = NSURL(string: "\(baseURL)/posts/")
         var request = NSMutableURLRequest(URL: url!)
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "GET"
         
-        println("Using api token: \(self.apiAccessToken)")
         var params = [
-            "access_token": self.apiAccessToken,
+            "access_token": self.apiAccessToken[0].accessToken,
             "days_ago": "365"
         ]
         
@@ -95,17 +111,26 @@ class ViewController: UIViewController {
             var conversionError: NSError?
             var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
             
-            self.jsonResponse = jsonDictionary!
-            
-            self.apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
+            // Parsing checks
+            if conversionError != nil {
+                println(conversionError!.localizedDescription)
+                let errorString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println("Error in parsing \(errorString)")
+            }
+            else {
+                if jsonDictionary != nil {
+                    self.jsonResponse = jsonDictionary!
+                    
+                    self.apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
+                    println(self.apiHuntsList)
+                }
+                else {
+                    println("Error could not parse json")
+                }
+            }
         })
         
         task.resume()
-    }
-    
-    func printAPIVariables() {
-        println("Access Token: \(self.apiAccessToken)")
-        println("Hunts List: \(self.apiHuntsList)")
     }
 }
 
