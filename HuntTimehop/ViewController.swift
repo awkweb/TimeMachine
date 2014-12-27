@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var tokenLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
     
     // PH API (REMOVE BEFORE PUSHING TO GITHUB)
@@ -29,6 +28,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         getToken()
+        self.datePicker.minimumDate = Date.toDate(year: 2013, month: 11, day: 24)
+        self.datePicker.maximumDate = NSDate()
     }
     
     override func didReceiveMemoryWarning() {
@@ -98,7 +99,8 @@ class ViewController: UIViewController {
         
         var params = [
             "access_token": self.apiAccessToken[0].accessToken,
-            "days_ago": "365"
+            //"days_ago": "365"
+            "day": Date.toString(date: self.datePicker.date)
         ]
         
         var error: NSError?

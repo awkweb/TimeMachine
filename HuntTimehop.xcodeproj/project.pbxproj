@@ -15,6 +15,7 @@
 		053509911A4A18DB00774B67 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0535098F1A4A18DB00774B67 /* LaunchScreen.xib */; };
 		0535099D1A4A18DB00774B67 /* HuntTimehopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0535099C1A4A18DB00774B67 /* HuntTimehopTests.swift */; };
 		053509A71A4A34A100774B67 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053509A61A4A34A000774B67 /* DataController.swift */; };
+		054B4E9A1A4EFDEC00B05D65 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B4E991A4EFDEC00B05D65 /* Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		0535099B1A4A18DB00774B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0535099C1A4A18DB00774B67 /* HuntTimehopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuntTimehopTests.swift; sourceTree = "<group>"; };
 		053509A61A4A34A000774B67 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		054B4E991A4EFDEC00B05D65 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				053509831A4A18DB00774B67 /* AppDelegate.swift */,
 				053509881A4A18DB00774B67 /* ViewController.swift */,
 				053509A61A4A34A000774B67 /* DataController.swift */,
+				054B4E991A4EFDEC00B05D65 /* Date.swift */,
 				0535098A1A4A18DB00774B67 /* Main.storyboard */,
 				0535098D1A4A18DB00774B67 /* Images.xcassets */,
 				0535098F1A4A18DB00774B67 /* LaunchScreen.xib */,
@@ -220,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				053509891A4A18DB00774B67 /* ViewController.swift in Sources */,
+				054B4E9A1A4EFDEC00B05D65 /* Date.swift in Sources */,
 				053509A71A4A34A100774B67 /* DataController.swift in Sources */,
 				053509841A4A18DB00774B67 /* AppDelegate.swift in Sources */,
 				053509871A4A18DB00774B67 /* HuntTimehop.xcdatamodeld in Sources */,
@@ -420,6 +424,7 @@
 				053509A21A4A18DB00774B67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		053509A31A4A18DB00774B67 /* Build configuration list for PBXNativeTarget "HuntTimehopTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +433,7 @@
 				053509A51A4A18DB00774B67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
