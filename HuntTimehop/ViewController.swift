@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // UI Elements
     @IBOutlet weak var datePicker: UIDatePicker!
     
     // PH API (REMOVE BEFORE PUSHING TO GITHUB)
@@ -20,7 +21,7 @@ class ViewController: UIViewController {
     let baseURL = "https://api.producthunt.com/v1"
     
     var apiAccessToken: [(accessToken: String, expiresIn: Int)] = []
-    var apiHuntsList: [(name: String, tagline: String)] = []
+    var apiHuntsList: [(name: String, tagline: String, votes: Int, comments: Int, url: String)] = []
     
     var jsonResponse: NSDictionary!
     
@@ -28,6 +29,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         getToken()
+        
         self.datePicker.minimumDate = Date.toDate(year: 2013, month: 11, day: 24)
         self.datePicker.maximumDate = NSDate()
     }
@@ -41,7 +43,13 @@ class ViewController: UIViewController {
         getPosts()
     }
     
-    // Mark - PH API Calls
+    // MARK - UITableViewDataSource
+    
+    
+    // MARK - UITableViewDelegate
+
+    
+    // MARK - PH API Calls
     
     func getToken() {
         
@@ -99,7 +107,6 @@ class ViewController: UIViewController {
         
         var params = [
             "access_token": self.apiAccessToken[0].accessToken,
-            //"days_ago": "365"
             "day": Date.toString(date: self.datePicker.date)
         ]
         

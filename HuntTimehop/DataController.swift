@@ -13,6 +13,7 @@ import UIKit
 class DataController {
     
     class func jsonTokenParser(json: NSDictionary) -> [(accessToken: String, expiresIn: Int)] {
+        
         var tokenList: [(accessToken: String, expiresIn: Int)] = []
         var token: (accessToken: String, expiresIn: Int)
         
@@ -28,9 +29,10 @@ class DataController {
         return tokenList
     }
     
-    class func jsonPostsParser(json: NSDictionary) -> [(name: String, tagline: String)] {
-        var huntsList: [(name: String, tagline: String)] = []
-        var hunt: (name: String, tagline: String)
+    class func jsonPostsParser(json: NSDictionary) -> [(name: String, tagline: String, votes: Int, comments: Int, url: String)] {
+        
+        var huntsList: [(name: String, tagline: String, votes: Int, comments: Int, url: String)] = []
+        var hunt: (name: String, tagline: String, votes: Int, comments: Int, url: String)
         
         if json["posts"] != nil {
             let results: [AnyObject] = json["posts"]! as [AnyObject]
@@ -39,8 +41,11 @@ class DataController {
                 
                 let name: String = post["name"]! as String
                 let tagline: String = post["tagline"]! as String
+                let votes: Int = post["votes_count"]! as Int
+                let comments: Int = post["comments_count"]! as Int
+                let url: String = post["discussion_url"]! as String
 
-                hunt = (name: name, tagline: tagline)
+                hunt = (name: name, tagline: tagline, votes: votes, comments: comments, url: url)
                 huntsList += [hunt]
             }
         }

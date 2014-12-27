@@ -17,18 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2mV-3u-iE0">
-                                <rect key="frame" x="16" y="33" width="568" height="162"/>
-                                <date key="date" timeIntervalSinceReferenceDate="441306232.12037897">
-                                    <!--2014-12-26 17:03:52 +0000-->
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="JmO-x3-Wfe">
+                                <rect key="frame" x="16" y="20" width="568" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="441416214.90071797">
+                                    <!--2014-12-27 23:36:54 +0000-->
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q4y-If-qWM">
-                                <rect key="frame" x="142" y="225" width="316" height="30"/>
+                                <rect key="frame" x="217" y="242" width="166" height="30"/>
+                                <color key="backgroundColor" red="0.81176470588235294" green="0.24705882352941178" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="i7T-2R-eu9"/>
-                                    <constraint firstAttribute="width" constant="316" id="sEs-2V-oXC"/>
+                                    <constraint firstAttribute="width" constant="166" id="Dag-1X-PEc"/>
+                                    <constraint firstAttribute="height" constant="30" id="rlZ-8Q-bGu"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Get Posts">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -39,20 +41,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2mV-3u-iE0" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="BTJ-ug-fRb"/>
-                            <constraint firstAttribute="centerX" secondItem="Q4y-If-qWM" secondAttribute="centerX" id="EPc-tm-ZeP"/>
-                            <constraint firstItem="2mV-3u-iE0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="13" id="Ies-uH-Y4A"/>
-                            <constraint firstItem="Q4y-If-qWM" firstAttribute="top" secondItem="2mV-3u-iE0" secondAttribute="bottom" constant="30" id="kIH-g4-lWd"/>
-                            <constraint firstItem="2mV-3u-iE0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="klt-CA-0k2"/>
+                            <constraint firstItem="JmO-x3-Wfe" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="D8m-dO-qbm"/>
+                            <constraint firstItem="JmO-x3-Wfe" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="DNb-Sw-iXt"/>
+                            <constraint firstItem="JmO-x3-Wfe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZYm-7u-6XP"/>
+                            <constraint firstAttribute="centerX" secondItem="Q4y-If-qWM" secondAttribute="centerX" id="pH8-M1-am5"/>
+                            <constraint firstItem="Q4y-If-qWM" firstAttribute="top" secondItem="JmO-x3-Wfe" secondAttribute="bottom" constant="60" id="rAK-Ky-yny"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="datePicker" destination="2mV-3u-iE0" id="J8z-Bi-BwQ"/>
+                        <outlet property="datePicker" destination="JmO-x3-Wfe" id="SxG-9L-8US"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="313" y="214"/>
+            <point key="canvasLocation" x="313" y="138"/>
         </scene>
     </scenes>
 </document>
