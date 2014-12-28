@@ -16,6 +16,8 @@
 		0535099D1A4A18DB00774B67 /* HuntTimehopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0535099C1A4A18DB00774B67 /* HuntTimehopTests.swift */; };
 		053509A71A4A34A100774B67 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053509A61A4A34A000774B67 /* DataController.swift */; };
 		054B4E9A1A4EFDEC00B05D65 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B4E991A4EFDEC00B05D65 /* Date.swift */; };
+		05CC03EA1A50B45D0067EFF9 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CC03E91A50B45D0067EFF9 /* ProductCell.swift */; };
+		05D986911A5053690016A133 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D986901A5053690016A133 /* FilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		0535099C1A4A18DB00774B67 /* HuntTimehopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuntTimehopTests.swift; sourceTree = "<group>"; };
 		053509A61A4A34A000774B67 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		054B4E991A4EFDEC00B05D65 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		05CC03E91A50B45D0067EFF9 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		05D986901A5053690016A133 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,9 +89,11 @@
 			children = (
 				053509831A4A18DB00774B67 /* AppDelegate.swift */,
 				053509881A4A18DB00774B67 /* ViewController.swift */,
+				05D986901A5053690016A133 /* FilterViewController.swift */,
+				0535098A1A4A18DB00774B67 /* Main.storyboard */,
 				053509A61A4A34A000774B67 /* DataController.swift */,
 				054B4E991A4EFDEC00B05D65 /* Date.swift */,
-				0535098A1A4A18DB00774B67 /* Main.storyboard */,
+				05CC03E91A50B45D0067EFF9 /* ProductCell.swift */,
 				0535098D1A4A18DB00774B67 /* Images.xcassets */,
 				0535098F1A4A18DB00774B67 /* LaunchScreen.xib */,
 				053509851A4A18DB00774B67 /* HuntTimehop.xcdatamodeld */,
@@ -222,10 +228,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05D986911A5053690016A133 /* FilterViewController.swift in Sources */,
 				053509891A4A18DB00774B67 /* ViewController.swift in Sources */,
 				054B4E9A1A4EFDEC00B05D65 /* Date.swift in Sources */,
 				053509A71A4A34A100774B67 /* DataController.swift in Sources */,
 				053509841A4A18DB00774B67 /* AppDelegate.swift in Sources */,
+				05CC03EA1A50B45D0067EFF9 /* ProductCell.swift in Sources */,
 				053509871A4A18DB00774B67 /* HuntTimehop.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

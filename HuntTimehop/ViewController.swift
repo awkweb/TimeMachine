@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // UI Elements
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var tableView: UITableView!
     
     // PH API (REMOVE BEFORE PUSHING TO GITHUB)
     let kAccessToken = "removed"
@@ -28,26 +28,41 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getToken()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
-        self.datePicker.minimumDate = Date.toDate(year: 2013, month: 11, day: 24)
-        self.datePicker.maximumDate = NSDate()
+        getPosts()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func getPostsButtonPressed(sender: UIButton) {
-        println("getPostsButtonPressed")
-        getPosts()
-    }
     
     // MARK - UITableViewDataSource
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell") as ProductCell
+        
+        cell.votesLabel.text = "\(self.apiHuntsList[indexPath.row].votes)"
+        cell.nameLabel.text = self.apiHuntsList[indexPath.row].name
+        cell.taglineLabel.text = self.apiHuntsList[indexPath.row].tagline
+        cell.commentsLabel.text = "\(self.apiHuntsList[indexPath.row].comments)"
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.apiHuntsList.count
+    }
+    
     
     // MARK - UITableViewDelegate
-
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
     
     // MARK - PH API Calls
     
@@ -106,8 +121,9 @@ class ViewController: UIViewController {
         request.HTTPMethod = "GET"
         
         var params = [
-            "access_token": self.apiAccessToken[0].accessToken,
-            "day": Date.toString(date: self.datePicker.date)
+            // "access_token": self.apiAccessToken[0].accessToken,
+            "access_token": self.kAccessToken,
+            "day": "2013-11-24"
         ]
         
         var error: NSError?
@@ -132,6 +148,10 @@ class ViewController: UIViewController {
                     
                     self.apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
                     println(self.apiHuntsList)
+                    
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.tableView.reloadData()
+                    })
                 }
                 else {
                     println("Error could not parse json")
