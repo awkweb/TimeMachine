@@ -21,9 +21,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let baseURL = "https://api.producthunt.com/v1"
     
     var apiAccessToken: [(accessToken: String, expiresIn: Int)] = []
+    var apiTokenExists: Bool = false
     var apiHuntsList: [(name: String, tagline: String, votes: Int, comments: Int, url: String)] = []
     
     var jsonResponse: NSDictionary!
+    
+    var filterDate: String = Date.toString(date: NSDate())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +34,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        getPosts()
+        getToken()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if self.apiTokenExists {
+            getPosts()
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func filterBarButtonItemTapped(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("showFilterVC", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showFilterVC" {
+            let filterVC: FilterViewController = segue.destinationViewController as FilterViewController
+            filterVC.mainVC = self
+        }
     }
     
     
@@ -68,14 +88,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func getToken() {
         
-        let url = NSURL(string: "\(baseURL)/oauth/token")
+        let url = NSURL(string: "\(self.baseURL)/oauth/token")
         let request = NSMutableURLRequest(URL: url!)
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
         
         var params = [
-            "client_id": kAPIKey,
-            "client_secret": kAPISecret,
+            "client_id": self.kAPIKey,
+            "client_secret": self.kAPISecret,
             "grant_type": "client_credentials"
         ]
         
@@ -102,6 +122,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.jsonResponse = jsonDictionary!
                     
                     self.apiAccessToken = DataController.jsonTokenParser(jsonDictionary!)
+                    self.apiTokenExists = true
                     println(self.apiAccessToken)
                 }
                 else {
@@ -115,15 +136,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func getPosts() {
         
-        let url = NSURL(string: "\(baseURL)/posts/")
+        let url = NSURL(string: "\(self.baseURL)/posts/")
         var request = NSMutableURLRequest(URL: url!)
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "GET"
         
         var params = [
-            // "access_token": self.apiAccessToken[0].accessToken,
-            "access_token": self.kAccessToken,
-            "day": "2013-11-24"
+            "access_token": self.apiAccessToken[0].accessToken,
+            "day": self.filterDate
         ]
         
         var error: NSError?

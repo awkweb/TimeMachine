@@ -18,6 +18,8 @@ class FilterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println(self.mainVC.filterDate)
+        
         self.datePicker.minimumDate = Date.toDate(year: 2013, month: 11, day: 24)
         self.datePicker.maximumDate = NSDate()
     }
@@ -32,5 +34,8 @@ class FilterViewController: UIViewController {
     
     @IBAction func getPostsButtonPressed(sender: UIButton) {
         println("getPostsButtonPressed")
+        self.mainVC.filterDate = Date.toString(date: self.datePicker.date)
+        println(self.mainVC.filterDate)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
