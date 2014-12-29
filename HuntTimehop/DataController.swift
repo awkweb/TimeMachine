@@ -12,6 +12,7 @@ import UIKit
 
 class DataController {
     
+    // Parse oauth token request
     class func jsonTokenParser(json: NSDictionary) -> [(accessToken: String, expiresIn: Int)] {
         
         var tokenList: [(accessToken: String, expiresIn: Int)] = []
@@ -29,6 +30,7 @@ class DataController {
         return tokenList
     }
     
+    // Parse posts request
     class func jsonPostsParser(json: NSDictionary) -> [(name: String, tagline: String, votes: Int, comments: Int, url: String)] {
         
         var huntsList: [(name: String, tagline: String, votes: Int, comments: Int, url: String)] = []

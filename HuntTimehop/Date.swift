@@ -9,6 +9,7 @@
 import Foundation
 
 class Date {
+    
     class func toDate(#year: Int, month: Int, day: Int) -> NSDate {
         var components = NSDateComponents()
         components.year = year

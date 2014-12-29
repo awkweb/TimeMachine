@@ -14,9 +14,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     // PH API (REMOVE BEFORE PUSHING TO GITHUB)
-    let kAccessToken = "removed"
-    let kAPIKey = "removed"
-    let kAPISecret = "removed"
+    let kAPIKey = "XXX"
+    let kAPISecret = "YYY"
     
     let baseURL = "https://api.producthunt.com/v1"
     
@@ -26,20 +25,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var jsonResponse: NSDictionary!
     
-    var filterDate: String = Date.toString(date: NSDate())
+    var filterDate: NSDate = NSDate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        getToken()
     }
     
     override func viewDidAppear(animated: Bool) {
         if self.apiTokenExists {
             getPosts()
+        }
+        else {
+            getToken()
         }
     }
     
@@ -80,12 +80,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK - UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        var url = NSURL(string: self.apiHuntsList[indexPath.row].url)
+        UIApplication.sharedApplication().openURL(url!)
     }
     
     
     // MARK - PH API Calls
     
+    // PH Client Only Authentication
     func getToken() {
         
         let url = NSURL(string: "\(self.baseURL)/oauth/token")
@@ -134,6 +136,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         task.resume()
     }
     
+    // PH Get Posts
     func getPosts() {
         
         let url = NSURL(string: "\(self.baseURL)/posts/")
@@ -143,7 +146,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         var params = [
             "access_token": self.apiAccessToken[0].accessToken,
-            "day": self.filterDate
+            "day": Date.toString(date: self.filterDate)
         ]
         
         var error: NSError?
@@ -167,7 +170,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.jsonResponse = jsonDictionary!
                     
                     self.apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
-                    println(self.apiHuntsList)
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.tableView.reloadData()

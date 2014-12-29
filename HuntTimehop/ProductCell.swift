@@ -15,7 +15,6 @@ class ProductCell: UITableViewCell {
     @IBOutlet weak var taglineLabel: UILabel!
     @IBOutlet weak var commentsLabel: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
