@@ -12,6 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: - UI Elements
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var imageView: UIImageView!
     
     // MARK: - PH API (REMOVE BEFORE PUSHING TO GITHUB)
     let kAPIKey = "XXX"
@@ -32,14 +33,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        self.imageView.image = UIImage(named: "product-hunt-glasshole-kitty-by-jess3.png")
     }
     
     override func viewDidAppear(animated: Bool) {
+        
         if self.apiTokenExists {
+            self.navigationItem.title = Date.toString(date: self.filterDate)
             getPosts()
+            self.tableView.hidden = false
         }
         else {
+            self.navigationItem.title = "Select a date to travel to ->"
             getToken()
+            self.tableView.hidden = true
         }
     }
     
