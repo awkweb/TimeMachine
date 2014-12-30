@@ -31,23 +31,29 @@ class DataController {
     }
     
     // Parse posts request
-    class func jsonPostsParser(json: NSDictionary) -> [(name: String, tagline: String, votes: Int, comments: Int, url: String)] {
+    class func jsonPostsParser(json: NSDictionary) -> [(id: Int, name: String, tagline: String, comments: Int, votes: Int, url: String, screenshot: String, makerInside: Bool)] {
         
-        var huntsList: [(name: String, tagline: String, votes: Int, comments: Int, url: String)] = []
-        var hunt: (name: String, tagline: String, votes: Int, comments: Int, url: String)
+        var huntsList: [(id: Int, name: String, tagline: String, comments: Int, votes: Int, url: String, screenshot: String, makerInside: Bool)] = []
+        var hunt: (id: Int, name: String, tagline: String, comments: Int, votes: Int, url: String, screenshot: String, makerInside: Bool)
         
         if json["posts"] != nil {
             let results: [AnyObject] = json["posts"]! as [AnyObject]
             
             for post in results {
                 
+                let id: Int = post["id"]! as Int
                 let name: String = post["name"]! as String
                 let tagline: String = post["tagline"]! as String
-                let votes: Int = post["votes_count"]! as Int
                 let comments: Int = post["comments_count"]! as Int
+                let votes: Int = post["votes_count"]! as Int
                 let url: String = post["discussion_url"]! as String
+                
+                let screenshotDictionary = post["screenshot_url"] as NSDictionary
+                let screenshot: String = screenshotDictionary["300px"]! as String
+                
+                let makerInside: Bool = post["maker_inside"]! as Bool
 
-                hunt = (name: name, tagline: tagline, votes: votes, comments: comments, url: url)
+                hunt = (id: id, name: name, tagline: tagline, comments: comments, votes: votes, url: url, screenshot: screenshot, makerInside: makerInside)
                 huntsList += [hunt]
             }
         }

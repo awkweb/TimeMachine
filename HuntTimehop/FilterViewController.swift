@@ -10,7 +10,7 @@ import UIKit
 
 class FilterViewController: UIViewController {
     
-    // UI Elements
+    // MARK: - UI Elements
     @IBOutlet weak var datePicker: UIDatePicker!
     
     var mainVC: ViewController!
@@ -35,4 +35,5 @@ class FilterViewController: UIViewController {
         self.mainVC.filterDate = self.datePicker.date
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+
 }

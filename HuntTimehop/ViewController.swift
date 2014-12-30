@@ -10,10 +10,10 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    // UI Elements
+    // MARK: - UI Elements
     @IBOutlet weak var tableView: UITableView!
     
-    // PH API (REMOVE BEFORE PUSHING TO GITHUB)
+    // MARK: - PH API (REMOVE BEFORE PUSHING TO GITHUB)
     let kAPIKey = "XXX"
     let kAPISecret = "YYY"
     
@@ -21,7 +21,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var apiAccessToken: [(accessToken: String, expiresIn: Int)] = []
     var apiTokenExists: Bool = false
-    var apiHuntsList: [(name: String, tagline: String, votes: Int, comments: Int, url: String)] = []
+    var apiHuntsList: [(id: Int, name: String, tagline: String, comments: Int, votes: Int, url: String, screenshot: String, makerInside: Bool)] = []
     
     var jsonResponse: NSDictionary!
     
@@ -47,7 +47,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func filterBarButtonItemTapped(sender: UIBarButtonItem) {
+    @IBAction func filterButtonTapped(sender: UIBarButtonItem) {
         self.performSegueWithIdentifier("showFilterVC", sender: self)
     }
     
@@ -56,10 +56,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let filterVC: FilterViewController = segue.destinationViewController as FilterViewController
             filterVC.mainVC = self
         }
+        else if segue.identifier == "showPostDetailsVC" {
+            let detailVC: PostDetailsViewController = segue.destinationViewController as PostDetailsViewController
+            let indexPath = self.tableView.indexPathForSelectedRow()
+            let thisPost = self.apiHuntsList[indexPath!.row]
+            detailVC.hunt = thisPost
+        }
     }
     
     
-    // MARK - UITableViewDataSource
+    // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell") as ProductCell
@@ -77,15 +83,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    // MARK - UITableViewDelegate
+    // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var url = NSURL(string: self.apiHuntsList[indexPath.row].url)
-        UIApplication.sharedApplication().openURL(url!)
+        self.performSegueWithIdentifier("showPostDetailsVC", sender: self)
     }
     
     
-    // MARK - PH API Calls
+    // MARK: - PH API Calls
     
     // PH Client Only Authentication
     func getToken() {
