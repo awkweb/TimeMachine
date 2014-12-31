@@ -49,7 +49,7 @@ class DataController {
                 let url: String = post["discussion_url"]! as String
                 
                 let screenshotDictionary = post["screenshot_url"] as NSDictionary
-                let screenshot: String = screenshotDictionary["300px"]! as String
+                let screenshot: String = screenshotDictionary["850px"]! as String
                 
                 let makerInside: Bool = post["maker_inside"]! as Bool
 

@@ -17,23 +17,28 @@ class PostDetailsViewController: UIViewController {
     @IBOutlet weak var votesLabel: UILabel!
     @IBOutlet weak var commentsLabel: UILabel!
     @IBOutlet weak var makerLabel: UILabel!
-    @IBOutlet weak var viewOnProductHuntButton: UIButton!
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var viewOnPHButton: UIButton!
     
     var hunt: (id: Int, name: String, tagline: String, comments: Int, votes: Int, url: String, screenshot: String, makerInside: Bool)!
+    
+    var mainVC: ViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        // Set Content
+        self.navigationItem.title = self.hunt.name
         self.nameLabel.text = self.hunt.name
         self.taglineLabel.text = self.hunt.tagline
         self.votesLabel.text = "\(self.hunt.votes)"
         self.commentsLabel.text = "\(self.hunt.comments)"
+        self.idLabel.text = "\(self.hunt.id)"
         
         let screenshotURL = NSURL(string: self.hunt.screenshot)
         let data = NSData(contentsOfURL: screenshotURL!)
         self.imageView.image = UIImage(data: data!)
-        
-        self.viewOnProductHuntButton.setTitle("View \(self.hunt.name) on Product Hunt", forState: UIControlState.Normal)
         
         if self.hunt.makerInside {
             self.makerLabel.hidden = false
@@ -42,7 +47,10 @@ class PostDetailsViewController: UIViewController {
             self.makerLabel.hidden = true
         }
         
-        self.navigationItem.title = self.hunt.name
+        // Set Colors
+        self.viewOnPHButton.backgroundColor = self.mainVC.orange
+        self.viewOnPHButton.tintColor = self.mainVC.white
+        
     }
 
     override func didReceiveMemoryWarning() {

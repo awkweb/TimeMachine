@@ -14,6 +14,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
     
+    // MARK: - Color
+    let orange = UIColor(red: (218/255.0), green: (85/255.0), blue: (47/255.0), alpha: 1.0)
+    let green = UIColor(red: (71/255.0), green: (172/255.0), blue: (129/255.0), alpha: 1.0)
+    let blue = UIColor(red: (0/255.0), green: (139/255.0), blue: (218/255.0), alpha: 1.0)
+    let grayD = UIColor(red: (83/255.0), green: (69/255.0), blue: (64/255.0), alpha: 1.0)
+    let grayL = UIColor(red: (153/255.0), green: (153/255.0), blue: (153/255.0), alpha: 1.0)
+    let white = UIColor.whiteColor()
+    
     // MARK: - PH API (REMOVE BEFORE PUSHING TO GITHUB)
     let kAPIKey = "XXX"
     let kAPISecret = "YYY"
@@ -69,6 +77,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let indexPath = self.tableView.indexPathForSelectedRow()
             let thisPost = self.apiHuntsList[indexPath!.row]
             detailVC.hunt = thisPost
+            detailVC.mainVC = self
         }
     }
     
