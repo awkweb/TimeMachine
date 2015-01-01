@@ -18,9 +18,11 @@ class PostDetailsViewController: UIViewController {
     @IBOutlet weak var commentsLabel: UILabel!
     @IBOutlet weak var makerLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var hunterLabel: UILabel!
     @IBOutlet weak var viewOnPHButton: UIButton!
+    @IBOutlet weak var websiteButton: UIButton!
     
-    var hunt: (id: Int, name: String, tagline: String, comments: Int, votes: Int, url: String, screenshot: String, makerInside: Bool)!
+    var hunt: (id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, webURL: String, screenshot: String, makerInside: Bool, hunter: String)!
     
     var mainVC: ViewController!
     
@@ -35,6 +37,7 @@ class PostDetailsViewController: UIViewController {
         self.votesLabel.text = "\(self.hunt.votes)"
         self.commentsLabel.text = "\(self.hunt.comments)"
         self.idLabel.text = "\(self.hunt.id)"
+        self.hunterLabel.text = "via \(self.hunt.hunter)"
         
         let screenshotURL = NSURL(string: self.hunt.screenshot)
         let data = NSData(contentsOfURL: screenshotURL!)
@@ -47,9 +50,20 @@ class PostDetailsViewController: UIViewController {
             self.makerLabel.hidden = true
         }
         
-        // Set Colors
+        // Set Styles
+        self.nameLabel.textColor = self.mainVC.orange
+        self.taglineLabel.textColor = self.mainVC.grayD
+        self.hunterLabel.textColor = self.mainVC.grayL
+        self.votesLabel.textColor = self.mainVC.grayD
+        self.commentsLabel.textColor = self.mainVC.grayD
+        self.idLabel.textColor = self.mainVC.grayD
+
         self.viewOnPHButton.backgroundColor = self.mainVC.orange
         self.viewOnPHButton.tintColor = self.mainVC.white
+        
+        self.websiteButton.backgroundColor = self.mainVC.blue
+        self.websiteButton.tintColor = self.mainVC.white
+        self.websiteButton.setTitle("\(self.hunt.name) website", forState: UIControlState.Normal)
         
     }
 
@@ -58,7 +72,12 @@ class PostDetailsViewController: UIViewController {
     }
 
     @IBAction func viewOnProductHuntButtonPressed(sender: UIButton) {
-        let huntURL = NSURL(string: self.hunt.url)
-        UIApplication.sharedApplication().openURL(huntURL!)
+        let phURL = NSURL(string: self.hunt.phURL)
+        UIApplication.sharedApplication().openURL(phURL!)
+    }
+    
+    @IBAction func websiteButtonPressed(sender: UIButton) {
+        let webURL = NSURL(string: self.hunt.webURL)
+        UIApplication.sharedApplication().openURL(webURL!)
     }
 }

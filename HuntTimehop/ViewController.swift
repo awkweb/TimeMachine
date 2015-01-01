@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var apiAccessToken: [(accessToken: String, expiresIn: Int)] = []
     var apiTokenExists: Bool = false
-    var apiHuntsList: [(id: Int, name: String, tagline: String, comments: Int, votes: Int, url: String, screenshot: String, makerInside: Bool)] = []
+    var apiHuntsList: [(id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, webURL: String, screenshot: String, makerInside: Bool, hunter: String)] = []
     
     var jsonResponse: NSDictionary!
     
@@ -48,7 +48,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidAppear(animated: Bool) {
         
         if self.apiTokenExists {
-            self.navigationItem.title = Date.toString(date: self.filterDate)
+            self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
             getPosts()
             self.tableView.hidden = false
         }
@@ -91,6 +91,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.nameLabel.text = self.apiHuntsList[indexPath.row].name
         cell.taglineLabel.text = self.apiHuntsList[indexPath.row].tagline
         cell.commentsLabel.text = "\(self.apiHuntsList[indexPath.row].comments)"
+        
+        cell.nameLabel.textColor = self.orange
+        cell.taglineLabel.textColor = self.grayL
+        cell.votesLabel.textColor = self.grayD
+        cell.commentsLabel.textColor = self.grayD
         
         return cell
     }
@@ -193,6 +198,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     self.apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
                     
+                    if self.apiHuntsList.count == 0 {
+                        self.showAlertWithText("Hey", message: "Looks like there aren't any hunts on \(Date.toPrettyString(date: self.filterDate)).", actionMessage: "Okay")
+                    }
+                    
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.tableView.reloadData()
                     })
@@ -204,6 +213,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         })
         
         task.resume()
+    }
+    
+    // MARK: - Helpers
+    
+    func showAlertWithText(header: String, message: String, actionMessage: String) {
+        var alert = UIAlertController(title: header, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: actionMessage, style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
 

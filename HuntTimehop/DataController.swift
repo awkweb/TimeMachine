@@ -31,10 +31,10 @@ class DataController {
     }
     
     // Parse posts request
-    class func jsonPostsParser(json: NSDictionary) -> [(id: Int, name: String, tagline: String, comments: Int, votes: Int, url: String, screenshot: String, makerInside: Bool)] {
+    class func jsonPostsParser(json: NSDictionary) -> [(id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, webURL: String, screenshot: String, makerInside: Bool, hunter: String)] {
         
-        var huntsList: [(id: Int, name: String, tagline: String, comments: Int, votes: Int, url: String, screenshot: String, makerInside: Bool)] = []
-        var hunt: (id: Int, name: String, tagline: String, comments: Int, votes: Int, url: String, screenshot: String, makerInside: Bool)
+        var huntsList: [(id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, webURL: String, screenshot: String, makerInside: Bool, hunter: String)] = []
+        var hunt: ((id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, webURL: String, screenshot: String, makerInside: Bool, hunter: String))
         
         if json["posts"] != nil {
             let results: [AnyObject] = json["posts"]! as [AnyObject]
@@ -46,14 +46,18 @@ class DataController {
                 let tagline: String = post["tagline"]! as String
                 let comments: Int = post["comments_count"]! as Int
                 let votes: Int = post["votes_count"]! as Int
-                let url: String = post["discussion_url"]! as String
+                let phURL: String = post["discussion_url"]! as String
+                let webURL: String = post["redirect_url"]! as String
                 
                 let screenshotDictionary = post["screenshot_url"] as NSDictionary
                 let screenshot: String = screenshotDictionary["850px"]! as String
                 
                 let makerInside: Bool = post["maker_inside"]! as Bool
+                
+                let userDictionary = post["user"] as NSDictionary
+                let hunter: String = userDictionary["name"]! as String
 
-                hunt = (id: id, name: name, tagline: tagline, comments: comments, votes: votes, url: url, screenshot: screenshot, makerInside: makerInside)
+                hunt = (id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, webURL: webURL, screenshot: screenshot, makerInside: makerInside, hunter: hunter)
                 huntsList += [hunt]
             }
         }
