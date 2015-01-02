@@ -59,8 +59,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.didReceiveMemoryWarning()
     }
     
+    // Segue to FilterViewController
     @IBAction func filterButtonTapped(sender: UIBarButtonItem) {
         self.performSegueWithIdentifier("showFilterVC", sender: self)
+    }
+    
+    @IBAction func aboutButtonTapped(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("showAboutVC", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

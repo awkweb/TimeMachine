@@ -12,6 +12,8 @@ class AboutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "About"
     }
 
     override func didReceiveMemoryWarning() {

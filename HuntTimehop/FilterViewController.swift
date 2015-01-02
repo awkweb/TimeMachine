@@ -18,6 +18,8 @@ class FilterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "Details"
+        
         self.datePicker.minimumDate = Date.toDate(year: 2013, month: 11, day: 24)
         self.datePicker.maximumDate = NSDate()
         self.datePicker.date = self.mainVC.filterDate

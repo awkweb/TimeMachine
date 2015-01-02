@@ -30,7 +30,7 @@ class PostDetailsViewController: UIViewController {
         
         
         // Set Content
-        self.navigationItem.title = self.hunt.name
+        self.navigationItem.title = "Details"
         self.nameLabel.text = self.hunt.name
         self.taglineLabel.text = self.hunt.tagline
         self.votesLabel.text = "\(self.hunt.votes)"
@@ -68,5 +68,26 @@ class PostDetailsViewController: UIViewController {
     @IBAction func viewOnProductHuntButtonPressed(sender: UIButton) {
         let phURL = NSURL(string: self.hunt.phURL)
         UIApplication.sharedApplication().openURL(phURL!)
+    }
+    
+    @IBAction func shareSheetButtonPressed(sender: UIBarButtonItem) {
+        let firstActivityItem = "\(self.hunt.name): \(self.hunt.tagline)"
+        
+        let secondActivityItem : NSURL = NSURL(string: "\(self.hunt.phURL)")!
+        
+        let activityViewController : UIActivityViewController = UIActivityViewController(
+            activityItems: [firstActivityItem, secondActivityItem], applicationActivities: nil)
+        
+        activityViewController.excludedActivityTypes = [
+            UIActivityTypePostToWeibo,
+            UIActivityTypePrint,
+            UIActivityTypeAssignToContact,
+            UIActivityTypeSaveToCameraRoll,
+            UIActivityTypePostToFlickr,
+            UIActivityTypePostToVimeo,
+            UIActivityTypePostToTencentWeibo
+        ]
+        
+        self.presentViewController(activityViewController, animated: true, completion: nil)
     }
 }

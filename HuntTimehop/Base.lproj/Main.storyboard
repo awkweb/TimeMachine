@@ -47,15 +47,27 @@
                                     <action selector="cancelButtonPressed:" destination="yrw-4o-sJ0" eventType="touchUpInside" id="Ybp-pg-0O2"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(shake for random date)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tP7-pS-4Ty">
+                                <rect key="frame" x="196" y="351" width="209" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="5Na-IO-zOa"/>
+                                    <constraint firstAttribute="width" constant="209" id="qCt-kP-9YO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="177-Jo-HfT" firstAttribute="top" secondItem="AqA-Md-a0A" secondAttribute="bottom" constant="8" id="2Pg-BD-XOw"/>
+                            <constraint firstItem="tP7-pS-4Ty" firstAttribute="top" secondItem="9No-7m-1dO" secondAttribute="bottom" constant="31" id="3WG-Im-ZIT"/>
                             <constraint firstItem="AqA-Md-a0A" firstAttribute="top" secondItem="Uk3-hR-22J" secondAttribute="bottom" constant="20" id="7Ev-3H-J34"/>
                             <constraint firstAttribute="centerX" secondItem="AqA-Md-a0A" secondAttribute="centerX" id="7Pd-SI-Hiy"/>
                             <constraint firstAttribute="centerX" secondItem="9No-7m-1dO" secondAttribute="centerX" constant="-0.5" id="AlA-dU-Vqc"/>
                             <constraint firstItem="9No-7m-1dO" firstAttribute="top" secondItem="177-Jo-HfT" secondAttribute="bottom" constant="50" id="jxN-md-OQu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="177-Jo-HfT" secondAttribute="trailing" constant="-16" id="n0L-Te-dpa"/>
+                            <constraint firstAttribute="centerX" secondItem="tP7-pS-4Ty" secondAttribute="centerX" constant="-0.5" id="pgT-fM-erx"/>
                             <constraint firstItem="177-Jo-HfT" firstAttribute="leading" secondItem="50L-98-i5d" secondAttribute="leadingMargin" constant="-16" id="sWY-HX-X6a"/>
                         </constraints>
                     </view>
@@ -192,6 +204,13 @@
                             <constraint firstItem="gx0-NY-Bml" firstAttribute="leading" secondItem="h9d-Tg-Y5r" secondAttribute="trailing" constant="28" id="y8F-jx-VPQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="5RM-U6-jHz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Hmf-ZU-Cfj">
+                            <connections>
+                                <action selector="shareSheetButtonPressed:" destination="zQ9-YD-pSR" id="bDr-oE-5bp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="commentsLabel" destination="gx0-NY-Bml" id="07M-cz-k59"/>
                         <outlet property="hunterLabel" destination="Dy9-rT-le5" id="RUa-Vx-fgv"/>
@@ -208,10 +227,10 @@
             </objects>
             <point key="canvasLocation" x="1842" y="-82"/>
         </scene>
-        <!--View Controller-->
+        <!--About View Controller-->
         <scene sceneID="9BT-ue-33k">
             <objects>
-                <viewController id="Wfk-fD-eHO" sceneMemberID="viewController">
+                <viewController id="Wfk-fD-eHO" customClass="AboutViewController" customModule="HuntTimehop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NAZ-ih-962"/>
                         <viewControllerLayoutGuide type="bottom" id="riS-ns-B4e"/>
@@ -219,7 +238,19 @@
                     <view key="view" contentMode="scaleToFill" id="WOz-Bk-Lnw">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xj8-xp-HPe">
+                                <rect key="frame" x="0.0" y="0.0" width="605" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xj8-xp-HPe" firstAttribute="top" secondItem="NAZ-ih-962" secondAttribute="bottom" constant="-64" id="6sg-Qb-0QR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xj8-xp-HPe" secondAttribute="trailing" constant="-21" id="Mk8-5J-UOy"/>
+                            <constraint firstItem="xj8-xp-HPe" firstAttribute="leading" secondItem="WOz-Bk-Lnw" secondAttribute="leadingMargin" constant="-16" id="Nxa-8v-png"/>
+                            <constraint firstItem="riS-ns-B4e" firstAttribute="top" secondItem="xj8-xp-HPe" secondAttribute="bottom" id="qHy-KL-XgJ"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfM-l1-c1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -313,7 +344,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jmr-dU-Ogx">
-                        <barButtonItem key="leftBarButtonItem" title="About" id="8GU-Z0-9tH"/>
+                        <barButtonItem key="leftBarButtonItem" title="About" id="8GU-Z0-9tH">
+                            <connections>
+                                <action selector="aboutButtonTapped:" destination="BYZ-38-t0r" id="nng-m2-gxv"/>
+                                <segue destination="Wfk-fD-eHO" kind="show" identifier="showAboutVC" id="XK5-ZD-DnO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Select Date" id="HTI-t5-hbU">
                             <connections>
                                 <action selector="filterBarButtonItemTapped:" destination="BYZ-38-t0r" id="qf8-AV-GYL"/>
