@@ -20,9 +20,8 @@ class PostDetailsViewController: UIViewController {
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var hunterLabel: UILabel!
     @IBOutlet weak var viewOnPHButton: UIButton!
-    @IBOutlet weak var websiteButton: UIButton!
     
-    var hunt: (id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, webURL: String, screenshot: String, makerInside: Bool, hunter: String)!
+    var hunt: (id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, screenshot: String, makerInside: Bool, hunter: String)!
     
     var mainVC: ViewController!
     
@@ -51,20 +50,15 @@ class PostDetailsViewController: UIViewController {
         }
         
         // Set Styles
-        self.nameLabel.textColor = self.mainVC.orange
-        self.taglineLabel.textColor = self.mainVC.grayD
-        self.hunterLabel.textColor = self.mainVC.grayL
-        self.votesLabel.textColor = self.mainVC.grayD
-        self.commentsLabel.textColor = self.mainVC.grayD
-        self.idLabel.textColor = self.mainVC.grayD
+        self.nameLabel.textColor = orange
+        self.taglineLabel.textColor = grayD
+        self.hunterLabel.textColor = grayL
+        self.votesLabel.textColor = grayD
+        self.commentsLabel.textColor = grayD
+        self.idLabel.textColor = grayD
 
-        self.viewOnPHButton.backgroundColor = self.mainVC.orange
-        self.viewOnPHButton.tintColor = self.mainVC.white
-        
-        self.websiteButton.backgroundColor = self.mainVC.blue
-        self.websiteButton.tintColor = self.mainVC.white
-        self.websiteButton.setTitle("\(self.hunt.name) website", forState: UIControlState.Normal)
-        
+        self.viewOnPHButton.backgroundColor = orange
+        self.viewOnPHButton.tintColor = white
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,10 +68,5 @@ class PostDetailsViewController: UIViewController {
     @IBAction func viewOnProductHuntButtonPressed(sender: UIButton) {
         let phURL = NSURL(string: self.hunt.phURL)
         UIApplication.sharedApplication().openURL(phURL!)
-    }
-    
-    @IBAction func websiteButtonPressed(sender: UIButton) {
-        let webURL = NSURL(string: self.hunt.webURL)
-        UIApplication.sharedApplication().openURL(webURL!)
     }
 }

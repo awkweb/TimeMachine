@@ -14,27 +14,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
     
-    // MARK: - Color
-    let orange = UIColor(red: (218/255.0), green: (85/255.0), blue: (47/255.0), alpha: 1.0)
-    let green = UIColor(red: (71/255.0), green: (172/255.0), blue: (129/255.0), alpha: 1.0)
-    let blue = UIColor(red: (0/255.0), green: (139/255.0), blue: (218/255.0), alpha: 1.0)
-    let grayD = UIColor(red: (83/255.0), green: (69/255.0), blue: (64/255.0), alpha: 1.0)
-    let grayL = UIColor(red: (153/255.0), green: (153/255.0), blue: (153/255.0), alpha: 1.0)
-    let white = UIColor.whiteColor()
-    
-    // MARK: - PH API (REMOVE BEFORE PUSHING TO GITHUB)
-    let kAPIKey = "XXX"
-    let kAPISecret = "YYY"
-    
+    // MARK: - API Variables
     let baseURL = "https://api.producthunt.com/v1"
-    
-    var apiAccessToken: [(accessToken: String, expiresIn: Int)] = []
-    var apiTokenExists: Bool = false
-    var apiHuntsList: [(id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, webURL: String, screenshot: String, makerInside: Bool, hunter: String)] = []
-    
+    var apiAccessToken: [(accessToken: String, expiresOn: NSDate)] = []
+    var apiHuntsList: [(id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, screenshot: String, makerInside: Bool, hunter: String)] = []
     var jsonResponse: NSDictionary!
-    
-    var filterDate: NSDate = NSDate()
+    var filterDate: NSDate = NSDate().minusYears(1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,16 +31,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
-        if self.apiTokenExists {
-            self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
-            getPosts()
-            self.tableView.hidden = false
+        if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) != nil {
+            
+            if Date.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as NSDate)) == Date.toString(date: NSDate()) {
+                self.navigationItem.title = "Select a date to travel to ->"
+                getToken()
+                self.tableView.hidden = true
+                println("Token expired")
+            }
+            else {
+                self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
+                getPosts()
+                self.tableView.hidden = false
+            }
         }
         else {
             self.navigationItem.title = "Select a date to travel to ->"
             getToken()
             self.tableView.hidden = true
+             println("New token")
         }
     }
     
@@ -92,11 +88,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.taglineLabel.text = self.apiHuntsList[indexPath.row].tagline
         cell.commentsLabel.text = "\(self.apiHuntsList[indexPath.row].comments)"
         
-        cell.nameLabel.textColor = self.orange
-        cell.taglineLabel.textColor = self.grayL
-        cell.votesLabel.textColor = self.grayD
-        cell.commentsLabel.textColor = self.grayD
-        
         return cell
     }
     
@@ -123,8 +114,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         request.HTTPMethod = "POST"
         
         var params = [
-            "client_id": self.kAPIKey,
-            "client_secret": self.kAPISecret,
+            "client_id": kAPIKey,
+            "client_secret": kAPISecret,
             "grant_type": "client_credentials"
         ]
         
@@ -151,8 +142,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.jsonResponse = jsonDictionary!
                     
                     self.apiAccessToken = DataController.jsonTokenParser(jsonDictionary!)
-                    self.apiTokenExists = true
-                    println(self.apiAccessToken)
+                    
+                    NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].accessToken, forKey: accessToken)
+                    NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].expiresOn, forKey: expiresOn)
+                    println(NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as NSDate)
                 }
                 else {
                     println("Error could not parse json")
@@ -172,7 +165,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         request.HTTPMethod = "GET"
         
         var params = [
-            "access_token": self.apiAccessToken[0].accessToken,
+            "access_token": NSUserDefaults.standardUserDefaults().objectForKey(accessToken) as String,
             "day": Date.toString(date: self.filterDate)
         ]
         
@@ -222,6 +215,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alert.addAction(UIAlertAction(title: actionMessage, style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
+    
 }
 
 

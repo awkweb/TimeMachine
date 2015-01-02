@@ -27,6 +27,21 @@ class FilterViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    // FilterVC respond to touch events
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    // Detect shake
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+        if motion == .MotionShake {
+            let daysBetweenDates = NSDate.daysBetween(date1: Date.toDate(year: 2013, month: 11, day: 24), date2: NSDate())
+            let daysAdded = UInt(arc4random_uniform(UInt32(daysBetweenDates)))
+            self.datePicker.date = Date.toDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
+            println(daysAdded)
+        }
+    }
+    
     @IBAction func cancelButtonPressed(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }

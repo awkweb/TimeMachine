@@ -7,8 +7,24 @@
 //
 
 import UIKit
-import CoreData
 
+// MARK: - PH API (REMOVE BEFORE PUSHING TO GITHUB)
+let kAPIKey = "XXX"
+let kAPISecret = "YYY"
+
+// MARK: - NSUserDefaults Variables
+var accessToken = "accessTokenKey"
+var expiresOn = "expiresOnKey"
+
+// MARK: - Colors
+let orange = UIColor(red: (218/255.0), green: (85/255.0), blue: (47/255.0), alpha: 1.0)
+let green = UIColor(red: (71/255.0), green: (172/255.0), blue: (129/255.0), alpha: 1.0)
+let blue = UIColor(red: (0/255.0), green: (139/255.0), blue: (218/255.0), alpha: 1.0)
+let grayD = UIColor(red: (83/255.0), green: (69/255.0), blue: (64/255.0), alpha: 1.0)
+let grayL = UIColor(red: (153/255.0), green: (153/255.0), blue: (153/255.0), alpha: 1.0)
+let white = UIColor.whiteColor()
+
+// MARK: - AppDelegate
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -41,71 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-        self.saveContext()
-    }
-
-    // MARK: - Core Data stack
-
-    lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.thomasmeagher.HuntTimehop" in the application's documents Application Support directory.
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
-    }()
-
-    lazy var managedObjectModel: NSManagedObjectModel = {
-        // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = NSBundle.mainBundle().URLForResource("HuntTimehop", withExtension: "momd")!
-        return NSManagedObjectModel(contentsOfURL: modelURL)!
-    }()
-
-    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
-        // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
-        // Create the coordinator and store
-        var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("HuntTimehop.sqlite")
-        var error: NSError? = nil
-        var failureReason = "There was an error creating or loading the application's saved data."
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
-            coordinator = nil
-            // Report any error we got.
-            let dict = NSMutableDictionary()
-            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-            dict[NSLocalizedFailureReasonErrorKey] = failureReason
-            dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
-            // Replace this with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog("Unresolved error \(error), \(error!.userInfo)")
-            abort()
-        }
         
-        return coordinator
-    }()
-
-    lazy var managedObjectContext: NSManagedObjectContext? = {
-        // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
-        let coordinator = self.persistentStoreCoordinator
-        if coordinator == nil {
-            return nil
-        }
-        var managedObjectContext = NSManagedObjectContext()
-        managedObjectContext.persistentStoreCoordinator = coordinator
-        return managedObjectContext
-    }()
-
-    // MARK: - Core Data Saving support
-
-    func saveContext () {
-        if let moc = self.managedObjectContext {
-            var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
-            }
-        }
     }
-
 }
 

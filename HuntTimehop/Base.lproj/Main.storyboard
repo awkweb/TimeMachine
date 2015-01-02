@@ -31,11 +31,6 @@
                                 <state key="normal" title="Get All Posts">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="getPostsButtonPressed:" destination="yrw-4o-sJ0" eventType="touchUpInside" id="us1-61-h5f"/>
                                 </connections>
@@ -157,26 +152,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhr-pp-e9f">
-                                <rect key="frame" x="165" y="443" width="270" height="33"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="82S-oU-ZAT"/>
-                                    <constraint firstAttribute="width" constant="270" id="ehE-55-XCk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="website">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="viewOnProductHuntButtonPressed:" destination="zQ9-YD-pSR" eventType="touchUpInside" id="MhM-zo-Tw2"/>
-                                    <action selector="websiteButtonPressed:" destination="zQ9-YD-pSR" eventType="touchUpInside" id="1s6-WI-asb"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="via hunter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dy9-rT-le5">
                                 <rect key="frame" x="16" y="353" width="220" height="21"/>
                                 <constraints>
@@ -199,13 +174,12 @@
                             <constraint firstAttribute="trailingMargin" secondItem="6o5-fj-tcb" secondAttribute="trailing" constant="-16" id="0Jf-Gz-MCm"/>
                             <constraint firstItem="AvU-G1-xCi" firstAttribute="leading" secondItem="H9C-29-B7O" secondAttribute="leadingMargin" id="1Kk-n7-i46"/>
                             <constraint firstAttribute="centerY" secondItem="3OT-N1-k6L" secondAttribute="centerY" constant="-103.5" id="1Z2-pi-FOj"/>
+                            <constraint firstItem="7g5-Eh-cN4" firstAttribute="top" secondItem="h9d-Tg-Y5r" secondAttribute="bottom" constant="85" id="2ep-oa-SWU"/>
                             <constraint firstItem="OgQ-E5-Bnv" firstAttribute="leading" secondItem="H9C-29-B7O" secondAttribute="leadingMargin" id="50h-G1-LiW"/>
-                            <constraint firstAttribute="centerX" secondItem="xhr-pp-e9f" secondAttribute="centerX" id="A1A-ln-C2c"/>
                             <constraint firstItem="h9d-Tg-Y5r" firstAttribute="top" secondItem="Dy9-rT-le5" secondAttribute="bottom" constant="19" id="CNu-XZ-NkM"/>
                             <constraint firstItem="nwl-3b-BVm" firstAttribute="trailing" secondItem="H9C-29-B7O" secondAttribute="trailingMargin" id="DFp-UA-at6"/>
                             <constraint firstItem="6o5-fj-tcb" firstAttribute="leading" secondItem="H9C-29-B7O" secondAttribute="leadingMargin" constant="-16" id="GSL-4q-yJt"/>
                             <constraint firstItem="6o5-fj-tcb" firstAttribute="top" secondItem="KgT-Tn-SRf" secondAttribute="bottom" id="TIk-aT-B63"/>
-                            <constraint firstItem="xhr-pp-e9f" firstAttribute="top" secondItem="h9d-Tg-Y5r" secondAttribute="bottom" constant="29" id="TOB-zA-K3W"/>
                             <constraint firstItem="Dy9-rT-le5" firstAttribute="top" secondItem="OgQ-E5-Bnv" secondAttribute="bottom" constant="7" id="UoK-Mr-Zl7"/>
                             <constraint firstAttribute="centerY" secondItem="gx0-NY-Bml" secondAttribute="centerY" constant="-103.5" id="Y1O-6g-TNg"/>
                             <constraint firstItem="nwl-3b-BVm" firstAttribute="top" secondItem="6o5-fj-tcb" secondAttribute="bottom" constant="14" id="YOQ-wu-LlW"/>
@@ -214,7 +188,6 @@
                             <constraint firstItem="OgQ-E5-Bnv" firstAttribute="top" secondItem="AvU-G1-xCi" secondAttribute="bottom" constant="9" id="mkS-D5-xeI"/>
                             <constraint firstItem="Dy9-rT-le5" firstAttribute="leading" secondItem="H9C-29-B7O" secondAttribute="leadingMargin" id="s6p-W2-BrG"/>
                             <constraint firstItem="h9d-Tg-Y5r" firstAttribute="leading" secondItem="3OT-N1-k6L" secondAttribute="trailing" constant="29" id="sWl-Q9-JVc"/>
-                            <constraint firstItem="7g5-Eh-cN4" firstAttribute="top" secondItem="xhr-pp-e9f" secondAttribute="bottom" constant="23" id="tEp-y9-gcw"/>
                             <constraint firstAttribute="centerX" secondItem="h9d-Tg-Y5r" secondAttribute="centerX" id="vdY-Ic-wGE"/>
                             <constraint firstItem="gx0-NY-Bml" firstAttribute="leading" secondItem="h9d-Tg-Y5r" secondAttribute="trailing" constant="28" id="y8F-jx-VPQ"/>
                         </constraints>
@@ -229,12 +202,29 @@
                         <outlet property="taglineLabel" destination="OgQ-E5-Bnv" id="hIQ-Mu-ZhI"/>
                         <outlet property="viewOnPHButton" destination="7g5-Eh-cN4" id="swO-BH-CIF"/>
                         <outlet property="votesLabel" destination="h9d-Tg-Y5r" id="cfW-6y-oCU"/>
-                        <outlet property="websiteButton" destination="xhr-pp-e9f" id="CnJ-1T-Igb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gF-1u-IoS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1842" y="-82"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="9BT-ue-33k">
+            <objects>
+                <viewController id="Wfk-fD-eHO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NAZ-ih-962"/>
+                        <viewControllerLayoutGuide type="bottom" id="riS-ns-B4e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WOz-Bk-Lnw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfM-l1-c1a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1126" y="780"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -323,6 +313,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jmr-dU-Ogx">
+                        <barButtonItem key="leftBarButtonItem" title="About" id="8GU-Z0-9tH"/>
                         <barButtonItem key="rightBarButtonItem" title="Select Date" id="HTI-t5-hbU">
                             <connections>
                                 <action selector="filterBarButtonItemTapped:" destination="BYZ-38-t0r" id="qf8-AV-GYL"/>

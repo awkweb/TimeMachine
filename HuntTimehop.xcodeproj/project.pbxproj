@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		053509841A4A18DB00774B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053509831A4A18DB00774B67 /* AppDelegate.swift */; };
-		053509871A4A18DB00774B67 /* HuntTimehop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 053509851A4A18DB00774B67 /* HuntTimehop.xcdatamodeld */; };
 		053509891A4A18DB00774B67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053509881A4A18DB00774B67 /* ViewController.swift */; };
 		0535098C1A4A18DB00774B67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0535098A1A4A18DB00774B67 /* Main.storyboard */; };
 		0535098E1A4A18DB00774B67 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0535098D1A4A18DB00774B67 /* Images.xcassets */; };
@@ -16,6 +15,8 @@
 		0535099D1A4A18DB00774B67 /* HuntTimehopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0535099C1A4A18DB00774B67 /* HuntTimehopTests.swift */; };
 		053509A71A4A34A100774B67 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053509A61A4A34A000774B67 /* DataController.swift */; };
 		054B4E9A1A4EFDEC00B05D65 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B4E991A4EFDEC00B05D65 /* Date.swift */; };
+		054B998F1A57166A000E4CCB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B998E1A57166A000E4CCB /* AboutViewController.swift */; };
+		054B99911A57267B000E4CCB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B99901A57267B000E4CCB /* DateExtension.swift */; };
 		056EF0DC1A533B67008C9DDB /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EF0DB1A533B67008C9DDB /* PostDetailsViewController.swift */; };
 		05CC03EA1A50B45D0067EFF9 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CC03E91A50B45D0067EFF9 /* ProductCell.swift */; };
 		05D986911A5053690016A133 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D986901A5053690016A133 /* FilterViewController.swift */; };
@@ -35,7 +36,6 @@
 		0535097E1A4A18DB00774B67 /* HuntTimehop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuntTimehop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		053509821A4A18DB00774B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		053509831A4A18DB00774B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		053509861A4A18DB00774B67 /* HuntTimehop.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HuntTimehop.xcdatamodel; sourceTree = "<group>"; };
 		053509881A4A18DB00774B67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0535098B1A4A18DB00774B67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0535098D1A4A18DB00774B67 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -45,6 +45,8 @@
 		0535099C1A4A18DB00774B67 /* HuntTimehopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuntTimehopTests.swift; sourceTree = "<group>"; };
 		053509A61A4A34A000774B67 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		054B4E991A4EFDEC00B05D65 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		054B998E1A57166A000E4CCB /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		054B99901A57267B000E4CCB /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		056EF0DB1A533B67008C9DDB /* PostDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
 		05CC03E91A50B45D0067EFF9 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		05D986901A5053690016A133 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
@@ -93,13 +95,14 @@
 				053509881A4A18DB00774B67 /* ViewController.swift */,
 				056EF0DB1A533B67008C9DDB /* PostDetailsViewController.swift */,
 				05D986901A5053690016A133 /* FilterViewController.swift */,
+				054B998E1A57166A000E4CCB /* AboutViewController.swift */,
 				0535098A1A4A18DB00774B67 /* Main.storyboard */,
 				053509A61A4A34A000774B67 /* DataController.swift */,
 				054B4E991A4EFDEC00B05D65 /* Date.swift */,
+				054B99901A57267B000E4CCB /* DateExtension.swift */,
 				05CC03E91A50B45D0067EFF9 /* ProductCell.swift */,
 				0535098D1A4A18DB00774B67 /* Images.xcassets */,
 				0535098F1A4A18DB00774B67 /* LaunchScreen.xib */,
-				053509851A4A18DB00774B67 /* HuntTimehop.xcdatamodeld */,
 				053509811A4A18DB00774B67 /* Supporting Files */,
 			);
 			path = HuntTimehop;
@@ -234,11 +237,12 @@
 				05D986911A5053690016A133 /* FilterViewController.swift in Sources */,
 				053509891A4A18DB00774B67 /* ViewController.swift in Sources */,
 				054B4E9A1A4EFDEC00B05D65 /* Date.swift in Sources */,
+				054B998F1A57166A000E4CCB /* AboutViewController.swift in Sources */,
+				054B99911A57267B000E4CCB /* DateExtension.swift in Sources */,
 				053509A71A4A34A100774B67 /* DataController.swift in Sources */,
 				053509841A4A18DB00774B67 /* AppDelegate.swift in Sources */,
 				056EF0DC1A533B67008C9DDB /* PostDetailsViewController.swift in Sources */,
 				05CC03EA1A50B45D0067EFF9 /* ProductCell.swift in Sources */,
-				053509871A4A18DB00774B67 /* HuntTimehop.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,19 +454,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		053509851A4A18DB00774B67 /* HuntTimehop.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				053509861A4A18DB00774B67 /* HuntTimehop.xcdatamodel */,
-			);
-			currentVersion = 053509861A4A18DB00774B67 /* HuntTimehop.xcdatamodel */;
-			path = HuntTimehop.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 053509761A4A18DB00774B67 /* Project object */;
 }
