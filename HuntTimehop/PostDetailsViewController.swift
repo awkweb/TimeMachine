@@ -23,24 +23,22 @@ class PostDetailsViewController: UIViewController {
     
     var hunt: (id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, screenshot: String, makerInside: Bool, hunter: String)!
     
-    var mainVC: ViewController!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // Set Content
         self.navigationItem.title = "Details"
+        
+        let screenshotURL = NSURL(string: self.hunt.screenshot)
+        let data = NSData(contentsOfURL: screenshotURL!)
+        self.imageView.image = UIImage(data: data!)
+        
         self.nameLabel.text = self.hunt.name
         self.taglineLabel.text = self.hunt.tagline
         self.votesLabel.text = "\(self.hunt.votes)"
         self.commentsLabel.text = "\(self.hunt.comments)"
         self.idLabel.text = "\(self.hunt.id)"
         self.hunterLabel.text = "via \(self.hunt.hunter)"
-        
-        let screenshotURL = NSURL(string: self.hunt.screenshot)
-        let data = NSData(contentsOfURL: screenshotURL!)
-        self.imageView.image = UIImage(data: data!)
         
         if self.hunt.makerInside {
             self.makerLabel.hidden = false

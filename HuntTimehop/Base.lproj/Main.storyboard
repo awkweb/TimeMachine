@@ -269,16 +269,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Cj-Zh-FBO">
-                                <rect key="frame" x="136" y="96" width="323" height="269"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="269" id="Ocl-xw-Clc"/>
-                                    <constraint firstAttribute="width" constant="323" id="gZP-k4-QoI"/>
-                                </constraints>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aht-Qx-RqF">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="0rX-5V-nsE">
+                                    <rect key="frame" x="0.0" y="161" width="600" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="qQK-pg-xFq" customClass="ProductCell" customModule="HuntTimehop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -335,12 +332,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="7Cj-Zh-FBO" secondAttribute="centerX" constant="2.5" id="7J4-zc-U5D"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aht-Qx-RqF" secondAttribute="trailing" constant="-16" id="DFA-Vw-ztT"/>
-                            <constraint firstAttribute="centerY" secondItem="7Cj-Zh-FBO" secondAttribute="centerY" constant="69.5" id="MUI-xc-4gI"/>
                             <constraint firstItem="aht-Qx-RqF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="RjN-4V-AgJ"/>
+                            <constraint firstItem="aht-Qx-RqF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="Uiy-NV-JeY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="aht-Qx-RqF" secondAttribute="bottom" id="Zbg-9T-Ejp"/>
-                            <constraint firstItem="aht-Qx-RqF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="zeb-Sz-9hE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jmr-dU-Ogx">
@@ -352,13 +347,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Select Date" id="HTI-t5-hbU">
                             <connections>
-                                <action selector="filterBarButtonItemTapped:" destination="BYZ-38-t0r" id="qf8-AV-GYL"/>
+                                <action selector="filterButtonTapped:" destination="BYZ-38-t0r" id="qqh-Cc-21A"/>
                                 <segue destination="yrw-4o-sJ0" kind="presentation" identifier="showFilterVC" id="Nev-Dh-Ryr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageView" destination="7Cj-Zh-FBO" id="UhU-yu-2u4"/>
+                        <outlet property="activityIndicatorView" destination="0rX-5V-nsE" id="IVr-fF-eK1"/>
                         <outlet property="tableView" destination="aht-Qx-RqF" id="5GP-ey-fDc"/>
                         <segue destination="zQ9-YD-pSR" kind="show" identifier="showPostDetailsVC" id="s4Y-w3-1y7"/>
                     </connections>

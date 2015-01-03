@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: - UI Elements
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     // MARK: - API Variables
     let baseURL = "https://api.producthunt.com/v1"
@@ -26,8 +26,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
-        self.imageView.image = UIImage(named: "product-hunt-glasshole-kitty-by-jess3.png")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -36,22 +34,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) != nil {
             
             if Date.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as NSDate)) == Date.toString(date: NSDate()) {
-                self.navigationItem.title = "Select a date to travel to ->"
-                getToken()
-                self.tableView.hidden = true
-                println("Token expired")
+                while NSUserDefaults.standardUserDefaults().objectForKey(accessToken) === nil {
+                    getToken()
+                }
+                self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
+                getPosts()
             }
             else {
                 self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
                 getPosts()
-                self.tableView.hidden = false
             }
         }
         else {
-            self.navigationItem.title = "Select a date to travel to ->"
-            getToken()
-            self.tableView.hidden = true
-             println("New token")
+            self.activityIndicatorView.startAnimating()
+            while NSUserDefaults.standardUserDefaults().objectForKey(accessToken) === nil {
+                getToken()
+            }
+            self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
+            getPosts()
         }
     }
     
@@ -78,7 +78,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let indexPath = self.tableView.indexPathForSelectedRow()
             let thisPost = self.apiHuntsList[indexPath!.row]
             detailVC.hunt = thisPost
-            detailVC.mainVC = self
         }
     }
     
@@ -134,8 +133,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             var conversionError: NSError?
             var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
             
-            println(self.jsonResponse = jsonDictionary!)
-            
             // Parsing checks
             if conversionError != nil {
                 println(conversionError!.localizedDescription)
@@ -150,7 +147,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].accessToken, forKey: accessToken)
                     NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].expiresOn, forKey: expiresOn)
-                    println(NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as NSDate)
                 }
                 else {
                     println("Error could not parse json")
