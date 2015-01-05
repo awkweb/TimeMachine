@@ -14,7 +14,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
-    
     // MARK: - API Variables
     let baseURL = "https://api.producthunt.com/v1"
     var apiAccessToken: [(accessToken: String, expiresOn: NSDate)] = []
@@ -27,6 +26,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        self.navigationController?.navigationBar.barTintColor = white
+        self.navigationController?.navigationBar.tintColor = orange
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -35,23 +37,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) != nil {
             
             if Date.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as NSDate)) == Date.toString(date: NSDate()) {
-                self.activityIndicatorView.startAnimating()
                 while NSUserDefaults.standardUserDefaults().objectForKey(accessToken) === nil {
                     getToken()
                 }
-                self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
                 getPosts()
             } else {
-                self.activityIndicatorView.startAnimating()
-                self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
                 getPosts()
             }
         } else {
-            self.activityIndicatorView.startAnimating()
             while NSUserDefaults.standardUserDefaults().objectForKey(accessToken) === nil {
                 getToken()
             }
-            self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
             getPosts()
         }
     }
@@ -82,31 +78,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
+        let randomCell = self.tableView.dequeueReusableCellWithIdentifier("RandomCell") as RandomCell
         
-        cell.votesLabel.text = "\(self.apiHuntsList[indexPath.row].votes)"
-        cell.nameLabel.text = self.apiHuntsList[indexPath.row].name
-        cell.taglineLabel.text = self.apiHuntsList[indexPath.row].tagline
-        cell.commentsLabel.text = "\(self.apiHuntsList[indexPath.row].comments)"
-        
-        return cell
+        if indexPath.row == self.apiHuntsList.count {
+            return randomCell
+        } else {
+            cell.votesLabel.text = "\(self.apiHuntsList[indexPath.row].votes)"
+            cell.nameLabel.text = self.apiHuntsList[indexPath.row].name
+            cell.taglineLabel.text = self.apiHuntsList[indexPath.row].tagline
+            cell.commentsLabel.text = "\(self.apiHuntsList[indexPath.row].comments)"
+            
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.apiHuntsList.count
+        return self.apiHuntsList.count + 1
     }
-    
     
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("showPostDetailsVC", sender: self)
+        if indexPath.row == self.apiHuntsList.count {
+            let daysAdded = UInt(arc4random_uniform(UInt32(kDaysBetweenDates)))
+            let randomDate = Date.toDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
+            filterDate = randomDate
+            
+            getPosts()
+        } else {
+            self.performSegueWithIdentifier("showPostDetailsVC", sender: self)
+        }
     }
-    
     
     // MARK: - PH API Calls
     
@@ -136,9 +142,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             // Parsing checks
             if conversionError != nil {
-                println(conversionError!.localizedDescription)
-                let errorString = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error in parsing \(errorString)")
+                self.showAlertWithText("Error in parsing", message: "Quit the app and try again", actionMessage: "Okay")
             } else {
                 if jsonDictionary != nil {
                     self.jsonResponse = jsonDictionary!
@@ -148,11 +152,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].accessToken, forKey: accessToken)
                     NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].expiresOn, forKey: expiresOn)
                 } else {
-                    println("Error could not parse json")
+                    self.showAlertWithText("Error could not parse json", message: "Quit the app and try again", actionMessage: "Okay")
                 }
             }
         })
-        
         task.resume()
     }
     
@@ -181,9 +184,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             // Parsing checks
             if conversionError != nil {
-                println(conversionError!.localizedDescription)
-                let errorString = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error in parsing \(errorString)")
+                self.showAlertWithText("Error in parsing", message: "Quit the app and try again", actionMessage: "Okay")
             } else {
                 if jsonDictionary != nil {
                     self.jsonResponse = jsonDictionary!
@@ -195,17 +196,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
                         self.tableView.reloadData()
                     })
                 } else {
-                    println("Error could not parse json")
+                    self.showAlertWithText("Error could not parse json", message: "Quit the app and try again", actionMessage: "Okay")
                 }
             }
         })
-        
         task.resume()
     }
-    
     
     // MARK: - Helpers
     

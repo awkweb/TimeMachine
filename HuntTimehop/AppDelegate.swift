@@ -16,6 +16,9 @@ let kAPISecret = "YYY"
 var accessToken = "accessTokenKey"
 var expiresOn = "expiresOnKey"
 
+// MARK: - Other Constants
+let kDaysBetweenDates = NSDate.daysBetween(date1: Date.toDate(year: 2013, month: 11, day: 24), date2: NSDate())
+
 // MARK: - Colors
 let orange = UIColor(red: (218/255.0), green: (85/255.0), blue: (47/255.0), alpha: 1.0)
 let green = UIColor(red: (71/255.0), green: (172/255.0), blue: (129/255.0), alpha: 1.0)

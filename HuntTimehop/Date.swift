@@ -32,7 +32,7 @@ class Date {
     
     class func toPrettyString(#date: NSDate) -> String {
         let dateStringFormatter = NSDateFormatter()
-        dateStringFormatter.dateFormat = "E MMM dd, yyyy"
+        dateStringFormatter.dateFormat = "E MMM d yyyy"
         let dateString = dateStringFormatter.stringFromDate(date)
         
         return dateString

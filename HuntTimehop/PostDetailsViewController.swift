@@ -21,6 +21,9 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        self.navigationItem.title = "Details"
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,19 +43,22 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             titleCell.nameLabel.text = self.hunt.name
             titleCell.taglineLabel.text = self.hunt.tagline
             titleCell.hunterLabel.text = self.hunt.hunter
+            titleCell.selectionStyle = UITableViewCellSelectionStyle.None
             return titleCell
         } else if indexPath.row == 1 {
             statsCell.idLabel.text = "\(self.hunt.id)"
             statsCell.commentsLabel.text = "\(self.hunt.comments)"
             let daysBetweenDates = NSDate.daysBetween(date1: self.mainVC.filterDate, date2: NSDate())
             statsCell.daysAgoLabel.text = "\(daysBetweenDates)"
+            statsCell.selectionStyle = UITableViewCellSelectionStyle.None
             return statsCell
         } else if indexPath.row == 2 {
+            imageCell.selectionStyle = UITableViewCellSelectionStyle.None
+            
             let imageQueue: dispatch_queue_t = dispatch_queue_create("filter queue", nil)
             
             dispatch_async(imageQueue, { () -> Void in
                 let url = NSURL(string: self.hunt.screenshotURL)!
-                println(self.hunt.screenshotURL)
                 let data = NSData(contentsOfURL: url)
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -65,6 +71,7 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             })
             return imageCell
         } else {
+            buttonCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return buttonCell
         }
     }
@@ -94,7 +101,11 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         return 4
     }
     
-    @IBAction func shareSheetButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func backBarButtonItemPressed(sender: UIBarButtonItem) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func shareBarButtonItemPressed(sender: UIBarButtonItem) {
         let firstActivityItem = "\(self.hunt.name): \(self.hunt.tagline)"
         
         let secondActivityItem : NSURL = NSURL(string: "\(self.hunt.phURL)")!
