@@ -29,9 +29,23 @@ class PostDetailsViewController: UIViewController {
         // Set Content
         self.navigationItem.title = "Details"
         
-        let screenshotURL = NSURL(string: self.hunt.screenshot)
-        let data = NSData(contentsOfURL: screenshotURL!)
-        self.imageView.image = UIImage(data: data!)
+        /*let filterQueue: dispatch_queue_t = dispatch_queue_create("filter queue", nil)
+        
+        dispatch_async(filterQueue, { () -> Void in
+            let screenshotURL = NSURL(string: self.hunt.screenshot)!
+            println(self.hunt.screenshot)
+            let data = NSData(contentsOfURL: screenshotURL)
+            println("Done getting data")
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                if data != nil {
+                    self.imageView.image = UIImage(data: data!)
+                }
+                else {
+                    println("Data is nil")
+                }
+            })
+        })*/
         
         self.nameLabel.text = self.hunt.name
         self.taglineLabel.text = self.hunt.tagline

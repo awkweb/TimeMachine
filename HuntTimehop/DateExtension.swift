@@ -20,10 +20,6 @@ extension NSDate {
         return dc.day
     }
     
-    func plusMonths(m: UInt) -> NSDate {
-        return self.addComponentsToDate(seconds: 0, minutes: 0, hours: 0, days: 0, weeks: 0, months: Int(m), years: 0)
-    }
-    
     func minusYears(y: UInt) -> NSDate {
         return self.addComponentsToDate(seconds: 0, minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: -Int(y))
     }

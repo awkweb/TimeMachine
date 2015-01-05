@@ -40,7 +40,6 @@ class FilterViewController: UIViewController {
             let daysBetweenDates = NSDate.daysBetween(date1: Date.toDate(year: 2013, month: 11, day: 24), date2: NSDate())
             let daysAdded = UInt(arc4random_uniform(UInt32(daysBetweenDates)))
             self.datePicker.date = Date.toDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
-            println(daysAdded)
         }
     }
     

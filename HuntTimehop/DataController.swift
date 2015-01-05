@@ -21,7 +21,7 @@ class DataController {
         if json["access_token"] != nil {
             
             let accessToken: String = json["access_token"]! as String
-            let expiresOn: NSDate = NSDate().plusMonths(2)
+            let expiresOn: NSDate = NSDate().plusDays(60)
             
             token = (accessToken: accessToken, expiresOn: expiresOn)
             tokenList += [token]

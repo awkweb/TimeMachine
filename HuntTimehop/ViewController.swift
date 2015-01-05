@@ -34,6 +34,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) != nil {
             
             if Date.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as NSDate)) == Date.toString(date: NSDate()) {
+                self.activityIndicatorView.startAnimating()
                 while NSUserDefaults.standardUserDefaults().objectForKey(accessToken) === nil {
                     getToken()
                 }
@@ -41,6 +42,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 getPosts()
             }
             else {
+                self.activityIndicatorView.startAnimating()
                 self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
                 getPosts()
             }
@@ -78,6 +80,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let indexPath = self.tableView.indexPathForSelectedRow()
             let thisPost = self.apiHuntsList[indexPath!.row]
             detailVC.hunt = thisPost
+            
+            let filterQueue: dispatch_queue_t = dispatch_queue_create("filter queue", nil)
+            
+            dispatch_async(filterQueue, { () -> Void in
+                let screenshotURL = NSURL(string: detailVC.hunt.screenshot)!
+                println(detailVC.hunt.screenshot)
+                let data = NSData(contentsOfURL: screenshotURL)
+                println("Done getting data")
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    if data != nil {
+                        detailVC.imageView.image = UIImage(data: data!)
+                    }
+                    else {
+                        println("Data is nil")
+                    }
+                })
+            })
         }
     }
     
@@ -85,7 +105,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: - UITableViewDataSource
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell") as ProductCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
         
         cell.votesLabel.text = "\(self.apiHuntsList[indexPath.row].votes)"
         cell.nameLabel.text = self.apiHuntsList[indexPath.row].name
