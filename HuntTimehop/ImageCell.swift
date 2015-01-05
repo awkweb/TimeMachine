@@ -1,17 +1,16 @@
 //
-//  AboutCell.swift
+//  ImageCell.swift
 //  HuntTimehop
 //
-//  Created by thomas on 1/4/15.
+//  Created by thomas on 1/5/15.
 //  Copyright (c) 2015 thomas. All rights reserved.
 //
 
 import UIKit
 
-class AboutCell: UITableViewCell {
+class ImageCell: UITableViewCell {
 
-    @IBOutlet weak var itemLabel: UILabel!
-    @IBOutlet weak var optionalLabel: UILabel!
+    @IBOutlet weak var screenshotImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

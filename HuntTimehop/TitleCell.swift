@@ -1,17 +1,19 @@
 //
-//  AboutCell.swift
+//  TitleCell.swift
 //  HuntTimehop
 //
-//  Created by thomas on 1/4/15.
+//  Created by thomas on 1/5/15.
 //  Copyright (c) 2015 thomas. All rights reserved.
 //
 
 import UIKit
 
-class AboutCell: UITableViewCell {
+class TitleCell: UITableViewCell {
 
-    @IBOutlet weak var itemLabel: UILabel!
-    @IBOutlet weak var optionalLabel: UILabel!
+    @IBOutlet weak var votesLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var taglineLabel: UILabel!
+    @IBOutlet weak var hunterLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

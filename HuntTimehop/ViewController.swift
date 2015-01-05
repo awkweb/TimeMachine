@@ -14,10 +14,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
+    
     // MARK: - API Variables
     let baseURL = "https://api.producthunt.com/v1"
     var apiAccessToken: [(accessToken: String, expiresOn: NSDate)] = []
-    var apiHuntsList: [(id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, screenshot: String, makerInside: Bool, hunter: String)] = []
+    var apiHuntsList: [ProductModel] = []
     var jsonResponse: NSDictionary!
     var filterDate: NSDate = NSDate().minusYears(1)
     
@@ -40,14 +41,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
                 self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
                 getPosts()
-            }
-            else {
+            } else {
                 self.activityIndicatorView.startAnimating()
                 self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
                 getPosts()
             }
-        }
-        else {
+        } else {
             self.activityIndicatorView.startAnimating()
             while NSUserDefaults.standardUserDefaults().objectForKey(accessToken) === nil {
                 getToken()
@@ -74,30 +73,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if segue.identifier == "showFilterVC" {
             let filterVC: FilterViewController = segue.destinationViewController as FilterViewController
             filterVC.mainVC = self
-        }
-        else if segue.identifier == "showPostDetailsVC" {
+        } else if segue.identifier == "showPostDetailsVC" {
             let detailVC: PostDetailsViewController = segue.destinationViewController as PostDetailsViewController
             let indexPath = self.tableView.indexPathForSelectedRow()
             let thisPost = self.apiHuntsList[indexPath!.row]
             detailVC.hunt = thisPost
-            
-            let filterQueue: dispatch_queue_t = dispatch_queue_create("filter queue", nil)
-            
-            dispatch_async(filterQueue, { () -> Void in
-                let screenshotURL = NSURL(string: detailVC.hunt.screenshot)!
-                println(detailVC.hunt.screenshot)
-                let data = NSData(contentsOfURL: screenshotURL)
-                println("Done getting data")
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    if data != nil {
-                        detailVC.imageView.image = UIImage(data: data!)
-                    }
-                    else {
-                        println("Data is nil")
-                    }
-                })
-            })
+            detailVC.mainVC = self
         }
     }
     
@@ -158,8 +139,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 println(conversionError!.localizedDescription)
                 let errorString = NSString(data: data, encoding: NSUTF8StringEncoding)
                 println("Error in parsing \(errorString)")
-            }
-            else {
+            } else {
                 if jsonDictionary != nil {
                     self.jsonResponse = jsonDictionary!
                     
@@ -167,8 +147,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].accessToken, forKey: accessToken)
                     NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].expiresOn, forKey: expiresOn)
-                }
-                else {
+                } else {
                     println("Error could not parse json")
                 }
             }
@@ -205,8 +184,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 println(conversionError!.localizedDescription)
                 let errorString = NSString(data: data, encoding: NSUTF8StringEncoding)
                 println("Error in parsing \(errorString)")
-            }
-            else {
+            } else {
                 if jsonDictionary != nil {
                     self.jsonResponse = jsonDictionary!
                     
@@ -219,8 +197,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.tableView.reloadData()
                     })
-                }
-                else {
+                } else {
                     println("Error could not parse json")
                 }
             }
@@ -229,14 +206,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         task.resume()
     }
     
+    
     // MARK: - Helpers
     
     func showAlertWithText(header: String, message: String, actionMessage: String) {
         var alert = UIAlertController(title: header, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: actionMessage, style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
+    }    
 }
 
 

@@ -25,7 +25,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // Set up tableView items
         let about1 = AboutModel(title: "@thomasmeagher", url: "http://twitter.com/thomasmeagher")
-        let about2 = AboutModel(title: "version 1.0.1", url: nil)
+        let about2 = AboutModel(title: "version", url: nil)
         
         let aboutNP1 = AboutModel(title: "artist name", url: "http://thenounproject.com")
         let aboutNP2 = AboutModel(title: "artist name", url: "http://thenounproject.com")
@@ -50,6 +50,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
     }
     
+    
     // MARK: - UITableViewDataSource
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -65,6 +66,10 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         if thisAbout.url != nil {
             cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+            cell.optionalLabel.hidden = true
+        } else {
+            cell.optionalLabel.text = "1.0.1"
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
         }
         
         return cell
@@ -77,19 +82,20 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Built By"
-        }
-        else if section == 1 {
+        } else if section == 1 {
             return "Icons from The Noun Project"
-        }
-        else {
+        } else {
             return "Product Hunt Products Used"
         }
     }
+    
     
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let thisAbout = self.baseArray[indexPath.section][indexPath.row]
+        
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("AboutCell") as AboutCell
         
         if thisAbout.url != nil {
             let url = NSURL(string: thisAbout.url!)!

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreData
 import UIKit
 
 class DataController {
@@ -31,10 +30,10 @@ class DataController {
     }
     
     // Parse posts request
-    class func jsonPostsParser(json: NSDictionary) -> [(id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, screenshot: String, makerInside: Bool, hunter: String)] {
+    class func jsonPostsParser(json: NSDictionary) -> [ProductModel] {
         
-        var huntsList: [(id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, screenshot: String, makerInside: Bool, hunter: String)] = []
-        var hunt: ((id: Int, name: String, tagline: String, comments: Int, votes: Int, phURL: String, screenshot: String, makerInside: Bool, hunter: String))
+        var huntsList: [ProductModel] = []
+        var hunt: ProductModel
         
         if json["posts"] != nil {
             let results: [AnyObject] = json["posts"]! as [AnyObject]
@@ -49,14 +48,14 @@ class DataController {
                 let phURL: String = post["discussion_url"]! as String
                 
                 let screenshotDictionary = post["screenshot_url"] as NSDictionary
-                let screenshot: String = screenshotDictionary["850px"]! as String
+                let screenshotURL: String = screenshotDictionary["850px"]! as String
                 
                 let makerInside: Bool = post["maker_inside"]! as Bool
                 
                 let userDictionary = post["user"] as NSDictionary
                 let hunter: String = userDictionary["name"]! as String
 
-                hunt = (id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, screenshot: screenshot, makerInside: makerInside, hunter: hunter)
+                hunt = ProductModel(id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, screenshotURL: screenshotURL, makerInside: makerInside, hunter: hunter)
                 huntsList += [hunt]
             }
         }

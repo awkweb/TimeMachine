@@ -1,17 +1,18 @@
 //
-//  AboutCell.swift
+//  StatsCell.swift
 //  HuntTimehop
 //
-//  Created by thomas on 1/4/15.
+//  Created by thomas on 1/5/15.
 //  Copyright (c) 2015 thomas. All rights reserved.
 //
 
 import UIKit
 
-class AboutCell: UITableViewCell {
+class StatsCell: UITableViewCell {
 
-    @IBOutlet weak var itemLabel: UILabel!
-    @IBOutlet weak var optionalLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var commentsLabel: UILabel!
+    @IBOutlet weak var daysAgoLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: - PH API (REMOVE BEFORE PUSHING TO GITHUB)
+// MARK: - PH API Contstants (REMOVE BEFORE PUSHING TO GITHUB)
 let kAPIKey = "XXX"
 let kAPISecret = "YYY"
 

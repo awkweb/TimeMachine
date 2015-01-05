@@ -51,5 +51,4 @@ class FilterViewController: UIViewController {
         self.mainVC.filterDate = self.datePicker.date
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
 }
