@@ -114,10 +114,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let daysAdded = UInt(arc4random_uniform(UInt32(kDaysBetweenDates)))
             let randomDate = Date.toDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
             filterDate = randomDate
-            
             getPosts()
+            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
         } else {
             self.performSegueWithIdentifier("showPostDetailsVC", sender: self)
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
+
+        if indexPath.row == self.apiHuntsList.count {
+            return 90
+        } else {
+            let thisHunt = self.apiHuntsList[indexPath.row]
+            
+            if countElements(thisHunt.tagline) <= 34 {
+                return 80
+            } else {
+                return 90
+            }
         }
     }
     
@@ -199,7 +215,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
                     
                     if self.apiHuntsList.count == 0 {
-                        self.showAlertWithText("Hey", message: "Looks like there aren't any hunts on \(Date.toPrettyString(date: self.filterDate)).", actionMessage: "Okay")
+                        self.showAlertWithText("Hey", message: "Looks like there aren't any posts on \(Date.toPrettyString(date: self.filterDate)).", actionMessage: "Okay")
                     }
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
