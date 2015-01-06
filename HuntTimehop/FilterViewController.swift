@@ -11,14 +11,25 @@ import UIKit
 class FilterViewController: UIViewController {
     
     // MARK: - UI Elements
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var getHuntsOnDateButton: UIButton!
     
     var mainVC: ViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "Details"
+        self.titleLabel.textColor = grayD
+        self.hintLabel.textColor = gray
+        self.datePicker.backgroundColor = white
+        self.datePicker.tintColor = grayD
+        self.cancelButton.backgroundColor = blue
+        self.cancelButton.tintColor = white
+        self.getHuntsOnDateButton.backgroundColor = orange
+        self.getHuntsOnDateButton.tintColor = white
         
         self.datePicker.minimumDate = Date.toDate(year: 2013, month: 11, day: 24)
         self.datePicker.maximumDate = NSDate()
@@ -49,5 +60,6 @@ class FilterViewController: UIViewController {
     @IBAction func getPostsButtonPressed(sender: UIButton) {
         self.mainVC.filterDate = self.datePicker.date
         self.dismissViewControllerAnimated(true, completion: nil)
+        self.mainVC.getPosts()
     }
 }

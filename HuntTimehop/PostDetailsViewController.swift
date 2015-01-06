@@ -91,7 +91,7 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 4 {
+        if indexPath.row == 3 {
             let url = NSURL(string: self.hunt.phURL)!
             UIApplication.sharedApplication().openURL(url)
         }

@@ -12,8 +12,10 @@ class ProductCell: UITableViewCell {
 
     @IBOutlet weak var votesLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var taglineLabel: UILabel!
+    @IBOutlet weak var taglineLabel: UITextView!
     @IBOutlet weak var commentsLabel: UILabel!
+    @IBOutlet weak var makerImageView: UIImageView!
+    @IBOutlet weak var commentImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

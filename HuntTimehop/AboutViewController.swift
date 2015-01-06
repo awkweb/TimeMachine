@@ -12,6 +12,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     // MARK: - UI Elements
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var versionLabel: UILabel!
     
     var baseArray: [[AboutModel]] = []
     
@@ -22,21 +23,27 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.dataSource = self
                 
         self.navigationItem.title = "About"
+        self.tableView.backgroundColor = grayL
+        self.versionLabel.text = "Version 1.0.1"
+        self.versionLabel.textColor = gray
         
         // Set up tableView items
-        let about1 = AboutModel(title: "Tom Meagher", url: "http://twitter.com/thomasmeagher")
-        let about2 = AboutModel(title: "version", url: nil)
+        let about0 = AboutModel(title: "Tom Meagher", url: "http://twitter.com/thomasmeagher")
         
-        let aboutNP1 = AboutModel(title: "Austin Condiff", url: "http://www.austincondiff.com")
+        let aboutNP0 = AboutModel(title: "Austin Condiff", url: "http://www.austincondiff.com")
+        let aboutNP1 = AboutModel(title: "Jardson Almeida", url: "https://dribbble.com/jardson")
         
+        let aboutPH0 = AboutModel(title: "Swift", url: "http://www.producthunt.com/posts/swift")
         let aboutPH1 = AboutModel(title: "The Noun Project", url: "http://www.producthunt.com/posts/the-noun-project")
         let aboutPH2 = AboutModel(title: "Make App Icon", url: "http://www.producthunt.com/posts/make-app-icon")
         let aboutPH3 = AboutModel(title: "The Complete iOS 8 Course", url: "http://www.producthunt.com/posts/the-complete-ios8-course")
         let aboutPH4 = AboutModel(title: "Product Hunt API", url: "http://www.producthunt.com/posts/product-hunt-api-beta")
+        let aboutPH5 = AboutModel(title: "Sketch 3", url: "http://www.producthunt.com/posts/sketch-3")
+        let aboutPH6 = AboutModel(title: "GitHub for Mac", url: "http://www.producthunt.com/posts/github-for-mac")
         
-        var aboutArray = [about1, about2]
-        var aboutNPArray = [aboutNP1]
-        var aboutPHArray = [aboutPH1, aboutPH2, aboutPH3, aboutPH4]
+        var aboutArray = [about0]
+        var aboutNPArray = [aboutNP0, aboutNP1]
+        var aboutPHArray = [aboutPH0, aboutPH1, aboutPH2, aboutPH3, aboutPH4, aboutPH5, aboutPH6]
         
         self.baseArray += [aboutArray, aboutNPArray, aboutPHArray]
     }
@@ -57,14 +64,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = self.tableView.dequeueReusableCellWithIdentifier("AboutCell") as AboutCell
         
         cell.itemLabel.text = thisAbout.title
-        
-        if thisAbout.url != nil {
-            cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-            cell.optionalLabel.hidden = true
-        } else {
-            cell.optionalLabel.text = "1.0.1"
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-        }
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         
         return cell
     }
@@ -79,10 +79,9 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else if section == 1 {
             return "Icons By"
         } else {
-            return "Product Hunt Products Used"
+            return "Products Used"
         }
     }
-    
     
     // MARK: - UITableViewDelegate
     
@@ -91,10 +90,8 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("AboutCell") as AboutCell
         
-        if thisAbout.url != nil {
-            let url = NSURL(string: thisAbout.url!)!
-            UIApplication.sharedApplication().openURL(url)
-        }
+        let url = NSURL(string: thisAbout.url)!
+        UIApplication.sharedApplication().openURL(url)
     }
     
     @IBAction func backBarButtonItemPressed(sender: UIBarButtonItem) {

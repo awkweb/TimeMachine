@@ -14,6 +14,8 @@ class RandomCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.getRandomDayLabel.textColor = orange
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

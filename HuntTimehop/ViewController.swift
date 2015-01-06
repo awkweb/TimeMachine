@@ -8,11 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
     // MARK: - UI Elements
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     // MARK: - API Variables
     let baseURL = "https://api.producthunt.com/v1"
@@ -29,6 +28,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.navigationController?.navigationBar.barTintColor = white
         self.navigationController?.navigationBar.tintColor = orange
+        self.tableView.backgroundColor = grayL
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -66,9 +66,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showFilterVC" {
+        if segue.identifier == "popoverFilterVC" {
             let filterVC: FilterViewController = segue.destinationViewController as FilterViewController
             filterVC.mainVC = self
+            filterVC.modalPresentationStyle = UIModalPresentationStyle.Popover
+            filterVC.popoverPresentationController!.delegate = self
         } else if segue.identifier == "showPostDetailsVC" {
             let detailVC: PostDetailsViewController = segue.destinationViewController as PostDetailsViewController
             let indexPath = self.tableView.indexPathForSelectedRow()
@@ -87,10 +89,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if indexPath.row == self.apiHuntsList.count {
             return randomCell
         } else {
-            cell.votesLabel.text = "\(self.apiHuntsList[indexPath.row].votes)"
-            cell.nameLabel.text = self.apiHuntsList[indexPath.row].name
-            cell.taglineLabel.text = self.apiHuntsList[indexPath.row].tagline
-            cell.commentsLabel.text = "\(self.apiHuntsList[indexPath.row].comments)"
+            let thisHunt = self.apiHuntsList[indexPath.row]
+            cell.votesLabel.text = "\(thisHunt.votes)"
+            cell.nameLabel.text = thisHunt.name
+            cell.taglineLabel.text = thisHunt.tagline
+            cell.commentsLabel.text = "\(thisHunt.comments)"
+            
+            if thisHunt.makerInside {
+                cell.makerImageView.hidden = false
+            }
             
             return cell
         }
@@ -142,7 +149,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             // Parsing checks
             if conversionError != nil {
-                self.showAlertWithText("Error in parsing", message: "Quit the app and try again", actionMessage: "Okay")
+                self.showAlertWithText("Error in parsing token", message: "Quit the app and try again", actionMessage: "Okay")
             } else {
                 if jsonDictionary != nil {
                     self.jsonResponse = jsonDictionary!
@@ -184,7 +191,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             // Parsing checks
             if conversionError != nil {
-                self.showAlertWithText("Error in parsing", message: "Quit the app and try again", actionMessage: "Okay")
+                self.showAlertWithText("Error in parsing posts", message: "Quit the app and try again", actionMessage: "Okay")
             } else {
                 if jsonDictionary != nil {
                     self.jsonResponse = jsonDictionary!
@@ -213,7 +220,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var alert = UIAlertController(title: header, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: actionMessage, style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
-    }    
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
 }
 
 

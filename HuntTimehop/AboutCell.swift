@@ -11,10 +11,11 @@ import UIKit
 class AboutCell: UITableViewCell {
 
     @IBOutlet weak var itemLabel: UILabel!
-    @IBOutlet weak var optionalLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.itemLabel.textColor = grayD
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
