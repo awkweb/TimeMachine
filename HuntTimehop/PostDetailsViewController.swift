@@ -23,7 +23,6 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.dataSource = self
         
         self.navigationItem.title = "Details"
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,17 +41,17 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             titleCell.votesLabel.text = "\(self.hunt.votes)"
             titleCell.nameLabel.text = self.hunt.name
             titleCell.taglineLabel.text = self.hunt.tagline
-            titleCell.hunterLabel.text = self.hunt.hunter
+            titleCell.commentsLabel.text = "\(self.hunt.comments)"
+            titleCell.hunterLabel.text = "via \(self.hunt.hunter)"
+            
+            if self.hunt.makerInside {
+                titleCell.makerImageView.hidden = false
+            } else if self.hunt.makerInside == false {
+                titleCell.makerImageView.hidden = true
+            }
             titleCell.selectionStyle = UITableViewCellSelectionStyle.None
             return titleCell
         } else if indexPath.row == 1 {
-            statsCell.idLabel.text = "\(self.hunt.id)"
-            statsCell.commentsLabel.text = "\(self.hunt.comments)"
-            let daysBetweenDates = NSDate.daysBetween(date1: self.mainVC.filterDate, date2: NSDate())
-            statsCell.daysAgoLabel.text = "\(daysBetweenDates)"
-            statsCell.selectionStyle = UITableViewCellSelectionStyle.None
-            return statsCell
-        } else if indexPath.row == 2 {
             imageCell.selectionStyle = UITableViewCellSelectionStyle.None
             
             let imageQueue: dispatch_queue_t = dispatch_queue_create("filter queue", nil)
@@ -70,21 +69,26 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
                 })
             })
             return imageCell
+        } else if indexPath.row == 2 {
+            statsCell.idLabel.text = "\(self.hunt.id)"
+            let daysBetweenDates = NSDate.daysBetween(date1: self.mainVC.filterDate, date2: NSDate())
+            statsCell.daysAgoLabel.text = "\(daysBetweenDates)"
+            statsCell.selectionStyle = UITableViewCellSelectionStyle.None
+            return statsCell
         } else {
-            buttonCell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
             return buttonCell
         }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 50.0
+            return 100.0
         } else if indexPath.row == 1 {
-            return 50.0
+            return 250.0
         } else if indexPath.row == 2 {
-            return 200.0
+            return 80.0
         } else {
-            return 50.0
+            return 90.0
         }
     }
     
@@ -103,6 +107,7 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func backBarButtonItemPressed(sender: UIBarButtonItem) {
         self.navigationController?.popViewControllerAnimated(true)
+        self.mainVC.tableView.reloadData()
     }
     
     @IBAction func shareBarButtonItemPressed(sender: UIBarButtonItem) {

@@ -60,6 +60,6 @@ class FilterViewController: UIViewController {
     @IBAction func getPostsButtonPressed(sender: UIButton) {
         self.mainVC.filterDate = self.datePicker.date
         self.dismissViewControllerAnimated(true, completion: nil)
-        self.mainVC.getPosts()
+        self.mainVC.checkForTokenAndShowPosts()
     }
 }

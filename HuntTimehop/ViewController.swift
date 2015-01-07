@@ -29,27 +29,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController?.navigationBar.barTintColor = white
         self.navigationController?.navigationBar.tintColor = orange
         self.tableView.backgroundColor = grayL
+        
+        checkForTokenAndShowPosts()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) != nil {
-            
-            if Date.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as NSDate)) == Date.toString(date: NSDate()) {
-                while NSUserDefaults.standardUserDefaults().objectForKey(accessToken) === nil {
-                    getToken()
-                }
-                getPosts()
-            } else {
-                getPosts()
-            }
-        } else {
-            while NSUserDefaults.standardUserDefaults().objectForKey(accessToken) === nil {
-                getToken()
-            }
-            getPosts()
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -84,10 +69,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
-        let randomCell = self.tableView.dequeueReusableCellWithIdentifier("RandomCell") as RandomCell
+        let buttonCell = self.tableView.dequeueReusableCellWithIdentifier("ButtonCell") as ButtonCell
         
         if indexPath.row == self.apiHuntsList.count {
-            return randomCell
+            return buttonCell
         } else {
             let thisHunt = self.apiHuntsList[indexPath.row]
             cell.votesLabel.text = "\(thisHunt.votes)"
@@ -97,6 +82,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             if thisHunt.makerInside {
                 cell.makerImageView.hidden = false
+            } else if thisHunt.makerInside == false {
+                cell.makerImageView.hidden = true
             }
             
             return cell
@@ -114,10 +101,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let daysAdded = UInt(arc4random_uniform(UInt32(kDaysBetweenDates)))
             let randomDate = Date.toDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
             filterDate = randomDate
-            getPosts()
-            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+            checkForTokenAndShowPosts()
         } else {
             self.performSegueWithIdentifier("showPostDetailsVC", sender: self)
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
         }
     }
     
@@ -125,14 +113,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = self.tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
 
         if indexPath.row == self.apiHuntsList.count {
-            return 90
+            return 90.0
         } else {
             let thisHunt = self.apiHuntsList[indexPath.row]
             
             if countElements(thisHunt.tagline) <= 34 {
-                return 80
+                return 80.0
             } else {
-                return 90
+                return 90.0
             }
         }
     }
@@ -221,6 +209,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
                         self.tableView.reloadData()
+                        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+                        self.tableView.hidden = false
                     })
                 } else {
                     self.showAlertWithText("Error could not parse json", message: "Quit the app and try again", actionMessage: "Okay")
@@ -231,6 +221,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     // MARK: - Helpers
+    
+    func checkForTokenAndShowPosts() {
+        self.tableView.hidden = true
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) != nil {
+            
+            if Date.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as NSDate)) == Date.toString(date: NSDate()) {
+                while NSUserDefaults.standardUserDefaults().objectForKey(accessToken) === nil {
+                    getToken()
+                }
+                getPosts()
+            } else {
+                getPosts()
+            }
+        } else {
+            while NSUserDefaults.standardUserDefaults().objectForKey(accessToken) === nil {
+                getToken()
+            }
+            getPosts()
+        }
+    }
     
     func showAlertWithText(header: String, message: String, actionMessage: String) {
         var alert = UIAlertController(title: header, message: message, preferredStyle: UIAlertControllerStyle.Alert)

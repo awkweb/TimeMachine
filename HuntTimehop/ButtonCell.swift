@@ -10,10 +10,12 @@ import UIKit
 
 class ButtonCell: UITableViewCell {
 
-    @IBOutlet weak var viewOnProductHuntLabel: UILabel!
+    @IBOutlet weak var buttonLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.buttonLabel.textColor = orange
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
