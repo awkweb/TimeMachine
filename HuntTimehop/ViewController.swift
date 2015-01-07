@@ -6,7 +6,9 @@
 //  Copyright (c) 2014 thomas. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import SystemConfiguration
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
@@ -31,13 +33,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController?.navigationBar.tintColor = orange
         self.tableView.backgroundColor = grayL
         
+        let kittyImage = UIImage(named: "kitty")
+        let screenRect = UIScreen.mainScreen().bounds
+        let hiddenImageView = UIImageView(frame: CGRect(x: screenRect.width/2 - 25, y: -100, width: 50, height: 46))
+        hiddenImageView.image = kittyImage
+        self.tableView.addSubview(hiddenImageView)
+        self.tableView.tableFooterView = UIView()
+        
         self.activityIndicator.hidesWhenStopped = true
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
         checkForTokenAndShowPosts()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -156,7 +167,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             // Parsing checks
             if conversionError != nil {
-                self.showAlertWithText("Error in parsing token", message: "Quit the app and try again", actionMessage: "Okay")
+                self.showAlertWithText("No connection found", message: "Please check your connection", actionMessage: "Okay")
             } else {
                 if jsonDictionary != nil {
                     self.jsonResponse = jsonDictionary!
@@ -166,7 +177,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].accessToken, forKey: accessToken)
                     NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].expiresOn, forKey: expiresOn)
                 } else {
-                    self.showAlertWithText("Error could not parse json", message: "Quit the app and try again", actionMessage: "Okay")
+                    self.showAlertWithText("Broken time machine", message: "Please try again (we are on the hunt for a fix)", actionMessage: "Okay")
                 }
             }
         })
@@ -198,7 +209,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             // Parsing checks
             if conversionError != nil {
-                self.showAlertWithText("Error in parsing posts", message: "Quit the app and try again", actionMessage: "Okay")
+                println(conversionError)
+                self.showAlertWithText("No connection found", message: "Please check your connection", actionMessage: "Okay")
             } else {
                 if jsonDictionary != nil {
                     self.jsonResponse = jsonDictionary!
@@ -217,7 +229,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         self.tableView.hidden = false
                     })
                 } else {
-                    self.showAlertWithText("Error could not parse json", message: "Quit the app and try again", actionMessage: "Okay")
+                    self.showAlertWithText("Time machine broken", message: "Please try again (we are on the hunt for a fix)", actionMessage: "Okay")
                 }
             }
         })

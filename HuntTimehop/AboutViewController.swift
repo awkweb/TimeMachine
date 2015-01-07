@@ -24,6 +24,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
         self.navigationItem.title = "About"
         self.tableView.backgroundColor = grayL
+        
         self.versionLabel.text = "Version 1.0.1"
         self.versionLabel.textColor = gray
         
@@ -31,7 +32,8 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let about0 = AboutModel(title: "Tom Meagher", url: "http://twitter.com/thomasmeagher")
         
         let aboutNP0 = AboutModel(title: "Austin Condiff", url: "http://www.austincondiff.com")
-        let aboutNP1 = AboutModel(title: "Jardson Almeida", url: "https://dribbble.com/jardson")
+        // comment image by Jardson Almeida https://dribbble.com/jardson
+        let aboutNP1 = AboutModel(title: "Kiran Malladi", url: "http://thenounproject.com/ichiban")
         
         let aboutPH0 = AboutModel(title: "Swift", url: "http://www.producthunt.com/posts/swift")
         let aboutPH1 = AboutModel(title: "The Noun Project", url: "http://www.producthunt.com/posts/the-noun-project")
@@ -92,9 +94,5 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let url = NSURL(string: thisAbout.url)!
         UIApplication.sharedApplication().openURL(url)
-    }
-    
-    @IBAction func backBarButtonItemPressed(sender: UIBarButtonItem) {
-        self.navigationController?.popViewControllerAnimated(true)
     }
 }

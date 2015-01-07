@@ -23,6 +23,7 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.dataSource = self
         
         self.navigationItem.title = "Details"
+        self.tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,11 +107,6 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
-    }
-    
-    @IBAction func backBarButtonItemPressed(sender: UIBarButtonItem) {
-        self.navigationController?.popViewControllerAnimated(true)
-        self.mainVC.tableView.reloadData()
     }
     
     @IBAction func shareBarButtonItemPressed(sender: UIBarButtonItem) {
