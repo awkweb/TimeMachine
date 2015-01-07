@@ -23,7 +23,14 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.dataSource = self
         
         self.navigationItem.title = "Details"
-        self.tableView.tableFooterView = UIView()
+        if kScreenRect.width < 375.0 {
+            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 40))
+        } else {
+            self.tableView.tableFooterView = UIView()
+        }
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 100.0
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,18 +88,6 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             return statsCell
         } else {
             return buttonCell
-        }
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 100.0
-        } else if indexPath.row == 1 {
-            return 250.0
-        } else if indexPath.row == 2 {
-            return 80.0
-        } else {
-            return 90.0
         }
     }
     

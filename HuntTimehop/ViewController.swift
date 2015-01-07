@@ -34,11 +34,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.backgroundColor = grayL
         
         let kittyImage = UIImage(named: "kitty")
-        let screenRect = UIScreen.mainScreen().bounds
-        let hiddenImageView = UIImageView(frame: CGRect(x: screenRect.width/2 - 25, y: -100, width: 50, height: 46))
+        let hiddenImageView = UIImageView(frame: CGRect(x: kScreenRect.width/2 - 25, y: -100, width: 50, height: 46))
         hiddenImageView.image = kittyImage
         self.tableView.addSubview(hiddenImageView)
         self.tableView.tableFooterView = UIView()
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 80.0
         
         self.activityIndicator.hidesWhenStopped = true
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
@@ -123,22 +125,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
-
-        if indexPath.row == self.apiHuntsList.count {
-            return 90.0
-        } else {
-            let thisHunt = self.apiHuntsList[indexPath.row]
-            
-            if countElements(thisHunt.tagline) <= 34 {
-                return 80.0
-            } else {
-                return 90.0
-            }
-        }
-    }
-    
     // MARK: - PH API Calls
     
     // PH Client Only Authentication
@@ -167,7 +153,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             // Parsing checks
             if conversionError != nil {
-                self.showAlertWithText("No connection found", message: "Please check your connection", actionMessage: "Okay")
+                self.showAlertWithText("Oops", message: "Please check your connection", actionMessage: "Okay")
             } else {
                 if jsonDictionary != nil {
                     self.jsonResponse = jsonDictionary!
@@ -177,7 +163,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].accessToken, forKey: accessToken)
                     NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].expiresOn, forKey: expiresOn)
                 } else {
-                    self.showAlertWithText("Broken time machine", message: "Please try again (we are on the hunt for a fix)", actionMessage: "Okay")
+                    self.showAlertWithText("Broken time machine", message: "We are on the hunt for a fix", actionMessage: "Okay")
                 }
             }
         })
@@ -210,7 +196,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             // Parsing checks
             if conversionError != nil {
                 println(conversionError)
-                self.showAlertWithText("No connection found", message: "Please check your connection", actionMessage: "Okay")
+                self.showAlertWithText("Oops", message: "Please check your connection", actionMessage: "Okay")
             } else {
                 if jsonDictionary != nil {
                     self.jsonResponse = jsonDictionary!
@@ -218,7 +204,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
                     
                     if self.apiHuntsList.count == 0 {
-                        self.showAlertWithText("Hey", message: "Looks like there aren't any posts on \(Date.toPrettyString(date: self.filterDate)).", actionMessage: "Okay")
+                        self.showAlertWithText("Hey", message: "There aren't any posts on \(Date.toPrettyString(date: self.filterDate)).", actionMessage: "Okay")
                     }
                     
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -229,7 +215,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         self.tableView.hidden = false
                     })
                 } else {
-                    self.showAlertWithText("Time machine broken", message: "Please try again (we are on the hunt for a fix)", actionMessage: "Okay")
+                    self.showAlertWithText("Time machine broken", message: "We are on the hunt for a fix", actionMessage: "Okay")
                 }
             }
         })
