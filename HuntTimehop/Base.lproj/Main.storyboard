@@ -231,8 +231,13 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gwk-IU-1UP">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="249"/>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="VBc-Ib-MEh">
+                                                    <rect key="frame" x="290" y="115" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="VBc-Ib-MEh" secondAttribute="centerX" id="A0q-Yp-dBq"/>
+                                                <constraint firstAttribute="centerY" secondItem="VBc-Ib-MEh" secondAttribute="centerY" constant="-0.5" id="UGA-2p-c6G"/>
                                                 <constraint firstItem="gwk-IU-1UP" firstAttribute="top" secondItem="9z6-bh-hfO" secondAttribute="topMargin" constant="-8" id="bOW-KH-akd"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="gwk-IU-1UP" secondAttribute="bottom" constant="-8" id="cZR-ix-3A8"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="gwk-IU-1UP" secondAttribute="trailing" constant="-8" id="kir-cN-g68"/>
@@ -241,6 +246,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="VBc-Ib-MEh" id="ymI-TF-Cve"/>
                                             <outlet property="screenshotImageView" destination="gwk-IU-1UP" id="To2-SE-xpD"/>
                                         </connections>
                                     </tableViewCell>
@@ -579,9 +585,14 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ziU-Dl-EyK">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ziU-Dl-EyK" secondAttribute="centerX" id="1eq-P8-UMO"/>
+                            <constraint firstAttribute="centerY" secondItem="ziU-Dl-EyK" secondAttribute="centerY" id="Bb7-La-4Jw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aht-Qx-RqF" secondAttribute="trailing" constant="-16" id="DFA-Vw-ztT"/>
                             <constraint firstItem="aht-Qx-RqF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="LJQ-pM-U05"/>
                             <constraint firstItem="aht-Qx-RqF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="RjN-4V-AgJ"/>
@@ -605,6 +616,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="ziU-Dl-EyK" id="lYz-7v-ry7"/>
                         <outlet property="tableView" destination="aht-Qx-RqF" id="5GP-ey-fDc"/>
                         <segue destination="zQ9-YD-pSR" kind="show" identifier="showPostDetailsVC" id="s4Y-w3-1y7"/>
                     </connections>

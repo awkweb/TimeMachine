@@ -52,6 +52,7 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             titleCell.selectionStyle = UITableViewCellSelectionStyle.None
             return titleCell
         } else if indexPath.row == 1 {
+            imageCell.activityIndicator.startAnimating()
             imageCell.selectionStyle = UITableViewCellSelectionStyle.None
             
             let imageQueue: dispatch_queue_t = dispatch_queue_create("filter queue", nil)
@@ -64,8 +65,10 @@ class PostDetailsViewController: UIViewController, UITableViewDelegate, UITableV
                     if data != nil {
                         imageCell.screenshotImageView.image = UIImage(data: data!)
                     } else {
-                        println("Data is nil")
+                        imageCell.screenshotImageView.image = UIImage(named: "kitty")
+                        imageCell.screenshotImageView.contentMode = UIViewContentMode.Center
                     }
+                    imageCell.activityIndicator.stopAnimating()
                 })
             })
             return imageCell

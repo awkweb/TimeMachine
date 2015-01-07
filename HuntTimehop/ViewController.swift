@@ -12,6 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: - UI Elements
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - API Variables
     let baseURL = "https://api.producthunt.com/v1"
@@ -29,6 +30,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController?.navigationBar.barTintColor = white
         self.navigationController?.navigationBar.tintColor = orange
         self.tableView.backgroundColor = grayL
+        
+        self.activityIndicator.hidesWhenStopped = true
         
         checkForTokenAndShowPosts()
     }
@@ -210,6 +213,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
                         self.tableView.reloadData()
                         self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+                        self.activityIndicator.stopAnimating()
                         self.tableView.hidden = false
                     })
                 } else {
@@ -223,6 +227,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: - Helpers
     
     func checkForTokenAndShowPosts() {
+        self.activityIndicator.startAnimating()
         self.tableView.hidden = true
         
         if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) != nil {

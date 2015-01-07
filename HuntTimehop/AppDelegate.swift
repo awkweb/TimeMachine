@@ -8,9 +8,9 @@
 
 import UIKit
 
-// MARK: - PH API Contstants (REMOVE BEFORE PUSHING TO GITHUB)
-let kAPIKey = "246da01e5d0f2ce229ec3c995ea62296f31b2c56de446ff030fb31fa1d44bbca"
-let kAPISecret = "6350cf5d0aa725d897105b54723604f925d59df3e76070a24f9ccb57b6c2c498"
+// MARK: - PH API Constants (REMOVE BEFORE PUSHING TO GITHUB)
+let kAPIKey = "XXX"
+let kAPISecret = "YYY"
 
 // MARK: - NSUserDefaults Variables
 var accessToken = "accessTokenKey"
@@ -20,7 +20,7 @@ var expiresOn = "expiresOnKey"
 let kDaysBetweenDates = NSDate.daysBetween(date1: Date.toDate(year: 2013, month: 11, day: 24), date2: NSDate())
 
 // MARK: - Colors
-let orange = UIColor(red: (218/255.0), green: (85/255.0), blue: (47/255.0), alpha: 1.0)
+let orange = UIColor(red: (241/255.0), green: (73/255.0), blue: (52/255.0), alpha: 1.0)
 let green = UIColor(red: (72/255.0), green: (172/255.0), blue: (130/255.0), alpha: 1.0)
 let blue = UIColor(red: (0/255.0), green: (139/255.0), blue: (218/255.0), alpha: 1.0)
 let grayD = UIColor(red: (64/255.0), green: (49/255.0), blue: (45/255.0), alpha: 1.0)
