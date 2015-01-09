@@ -6,9 +6,7 @@
 //  Copyright (c) 2014 thomas. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import SystemConfiguration
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
     
@@ -22,12 +20,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var apiHuntsList: [ProductModel] = []
     var jsonResponse: NSDictionary!
     var filterDate: NSDate = NSDate().minusYears(1)
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        checkForTokenAndShowPosts()
         
         self.navigationController?.navigationBar.barTintColor = white
         self.navigationController?.navigationBar.tintColor = orange
@@ -44,12 +44,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.activityIndicator.hidesWhenStopped = true
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        
-        checkForTokenAndShowPosts()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        // VC respond to touch events
         self.tableView.reloadData()
     }
     
@@ -153,7 +152,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             // Parsing checks
             if conversionError != nil {
-                self.showAlertWithText("Oops", message: "Please check your connection", actionMessage: "Okay")
+                println(conversionError!.localizedDescription)
+                let errorString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println("Error in Parsing \(errorString)")
+                self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
             } else {
                 if jsonDictionary != nil {
                     self.jsonResponse = jsonDictionary!
@@ -162,8 +164,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].accessToken, forKey: accessToken)
                     NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].expiresOn, forKey: expiresOn)
+                    self.getPosts()
                 } else {
-                    self.showAlertWithText("Broken time machine", message: "We are on the hunt for a fix", actionMessage: "Okay")
+                    let errorString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                    println("Error Could not Parse JSON \(errorString)")
+                    self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
                 }
             }
         })
@@ -195,8 +200,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             // Parsing checks
             if conversionError != nil {
-                println(conversionError)
-                self.showAlertWithText("Oops", message: "Please check your connection", actionMessage: "Okay")
+                self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
             } else {
                 if jsonDictionary != nil {
                     self.jsonResponse = jsonDictionary!
@@ -215,7 +219,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         self.tableView.hidden = false
                     })
                 } else {
-                    self.showAlertWithText("Time machine broken", message: "We are on the hunt for a fix", actionMessage: "Okay")
+                    self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
                 }
             }
         })
@@ -227,22 +231,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func checkForTokenAndShowPosts() {
         self.activityIndicator.startAnimating()
         self.tableView.hidden = true
-        
+
         if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) != nil {
-            
             if Date.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as NSDate)) == Date.toString(date: NSDate()) {
-                while NSUserDefaults.standardUserDefaults().objectForKey(accessToken) === nil {
-                    getToken()
-                }
-                getPosts()
+                getToken()
             } else {
                 getPosts()
             }
         } else {
-            while NSUserDefaults.standardUserDefaults().objectForKey(accessToken) === nil {
-                getToken()
-            }
-            getPosts()
+            getToken()
         }
     }
     
@@ -254,6 +251,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None
+    }
+    
+    func getRandomDate() {
+        let daysAdded = UInt(arc4random_uniform(UInt32(kDaysBetweenDates)))
+        self.filterDate = Date.toDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
+        checkForTokenAndShowPosts()
+    }
+    
+    // Detect shake and show posts
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+        if motion == .MotionShake {
+            getRandomDate()
+        }
     }
 }
 
