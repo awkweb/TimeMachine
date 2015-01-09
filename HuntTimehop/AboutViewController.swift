@@ -25,7 +25,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.navigationItem.title = "About"
         self.tableView.backgroundColor = grayL
         
-        self.versionLabel.text = "Version 1.0.1"
+        self.versionLabel.text = "Version 1.0.0"
         self.versionLabel.textColor = gray
         
         // Set up tableView items
