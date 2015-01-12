@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05102ACC1A63596F00951D74 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05102ACB1A63596F00951D74 /* ColorConstants.swift */; };
 		053509841A4A18DB00774B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053509831A4A18DB00774B67 /* AppDelegate.swift */; };
 		053509891A4A18DB00774B67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053509881A4A18DB00774B67 /* ViewController.swift */; };
 		0535098C1A4A18DB00774B67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0535098A1A4A18DB00774B67 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05102ACB1A63596F00951D74 /* ColorConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		0535097E1A4A18DB00774B67 /* HuntTimehop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuntTimehop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		053509821A4A18DB00774B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		053509831A4A18DB00774B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				053509A61A4A34A000774B67 /* DataController.swift */,
 				054B4E991A4EFDEC00B05D65 /* Date.swift */,
 				054B99901A57267B000E4CCB /* DateExtension.swift */,
+				05102ACB1A63596F00951D74 /* ColorConstants.swift */,
 				0539DCAF1A5CB3F0005965BD /* Cells */,
 				0539DCB01A5CB404005965BD /* Models */,
 				053509821A4A18DB00774B67 /* Info.plist */,
@@ -273,6 +276,7 @@
 			files = (
 				05D986911A5053690016A133 /* FilterViewController.swift in Sources */,
 				053509891A4A18DB00774B67 /* ViewController.swift in Sources */,
+				05102ACC1A63596F00951D74 /* ColorConstants.swift in Sources */,
 				054B4E9A1A4EFDEC00B05D65 /* Date.swift in Sources */,
 				05A0F26E1A5AF0C9003B0F52 /* StatsCell.swift in Sources */,
 				05A0F26C1A5AF060003B0F52 /* TitleCell.swift in Sources */,

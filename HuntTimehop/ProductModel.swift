@@ -15,6 +15,7 @@ struct ProductModel {
     var comments: Int
     var votes: Int
     var phURL: String
+    var webURL: String
     var screenshotURL: String
     var makerInside: Bool
     var hunter: String

@@ -23,10 +23,10 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.dataSource = self
                 
         self.navigationItem.title = "About"
-        self.tableView.backgroundColor = grayL
+        self.tableView.backgroundColor = UIColor.grayL()
         
         self.versionLabel.text = "Version 1.0.2"
-        self.versionLabel.textColor = gray
+        self.versionLabel.textColor = UIColor.gray()
         
         // Set up tableView items
         let about0 = AboutModel(title: "Tom Meagher", url: "http://thomasmeagher.com")

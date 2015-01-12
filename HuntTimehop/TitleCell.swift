@@ -20,11 +20,11 @@ class TitleCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.votesLabel.textColor = gray
-        self.nameLabel.textColor = orange
-        self.taglineLabel.textColor = grayD
-        self.commentsLabel.textColor = gray
-        self.hunterLabel.textColor = gray
+        self.votesLabel.textColor = UIColor.gray()
+        self.nameLabel.textColor = UIColor.orange()
+        self.taglineLabel.textColor = UIColor.grayD()
+        self.commentsLabel.textColor = UIColor.gray()
+        self.hunterLabel.textColor = UIColor.gray()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

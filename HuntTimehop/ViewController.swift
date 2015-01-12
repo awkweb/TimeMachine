@@ -29,9 +29,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         checkForTokenAndShowPosts()
         
-        self.navigationController?.navigationBar.barTintColor = white
-        self.navigationController?.navigationBar.tintColor = orange
-        self.tableView.backgroundColor = grayL
+        self.navigationController?.navigationBar.barTintColor = UIColor.white()
+        self.navigationController?.navigationBar.tintColor = UIColor.orange()
+        self.tableView.backgroundColor = UIColor.grayL()
         
         let kittyImage = UIImage(named: "kitty")
         let hiddenImageView = UIImageView(frame: CGRect(x: kScreenRect.width/2 - 25, y: -100, width: 50, height: 46))
@@ -122,6 +122,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let cell = self.tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
             cell.selectionStyle = UITableViewCellSelectionStyle.None
         }
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        let viewOnProductHuntAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "View on PH") { (action, indexPath) -> Void in
+            let hunt = self.apiHuntsList[indexPath.row]
+            let url = NSURL(string: hunt.phURL)!
+            UIApplication.sharedApplication().openURL(url)
+        }
+        let viewOnWebAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "View Website") { (action, indexPath) -> Void in
+            let hunt = self.apiHuntsList[indexPath.row]
+            let url = NSURL(string: hunt.webURL)!
+            UIApplication.sharedApplication().openURL(url)
+        }
+        viewOnProductHuntAction.backgroundColor = UIColor.orange()
+        viewOnWebAction.backgroundColor = UIColor.blue()
+        return [viewOnProductHuntAction,viewOnWebAction]
     }
     
     // MARK: - PH API Calls

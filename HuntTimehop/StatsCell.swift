@@ -18,10 +18,10 @@ class StatsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.idLabel.textColor = grayD
-        self.daysAgoLabel.textColor = grayD
-        self.idUnitLabel.textColor = gray
-        self.daysAgoUnitLabel.textColor = gray
+        self.idLabel.textColor = UIColor.grayD()
+        self.daysAgoLabel.textColor = UIColor.grayD()
+        self.idUnitLabel.textColor = UIColor.gray()
+        self.daysAgoUnitLabel.textColor = UIColor.gray()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

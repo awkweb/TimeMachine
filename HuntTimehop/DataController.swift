@@ -46,6 +46,7 @@ class DataController {
                 let comments: Int = post["comments_count"]! as Int
                 let votes: Int = post["votes_count"]! as Int
                 let phURL: String = post["discussion_url"]! as String
+                let webURL: String = post["redirect_url"]! as String
                 
                 let screenshotDictionary = post["screenshot_url"] as NSDictionary
                 let screenshotURL: String = screenshotDictionary["850px"]! as String
@@ -55,7 +56,7 @@ class DataController {
                 let userDictionary = post["user"] as NSDictionary
                 let hunter: String = userDictionary["name"]! as String
 
-                hunt = ProductModel(id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, screenshotURL: screenshotURL, makerInside: makerInside, hunter: hunter)
+                hunt = ProductModel(id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, webURL: webURL, screenshotURL: screenshotURL, makerInside: makerInside, hunter: hunter)
                 huntsList += [hunt]
             }
         }

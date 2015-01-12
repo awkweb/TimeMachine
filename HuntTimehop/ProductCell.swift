@@ -19,10 +19,10 @@ class ProductCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
                 
-        self.votesLabel.textColor = gray
-        self.nameLabel.textColor = grayD
-        self.taglineLabel.textColor = grayD
-        self.commentsLabel.textColor = gray
+        self.votesLabel.textColor = UIColor.gray()
+        self.nameLabel.textColor = UIColor.grayD()
+        self.taglineLabel.textColor = UIColor.grayD()
+        self.commentsLabel.textColor = UIColor.gray()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
