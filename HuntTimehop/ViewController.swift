@@ -8,283 +8,270 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate {
+class ViewController: UIViewController {
+  
+  // MARK: - UI Elements
+  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+  
+  // MARK: - API Variables
+  let baseURL = "https://api.producthunt.com/v1"
+  var apiAccessToken: [TokenModel] = []
+  var apiHuntsList: [ProductModel] = []
+  var jsonResponse: NSDictionary!
+  var filterDate: NSDate = NSDate().minusYears(1)
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    // MARK: - UI Elements
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    tableView.delegate = self
+    tableView.dataSource = self
     
-    // MARK: - API Variables
-    let baseURL = "https://api.producthunt.com/v1"
-    var apiAccessToken: [(accessToken: String, expiresOn: NSDate)] = []
-    var apiHuntsList: [ProductModel] = []
-    var jsonResponse: NSDictionary!
-    var filterDate: NSDate = NSDate().minusYears(1)
-        
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        checkForTokenAndShowPosts()
-        
-        self.navigationController?.navigationBar.barTintColor = UIColor.white()
-        self.navigationController?.navigationBar.tintColor = UIColor.orange()
-        self.tableView.backgroundColor = UIColor.grayL()
-        
-        let kittyImage = UIImage(named: "kitty")
-        let hiddenImageView = UIImageView(frame: CGRect(x: kScreenRect.width/2 - 25, y: -100, width: 50, height: 46))
-        hiddenImageView.image = kittyImage
-        self.tableView.addSubview(hiddenImageView)
-        self.tableView.tableFooterView = UIView()
-        
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 80.0
-        
-        self.activityIndicator.hidesWhenStopped = true
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+    checkForTokenAndShowPosts()
+    
+    navigationController?.navigationBar.barTintColor = UIColor.white()
+    navigationController?.navigationBar.tintColor = UIColor.orange()
+    tableView.backgroundColor = UIColor.grayL()
+    
+    let kittyImage = UIImage(named: "kitty")
+    let hiddenImageView = UIImageView(frame: CGRect(x: kScreenRect.width/2 - 25, y: -100, width: 50, height: 46))
+    hiddenImageView.image = kittyImage
+    tableView.addSubview(hiddenImageView)
+    tableView.tableFooterView = UIView()
+    
+    tableView.rowHeight = UITableViewAutomaticDimension
+    tableView.estimatedRowHeight = 80.0
+    
+    activityIndicator.hidesWhenStopped = true
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+  }
+  
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    tableView.reloadData()
+  }
+  
+  // Segue to FilterViewController
+  @IBAction func filterButtonTapped(sender: UIBarButtonItem) {
+    performSegueWithIdentifier("showFilterVC", sender: self)
+  }
+  
+  @IBAction func aboutButtonTapped(sender: UIBarButtonItem) {
+    performSegueWithIdentifier("showAboutVC", sender: self)
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "popoverFilterVC" {
+      let filterVC: FilterViewController = segue.destinationViewController as FilterViewController
+      filterVC.mainVC = self
+      filterVC.modalPresentationStyle = UIModalPresentationStyle.Popover
+      filterVC.popoverPresentationController!.delegate = self
+    } else if segue.identifier == "showPostDetailsVC" {
+      let detailVC: PostDetailsViewController = segue.destinationViewController as PostDetailsViewController
+      let indexPath = tableView.indexPathForSelectedRow()
+      let product = apiHuntsList[indexPath!.row]
+      detailVC.product = product
+      detailVC.mainVC = self
     }
+  }
+  
+  // MARK: - Helpers
+  
+  func checkForTokenAndShowPosts() {
+    activityIndicator.startAnimating()
+    tableView.hidden = true
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        // VC respond to touch events
-        self.tableView.reloadData()
+    if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) != nil {
+      if Date.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as NSDate)) == Date.toString(date: NSDate()) {
+        getToken()
+      } else {
+        getPosts()
+      }
+    } else {
+      getToken()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+  }
+  
+  func showAlertWithText(header: String, message: String, actionMessage: String) {
+    let alert = UIAlertController(title: header, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    alert.addAction(UIAlertAction(title: actionMessage, style: UIAlertActionStyle.Default, handler: nil))
+    presentViewController(alert, animated: true, completion: nil)
+  }
+  
+  func getRandomDate() {
+    let daysAdded = UInt(arc4random_uniform(UInt32(kDaysBetweenDates)))
+    filterDate = Date.toDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
+    checkForTokenAndShowPosts()
+  }
+  
+  // Detect shake and show posts
+  override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+    if motion == .MotionShake {
+      getRandomDate()
     }
-    
-    // Segue to FilterViewController
-    @IBAction func filterButtonTapped(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("showFilterVC", sender: self)
-    }
-    
-    @IBAction func aboutButtonTapped(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("showAboutVC", sender: self)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "popoverFilterVC" {
-            let filterVC: FilterViewController = segue.destinationViewController as FilterViewController
-            filterVC.mainVC = self
-            filterVC.modalPresentationStyle = UIModalPresentationStyle.Popover
-            filterVC.popoverPresentationController!.delegate = self
-        } else if segue.identifier == "showPostDetailsVC" {
-            let detailVC: PostDetailsViewController = segue.destinationViewController as PostDetailsViewController
-            let indexPath = self.tableView.indexPathForSelectedRow()
-            let thisPost = self.apiHuntsList[indexPath!.row]
-            detailVC.hunt = thisPost
-            detailVC.mainVC = self
-        }
-    }
-    
-    // MARK: - UITableViewDataSource
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
-        let buttonCell = self.tableView.dequeueReusableCellWithIdentifier("ButtonCell") as ButtonCell
-        
-        if indexPath.row == self.apiHuntsList.count {
-            return buttonCell
-        } else {
-            let thisHunt = self.apiHuntsList[indexPath.row]
-            cell.votesLabel.text = "\(thisHunt.votes)"
-            cell.nameLabel.text = thisHunt.name
-            cell.taglineLabel.text = thisHunt.tagline
-            cell.commentsLabel.text = "\(thisHunt.comments)"
-            
-            if thisHunt.makerInside {
-                cell.makerImageView.hidden = false
-            } else if thisHunt.makerInside == false {
-                cell.makerImageView.hidden = true
-            }
-            
-            return cell
-        }
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.apiHuntsList.count + 1
-    }
-    
-    // MARK: - UITableViewDelegate
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == self.apiHuntsList.count {
-            let daysAdded = UInt(arc4random_uniform(UInt32(kDaysBetweenDates)))
-            let randomDate = Date.toDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
-            filterDate = randomDate
-            checkForTokenAndShowPosts()
-        } else {
-            self.performSegueWithIdentifier("showPostDetailsVC", sender: self)
-            let cell = self.tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-        }
-    }
-    
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-    }
-    
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        let viewOnProductHuntAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "View on PH") { (action, indexPath) -> Void in
-            let hunt = self.apiHuntsList[indexPath.row]
-            let url = NSURL(string: hunt.phURL)!
-            UIApplication.sharedApplication().openURL(url)
-        }
-        let viewOnWebAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "View Website") { (action, indexPath) -> Void in
-            let hunt = self.apiHuntsList[indexPath.row]
-            let url = NSURL(string: hunt.webURL)!
-            UIApplication.sharedApplication().openURL(url)
-        }
-        viewOnProductHuntAction.backgroundColor = UIColor.orange()
-        viewOnWebAction.backgroundColor = UIColor.blue()
-        return [viewOnProductHuntAction,viewOnWebAction]
-    }
-    
-    // MARK: - PH API Calls
-    
-    // PH Client Only Authentication
-    func getToken() {
-        
-        let url = NSURL(string: "\(self.baseURL)/oauth/token")
-        let request = NSMutableURLRequest(URL: url!)
-        let session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
-        
-        var params = [
-            "client_id": kAPIKey,
-            "client_secret": kAPISecret,
-            "grant_type": "client_credentials"
-        ]
-        
-        var error: NSError?
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &error)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        var task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error2) -> Void in
-            
-            var conversionError: NSError?
-            var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
-            
-            // Parsing checks
-            if conversionError != nil {
-                println(conversionError!.localizedDescription)
-                let errorString = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error in Parsing \(errorString)")
-                self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
-            } else {
-                if jsonDictionary != nil {
-                    self.jsonResponse = jsonDictionary!
-                    
-                    self.apiAccessToken = DataController.jsonTokenParser(jsonDictionary!)
-                    
-                    NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].accessToken, forKey: accessToken)
-                    NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].expiresOn, forKey: expiresOn)
-                    self.getPosts()
-                } else {
-                    let errorString = NSString(data: data, encoding: NSUTF8StringEncoding)
-                    println("Error Could not Parse JSON \(errorString)")
-                    self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
-                }
-            }
-        })
-        task.resume()
-    }
-    
-    // PH Get Posts
-    func getPosts() {
-        
-        let url = NSURL(string: "\(self.baseURL)/posts/")
-        var request = NSMutableURLRequest(URL: url!)
-        let session = NSURLSession.sharedSession()
-        request.HTTPMethod = "GET"
-        
-        var params = [
-            "access_token": NSUserDefaults.standardUserDefaults().objectForKey(accessToken) as String,
-            "day": Date.toString(date: self.filterDate)
-        ]
-        
-        var error: NSError?
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &error)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        
-        var task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error2) -> Void in
-            
-            var conversionError: NSError?
-            var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
-            
-            // Parsing checks
-            if conversionError != nil {
-                self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
-            } else {
-                if jsonDictionary != nil {
-                    self.jsonResponse = jsonDictionary!
-                    
-                    self.apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
-                    
-                    if self.apiHuntsList.count == 0 {
-                        self.showAlertWithText("Hey", message: "There aren't any posts on \(Date.toPrettyString(date: self.filterDate)).", actionMessage: "Okay")
-                    }
-                    
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
-                        self.tableView.reloadData()
-                        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
-                        self.activityIndicator.stopAnimating()
-                        self.tableView.hidden = false
-                    })
-                } else {
-                    self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
-                }
-            }
-        })
-        task.resume()
-    }
-    
-    // MARK: - Helpers
-    
-    func checkForTokenAndShowPosts() {
-        self.activityIndicator.startAnimating()
-        self.tableView.hidden = true
+  }
+}
 
-        if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) != nil {
-            if Date.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as NSDate)) == Date.toString(date: NSDate()) {
-                getToken()
-            } else {
-                getPosts()
-            }
+
+// MARK: - UITableViewDataSource
+extension ViewController: UITableViewDataSource {
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
+    let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonCell") as ButtonCell
+    
+    if indexPath.row == apiHuntsList.count {
+      return buttonCell
+    } else {
+      let product = apiHuntsList[indexPath.row]
+      cell.votesLabel.text = "\(product.votes)"
+      cell.nameLabel.text = product.name
+      cell.taglineLabel.text = product.tagline
+      cell.commentsLabel.text = "\(product.comments)"
+      
+      if product.makerInside {
+        cell.makerImageView.hidden = false
+      } else if product.makerInside == false {
+        cell.makerImageView.hidden = true
+      }
+      return cell
+    }
+  }
+  
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return apiHuntsList.count + 1
+  }
+
+}
+
+
+// MARK: - UITableViewDelegate
+extension ViewController: UITableViewDelegate {
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    if indexPath.row == self.apiHuntsList.count {
+      let daysAdded = UInt(arc4random_uniform(UInt32(kDaysBetweenDates)))
+      let randomDate = Date.toDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
+      filterDate = randomDate
+      checkForTokenAndShowPosts()
+    } else {
+      performSegueWithIdentifier("showPostDetailsVC", sender: self)
+      let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
+      cell.selectionStyle = UITableViewCellSelectionStyle.None
+    }
+  }
+}
+
+
+// MARK: - PH API Calls
+extension ViewController {
+  
+  // PH Client Only Authentication
+  func getToken() {
+    
+    let url = NSURL(string: "\(baseURL)/oauth/token")
+    let request = NSMutableURLRequest(URL: url!)
+    let session = NSURLSession.sharedSession()
+    request.HTTPMethod = "POST"
+    
+    var params = [
+      "client_id": kAPIKey,
+      "client_secret": kAPISecret,
+      "grant_type": "client_credentials"
+    ]
+    
+    var error: NSError?
+    request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &error)
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue("application/json", forHTTPHeaderField: "Accept")
+    
+    var task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error2) -> Void in
+      
+      var conversionError: NSError?
+      var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
+      
+      // Parsing checks
+      if conversionError != nil {
+        self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
+      } else {
+        if jsonDictionary != nil {
+          self.jsonResponse = jsonDictionary!
+          
+          self.apiAccessToken = DataController.jsonTokenParser(jsonDictionary!)
+          
+          NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].accessToken, forKey: accessToken)
+          NSUserDefaults.standardUserDefaults().setObject(self.apiAccessToken[0].expiresOn, forKey: expiresOn)
+          self.getPosts()
         } else {
-            getToken()
+          self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
         }
-    }
+      }
+    })
+    task.resume()
+  }
+  
+  // PH Get Posts
+  func getPosts() {
     
-    func showAlertWithText(header: String, message: String, actionMessage: String) {
-        var alert = UIAlertController(title: header, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: actionMessage, style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
+    let url = NSURL(string: "\(baseURL)/posts/")
+    let request = NSMutableURLRequest(URL: url!)
+    let session = NSURLSession.sharedSession()
+    request.HTTPMethod = "GET"
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
-    }
+    var params = [
+      "access_token": NSUserDefaults.standardUserDefaults().objectForKey(accessToken) as String,
+      "day": Date.toString(date: filterDate)
+    ]
     
-    func getRandomDate() {
-        let daysAdded = UInt(arc4random_uniform(UInt32(kDaysBetweenDates)))
-        self.filterDate = Date.toDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
-        checkForTokenAndShowPosts()
-    }
+    var error: NSError?
+    request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &error)
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue("application/json", forHTTPHeaderField: "Accept")
     
-    // Detect shake and show posts
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
-        if motion == .MotionShake {
-            getRandomDate()
+    var task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error2) -> Void in
+      
+      var conversionError: NSError?
+      var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
+      
+      // Parsing checks
+      if conversionError != nil {
+        self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
+      } else {
+        if jsonDictionary != nil {
+          self.jsonResponse = jsonDictionary!
+          
+          self.apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
+          
+          if self.apiHuntsList.count == 0 {
+            self.showAlertWithText("Hey", message: "There aren't any posts on \(Date.toPrettyString(date: self.filterDate)).", actionMessage: "Okay")
+          }
+          
+          dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
+            self.tableView.reloadData()
+            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+            self.activityIndicator.stopAnimating()
+            self.tableView.hidden = false
+            if self.filterDate == Date.toDate(year: 2013, month: 11, day: 24) {
+              self.showAlertWithText("Hey 😺", message: "You made it back to Product Hunt's first day!", actionMessage: "Okay")
+            }
+          })
+        } else {
+          self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
         }
-    }
+      }
+    })
+    task.resume()
+  }
+}
+
+
+// MARK: - UIPopoverPresentationControllerDelegate
+extension ViewController: UIPopoverPresentationControllerDelegate {
+  
+  func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    return UIModalPresentationStyle.None
+  }
 }
 
 

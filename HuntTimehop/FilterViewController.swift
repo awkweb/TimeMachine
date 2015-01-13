@@ -9,52 +9,48 @@
 import UIKit
 
 class FilterViewController: UIViewController {
+  
+  // MARK: - UI Elements
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var hintLabel: UILabel!
+  @IBOutlet weak var datePicker: UIDatePicker!
+  @IBOutlet weak var cancelButton: UIButton!
+  @IBOutlet weak var getHuntsOnDateButton: UIButton!
+  
+  var mainVC: ViewController!
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    // MARK: - UI Elements
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var hintLabel: UILabel!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var getHuntsOnDateButton: UIButton!
+    titleLabel.textColor = UIColor.grayD()
+    hintLabel.textColor = UIColor.gray()
+    datePicker.backgroundColor = UIColor.white()
+    datePicker.tintColor = UIColor.grayD()
+    cancelButton.backgroundColor = UIColor.blue()
+    cancelButton.tintColor = UIColor.white()
+    getHuntsOnDateButton.backgroundColor = UIColor.orange()
+    getHuntsOnDateButton.tintColor = UIColor.white()
     
-    var mainVC: ViewController!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.titleLabel.textColor = UIColor.grayD()
-        self.hintLabel.textColor = UIColor.gray()
-        self.datePicker.backgroundColor = UIColor.white()
-        self.datePicker.tintColor = UIColor.grayD()
-        self.cancelButton.backgroundColor = UIColor.blue()
-        self.cancelButton.tintColor = UIColor.white()
-        self.getHuntsOnDateButton.backgroundColor = UIColor.orange()
-        self.getHuntsOnDateButton.tintColor = UIColor.white()
-        
-        self.datePicker.minimumDate = Date.toDate(year: 2013, month: 11, day: 24)
-        self.datePicker.maximumDate = NSDate()
-        self.datePicker.date = self.mainVC.filterDate
+    datePicker.minimumDate = Date.toDate(year: 2013, month: 11, day: 24)
+    datePicker.maximumDate = NSDate()
+    datePicker.date = mainVC.filterDate
+  }
+  
+  // Detect shake
+  override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+    if motion == .MotionShake {
+      mainVC.getRandomDate()
+      dismissViewControllerAnimated(true, completion: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    // Detect shake
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
-        if motion == .MotionShake {
-            self.mainVC.getRandomDate()
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
-    }
-    
-    @IBAction func cancelButtonPressed(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func getPostsButtonPressed(sender: UIButton) {
-        self.mainVC.filterDate = self.datePicker.date
-        self.dismissViewControllerAnimated(true, completion: nil)
-        self.mainVC.checkForTokenAndShowPosts()
-    }
+  }
+  
+  @IBAction func cancelButtonPressed(sender: UIButton) {
+    dismissViewControllerAnimated(true, completion: nil)
+  }
+  
+  @IBAction func getPostsButtonPressed(sender: UIButton) {
+    mainVC.filterDate = datePicker.date
+    dismissViewControllerAnimated(true, completion: nil)
+    mainVC.checkForTokenAndShowPosts()
+  }
 }

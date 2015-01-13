@@ -9,22 +9,18 @@
 import UIKit
 
 class StatsCell: UITableViewCell {
-
-    @IBOutlet weak var idLabel: UILabel!
-    @IBOutlet weak var daysAgoLabel: UILabel!
-    @IBOutlet weak var idUnitLabel: UILabel!
-    @IBOutlet weak var daysAgoUnitLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        self.idLabel.textColor = UIColor.grayD()
-        self.daysAgoLabel.textColor = UIColor.grayD()
-        self.idUnitLabel.textColor = UIColor.gray()
-        self.daysAgoUnitLabel.textColor = UIColor.gray()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+  
+  @IBOutlet weak var idLabel: UILabel!
+  @IBOutlet weak var daysAgoLabel: UILabel!
+  @IBOutlet weak var idUnitLabel: UILabel!
+  @IBOutlet weak var daysAgoUnitLabel: UILabel!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    
+    idLabel.textColor = UIColor.grayD()
+    daysAgoLabel.textColor = UIColor.grayD()
+    idUnitLabel.textColor = UIColor.gray()
+    daysAgoUnitLabel.textColor = UIColor.gray()
+  }
 }

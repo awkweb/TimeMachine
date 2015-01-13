@@ -9,23 +9,19 @@
 import UIKit
 
 class ProductCell: UITableViewCell {
-
-    @IBOutlet weak var votesLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var taglineLabel: UILabel!
-    @IBOutlet weak var commentsLabel: UILabel!
-    @IBOutlet weak var makerImageView: UIImageView!
+  
+  @IBOutlet weak var votesLabel: UILabel!
+  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var taglineLabel: UILabel!
+  @IBOutlet weak var commentsLabel: UILabel!
+  @IBOutlet weak var makerImageView: UIImageView!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-                
-        self.votesLabel.textColor = UIColor.gray()
-        self.nameLabel.textColor = UIColor.grayD()
-        self.taglineLabel.textColor = UIColor.grayD()
-        self.commentsLabel.textColor = UIColor.gray()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+    votesLabel.textColor = UIColor.gray()
+    nameLabel.textColor = UIColor.grayD()
+    taglineLabel.textColor = UIColor.grayD()
+    commentsLabel.textColor = UIColor.gray()
+  }
 }

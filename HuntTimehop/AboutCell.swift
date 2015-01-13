@@ -9,16 +9,12 @@
 import UIKit
 
 class AboutCell: UITableViewCell {
-
-    @IBOutlet weak var itemLabel: UILabel!
+  
+  @IBOutlet weak var itemLabel: UILabel!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        self.itemLabel.textColor = UIColor.grayD()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+    itemLabel.textColor = UIColor.grayD()
+  }
 }

@@ -27,6 +27,7 @@
 		05A1574F1A59EF2A00575912 /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A1574E1A59EF2A00575912 /* AboutCell.swift */; };
 		05A157511A5A00E400575912 /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A157501A5A00E400575912 /* AboutModel.swift */; };
 		05CC03EA1A50B45D0067EFF9 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CC03E91A50B45D0067EFF9 /* ProductCell.swift */; };
+		05D79BAA1A64502B004D959E /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D79BA91A64502B004D959E /* TokenModel.swift */; };
 		05D986911A5053690016A133 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D986901A5053690016A133 /* FilterViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		05A1574E1A59EF2A00575912 /* AboutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
 		05A157501A5A00E400575912 /* AboutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutModel.swift; sourceTree = "<group>"; };
 		05CC03E91A50B45D0067EFF9 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		05D79BA91A64502B004D959E /* TokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		05D986901A5053690016A133 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				05A0F2691A5AEA36003B0F52 /* ProductModel.swift */,
+				05D79BA91A64502B004D959E /* TokenModel.swift */,
 				05A157501A5A00E400575912 /* AboutModel.swift */,
 			);
 			name = Models;
@@ -274,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05D79BAA1A64502B004D959E /* TokenModel.swift in Sources */,
 				05D986911A5053690016A133 /* FilterViewController.swift in Sources */,
 				053509891A4A18DB00774B67 /* ViewController.swift in Sources */,
 				05102ACC1A63596F00951D74 /* ColorConstants.swift in Sources */,

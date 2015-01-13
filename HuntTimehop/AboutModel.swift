@@ -9,6 +9,6 @@
 import Foundation
 
 struct AboutModel {
-    var title: String
-    var url: String
+  var title: String
+  var url: String
 }

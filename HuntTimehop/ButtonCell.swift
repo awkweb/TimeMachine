@@ -9,16 +9,12 @@
 import UIKit
 
 class ButtonCell: UITableViewCell {
-
-    @IBOutlet weak var buttonLabel: UILabel!
+  
+  @IBOutlet weak var buttonLabel: UILabel!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        self.buttonLabel.textColor = UIColor.orange()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+    buttonLabel.textColor = UIColor.orange()
+  }
 }

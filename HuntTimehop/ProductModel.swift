@@ -9,14 +9,13 @@
 import Foundation
 
 struct ProductModel {
-    var id: Int
-    var name: String
-    var tagline: String
-    var comments: Int
-    var votes: Int
-    var phURL: String
-    var webURL: String
-    var screenshotURL: String
-    var makerInside: Bool
-    var hunter: String
+  var id: Int
+  var name: String
+  var tagline: String
+  var comments: Int
+  var votes: Int
+  var phURL: String
+  var screenshotURL: String
+  var makerInside: Bool
+  var hunter: String
 }
