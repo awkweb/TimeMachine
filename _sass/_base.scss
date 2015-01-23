@@ -1,0 +1,85 @@
+// modules: base
+
+body {
+  background-color: $white;
+  color: $gray;
+  font-family: "Monsterrat",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+
+  @media #{$mobile} {
+    font-size: 14px;
+  }
+}
+
+a {
+  color: $orange;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.main {
+  margin: 0 auto;
+  max-width: 900px;
+  overflow: auto;
+  padding: 50px 20px 0px;
+}
+
+.title {
+  width: 50%;
+  float: right;
+  display: inline-block;
+  text-align: center;
+  margin: 75px auto 60px;
+
+  h1 {
+    color: $dark-gray;
+    font-weight: 300;
+  }
+
+  h2 {
+    color: $gray;
+    font-weight: 300;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 300;
+  }
+}
+
+.phone {
+  width: 50%;
+  height: 622px;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  background-image: $iphone;
+  background-size: 300px 614px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.demo {
+  width: 260px;
+  margin-top: 79px;
+}
+
+.footer {
+  @include center;
+  margin: 50px auto 15px;
+  max-width: 900px;
+}
+
+.inline {
+  list-style: none;
+  margin-left: -40px;
+
+  li {
+    display: inline-block;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}

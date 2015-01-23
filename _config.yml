@@ -1,0 +1,10 @@
+# Site settings
+title: Product Hunt Time Machine
+description: "Re-discover the best products from Product Hunt."
+url: "http://thomasmeagher.com/ProductHuntTimeMachine"
+author: "Thomas Meagher"
+keywords: "product,hunt,tech,app,time,machine,ios"
+
+exclude: []
+include: []
+timezone: America/New_York
