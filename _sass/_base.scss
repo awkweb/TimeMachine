@@ -25,6 +25,10 @@ a {
   max-width: 900px;
   overflow: auto;
   padding: 50px 20px 0px;
+
+  @media #{$mobile} {
+    padding-top: 25px;
+  }
 }
 
 .title {
@@ -48,6 +52,12 @@ a {
     font-size: 18px;
     font-weight: 300;
   }
+
+  @media #{$mobile} {
+    width: 100%;
+    float: none;
+    margin: 40px auto 60px;
+  }
 }
 
 .phone {
@@ -60,6 +70,12 @@ a {
   background-size: 300px 614px;
   background-repeat: no-repeat;
   background-position: center center;
+
+  @media #{$mobile} {
+    width: 100%;
+    float: none;
+    padding: 0px;
+  }
 }
 
 .demo {
