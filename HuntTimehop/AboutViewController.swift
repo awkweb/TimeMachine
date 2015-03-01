@@ -24,7 +24,7 @@ class AboutViewController: UIViewController {
     
     navigationItem.title = "About"
     tableView.backgroundColor = UIColor.grayL()
-    versionLabel.text = "Version 1.0.2"
+    versionLabel.text = "Version \(version)"
     versionLabel.textColor = UIColor.gray()
     
     // Set up tableView items
@@ -47,6 +47,11 @@ class AboutViewController: UIViewController {
     var aboutPHArray = [aboutPH0, aboutPH1, aboutPH2, aboutPH3, aboutPH4, aboutPH5, aboutPH6]
     
     baseArray += [aboutArray, aboutNPArray, aboutPHArray]
+    
+    let tRexImage = UIImage(named: "trex")
+    let hiddenImageView = UIImageView(frame: CGRect(x: kScreenRect.width/2 - 37.5, y: -75, width: 75, height: 75))
+    hiddenImageView.image = tRexImage
+    tableView.addSubview(hiddenImageView)
   }
 }
 

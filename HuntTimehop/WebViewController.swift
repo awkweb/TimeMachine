@@ -13,10 +13,12 @@ class WebViewController: UIViewController {
   // MARK: - UI Elements
   @IBOutlet weak var webView: UIWebView!
   @IBOutlet weak var toolbar: UIToolbar!
-  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+  @IBOutlet weak var progressView: UIProgressView!
   
   var webProduct: ProductModel!
   var detailVC: PostDetailsViewController!
+  var progressComplete = false
+  var progressTimer = NSTimer()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,11 +28,19 @@ class WebViewController: UIViewController {
     
     toolbar.barTintColor = UIColor.white()
     toolbar.tintColor = UIColor.orange()
-    activityIndicator.hidesWhenStopped = true
+    progressView.tintColor = UIColor.orange()
   }
   
   override func prefersStatusBarHidden() -> Bool {
     return true
+  }
+  
+  @IBAction func swipeBackGesture(sender: AnyObject) {
+    webView.goBack()
+  }
+  
+  @IBAction func swipeForwardGesture(sender: AnyObject) {
+    webView.goForward()
   }
   
   @IBAction func stopButtonPressed(sender: AnyObject) {
@@ -58,17 +68,36 @@ class WebViewController: UIViewController {
 extension WebViewController: UIWebViewDelegate {
   
   func openSite() {
-    activityIndicator.startAnimating()
     let phURL = NSURL(string: webProduct.phURL)!
     let request = NSURLRequest(URL: phURL)
     webView.loadRequest(request)
   }
   
   func webViewDidStartLoad(webView: UIWebView) {
-    activityIndicator.startAnimating()
+    startProgressBar()
   }
   
   func webViewDidFinishLoad(webView: UIWebView) {
-    activityIndicator.stopAnimating()
+    progressComplete = true
+  }
+  
+  func startProgressBar() {
+    progressView.hidden = false
+    progressView.progress = 0.0
+    progressComplete = false
+    progressTimer = NSTimer.scheduledTimerWithTimeInterval(0.01667, target: self, selector: "timerCallback", userInfo: nil, repeats: true)
+  }
+  
+  func timerCallback() {
+    if progressComplete {
+      if progressView.progress >= 1 {
+        progressView.hidden = true
+        progressTimer.invalidate()
+      } else {
+        progressView.progress += 0.1
+      }
+    } else {
+      progressView.progress += 0.01
+    }
   }
 }

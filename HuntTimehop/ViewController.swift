@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     tableView.backgroundColor = UIColor.grayL()
     
     let kittyImage = UIImage(named: "kitty")
-    let hiddenImageView = UIImageView(frame: CGRect(x: kScreenRect.width/2 - 25, y: -100, width: 50, height: 46))
+    let hiddenImageView = UIImageView(frame: CGRect(x: kScreenRect.width/2 - 25, y: -75, width: 50, height: 46))
     hiddenImageView.image = kittyImage
     tableView.addSubview(hiddenImageView)
     tableView.tableFooterView = UIView()

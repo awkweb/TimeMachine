@@ -23,7 +23,7 @@
                                     <!--2014-12-28 15:02:29 +0000-->
                                 </date>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="shake for random day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tP7-pS-4Ty">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="shake for random date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tP7-pS-4Ty">
                                 <rect key="frame" x="106" y="232" width="209" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Ycj-IJ-POT"/>
@@ -411,8 +411,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrP-Th-SkA">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdK-hE-Fe3">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
@@ -448,25 +449,26 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HFg-8s-yo3">
-                                <rect key="frame" x="290" y="290" width="20" height="20"/>
-                            </activityIndicatorView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zWl-jX-b39">
+                                <rect key="frame" x="0.0" y="20" width="600" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="BrP-Th-SkA" secondAttribute="trailing" constant="-16" id="1Ux-3f-kbM"/>
-                            <constraint firstAttribute="centerY" secondItem="HFg-8s-yo3" secondAttribute="centerY" id="5xJ-WZ-6vZ"/>
+                            <constraint firstItem="BrP-Th-SkA" firstAttribute="top" secondItem="Frg-pN-QAd" secondAttribute="bottom" id="Ced-Lm-gLh"/>
+                            <constraint firstItem="zWl-jX-b39" firstAttribute="leading" secondItem="x90-OM-lV5" secondAttribute="leadingMargin" constant="-16" id="G5y-db-Gs6"/>
                             <constraint firstItem="BrP-Th-SkA" firstAttribute="leading" secondItem="x90-OM-lV5" secondAttribute="leadingMargin" constant="-16" id="XMR-NS-9Wn"/>
                             <constraint firstItem="mdK-hE-Fe3" firstAttribute="leading" secondItem="x90-OM-lV5" secondAttribute="leadingMargin" constant="-16" id="a2d-Ig-yWO"/>
-                            <constraint firstItem="BrP-Th-SkA" firstAttribute="top" secondItem="Frg-pN-QAd" secondAttribute="bottom" constant="-20" id="h0J-6m-vI7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zWl-jX-b39" secondAttribute="trailing" constant="-16" id="e4J-lb-kU1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mdK-hE-Fe3" secondAttribute="trailing" constant="-16" id="uFO-Af-DEh"/>
-                            <constraint firstAttribute="centerX" secondItem="HFg-8s-yo3" secondAttribute="centerX" id="vzi-g0-ysh"/>
                             <constraint firstItem="3p7-Jp-cWD" firstAttribute="top" secondItem="BrP-Th-SkA" secondAttribute="bottom" id="wer-NQ-zOa"/>
+                            <constraint firstItem="zWl-jX-b39" firstAttribute="top" secondItem="Frg-pN-QAd" secondAttribute="bottom" id="xn5-Vn-Lf6"/>
                             <constraint firstItem="3p7-Jp-cWD" firstAttribute="top" secondItem="mdK-hE-Fe3" secondAttribute="bottom" id="zhv-yf-XYG"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="HFg-8s-yo3" id="bDF-qo-uLT"/>
+                        <outlet property="progressView" destination="zWl-jX-b39" id="dA0-kl-X6w"/>
                         <outlet property="toolbar" destination="mdK-hE-Fe3" id="dKB-Ti-7JY"/>
                         <outlet property="webView" destination="BrP-Th-SkA" id="PnI-jt-Ys3"/>
                     </connections>
