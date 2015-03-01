@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iUZ-V4-PQP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iUZ-V4-PQP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -391,11 +391,83 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="yC5-wD-Av3" id="21P-8x-IHu"/>
+                        <segue destination="VRd-Sq-YzR" kind="presentation" identifier="modalWebVC" id="Tg7-Sj-K3c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gF-1u-IoS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1842" y="-94"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="Tqe-wV-Tph">
+            <objects>
+                <viewController id="VRd-Sq-YzR" customClass="WebViewController" customModule="HuntTimehop" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Frg-pN-QAd"/>
+                        <viewControllerLayoutGuide type="bottom" id="3p7-Jp-cWD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="x90-OM-lV5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BrP-Th-SkA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mdK-hE-Fe3">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem image="close" id="aby-nc-ofw">
+                                        <connections>
+                                            <action selector="stopButtonPressed:" destination="VRd-Sq-YzR" id="rJ0-e1-MnR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="kki-NG-ldj"/>
+                                    <barButtonItem image="refresh" id="Hxk-GJ-hwA">
+                                        <connections>
+                                            <action selector="refreshButtonPressed:" destination="VRd-Sq-YzR" id="lhB-oi-Dom"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3pR-LD-LRw"/>
+                                    <barButtonItem image="compass" id="CiL-Db-4Wk">
+                                        <connections>
+                                            <action selector="actionButtonPressed:" destination="VRd-Sq-YzR" id="TV1-cM-xjD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="BCo-bh-ZIj"/>
+                                    <barButtonItem image="back" id="S7W-pZ-Tgp">
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="VRd-Sq-YzR" id="qr0-qr-XHY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="25" style="plain" systemItem="fixedSpace" id="JPD-vW-gzh"/>
+                                    <barButtonItem image="forward" id="66i-2G-PeH">
+                                        <connections>
+                                            <action selector="forwardButtonPressed:" destination="VRd-Sq-YzR" id="vxT-Qr-51R"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="BrP-Th-SkA" secondAttribute="trailing" constant="-16" id="1Ux-3f-kbM"/>
+                            <constraint firstItem="BrP-Th-SkA" firstAttribute="leading" secondItem="x90-OM-lV5" secondAttribute="leadingMargin" constant="-16" id="XMR-NS-9Wn"/>
+                            <constraint firstItem="mdK-hE-Fe3" firstAttribute="leading" secondItem="x90-OM-lV5" secondAttribute="leadingMargin" constant="-16" id="a2d-Ig-yWO"/>
+                            <constraint firstItem="BrP-Th-SkA" firstAttribute="top" secondItem="Frg-pN-QAd" secondAttribute="bottom" constant="-20" id="h0J-6m-vI7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mdK-hE-Fe3" secondAttribute="trailing" constant="-16" id="uFO-Af-DEh"/>
+                            <constraint firstItem="3p7-Jp-cWD" firstAttribute="top" secondItem="BrP-Th-SkA" secondAttribute="bottom" id="wer-NQ-zOa"/>
+                            <constraint firstItem="3p7-Jp-cWD" firstAttribute="top" secondItem="mdK-hE-Fe3" secondAttribute="bottom" id="zhv-yf-XYG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="toolbar" destination="mdK-hE-Fe3" id="dKB-Ti-7JY"/>
+                        <outlet property="webView" destination="BrP-Th-SkA" id="PnI-jt-Ys3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nNq-jE-c1L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2499" y="-94"/>
         </scene>
         <!--About View Controller-->
         <scene sceneID="9BT-ue-33k">
@@ -672,9 +744,14 @@
     </scenes>
     <resources>
         <image name="about" width="20" height="20"/>
+        <image name="back" width="26" height="26"/>
         <image name="calendar" width="20" height="20"/>
+        <image name="close" width="26" height="26"/>
         <image name="comment" width="15" height="13"/>
+        <image name="compass" width="26" height="26"/>
+        <image name="forward" width="26" height="26"/>
         <image name="maker" width="15" height="15"/>
+        <image name="refresh" width="24" height="24"/>
         <image name="share" width="19" height="20"/>
         <image name="vote" width="13" height="8"/>
     </resources>

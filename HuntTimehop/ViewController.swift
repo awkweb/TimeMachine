@@ -141,7 +141,7 @@ extension ViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return apiHuntsList.count + 1
   }
-
+  
 }
 
 
@@ -213,20 +213,17 @@ extension ViewController {
   // PH Get Posts
   func getPosts() {
     
-    let url = NSURL(string: "\(baseURL)/posts/")
+    let url = NSURL(string: "https://api.producthunt.com/v1/posts?day=\(Date.toString(date: filterDate))")
     let request = NSMutableURLRequest(URL: url!)
     let session = NSURLSession.sharedSession()
     request.HTTPMethod = "GET"
     
-    var params = [
-      "access_token": NSUserDefaults.standardUserDefaults().objectForKey(accessToken) as String,
-      "day": Date.toString(date: filterDate)
-    ]
-    
     var error: NSError?
-    request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &error)
-    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue("application/json", forHTTPHeaderField: "Accept")
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue("Bearer \(NSUserDefaults.standardUserDefaults().objectForKey(accessToken) as String)", forHTTPHeaderField: "Authorization")
+    request.addValue("api.producthunt.com", forHTTPHeaderField: "Host")
+    request.HTTPBody = nil
     
     var task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error2) -> Void in
       

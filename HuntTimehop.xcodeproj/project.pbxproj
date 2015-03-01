@@ -29,6 +29,7 @@
 		05CC03EA1A50B45D0067EFF9 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CC03E91A50B45D0067EFF9 /* ProductCell.swift */; };
 		05D79BAA1A64502B004D959E /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D79BA91A64502B004D959E /* TokenModel.swift */; };
 		05D986911A5053690016A133 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D986901A5053690016A133 /* FilterViewController.swift */; };
+		05F7E0101AA2683900A444BA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7E00F1AA2683900A444BA /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		05CC03E91A50B45D0067EFF9 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		05D79BA91A64502B004D959E /* TokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		05D986901A5053690016A133 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		05F7E00F1AA2683900A444BA /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				056EF0DB1A533B67008C9DDB /* PostDetailsViewController.swift */,
 				05D986901A5053690016A133 /* FilterViewController.swift */,
 				054B998E1A57166A000E4CCB /* AboutViewController.swift */,
+				05F7E00F1AA2683900A444BA /* WebViewController.swift */,
 				0535098A1A4A18DB00774B67 /* Main.storyboard */,
 				0535098D1A4A18DB00774B67 /* Images.xcassets */,
 				0535098F1A4A18DB00774B67 /* LaunchScreen.xib */,
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F7E0101AA2683900A444BA /* WebViewController.swift in Sources */,
 				05D79BAA1A64502B004D959E /* TokenModel.swift in Sources */,
 				05D986911A5053690016A133 /* FilterViewController.swift in Sources */,
 				053509891A4A18DB00774B67 /* ViewController.swift in Sources */,
@@ -370,7 +374,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -407,7 +411,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -421,7 +425,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HuntTimehop/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -434,7 +438,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HuntTimehop/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

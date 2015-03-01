@@ -52,6 +52,14 @@ class PostDetailsViewController: UIViewController {
     
     self.presentViewController(activityViewController, animated: true, completion: nil)
   }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "modalWebVC" {
+      let webVC: WebViewController = segue.destinationViewController as WebViewController
+      webVC.detailVC = self
+      webVC.webProduct = product
+    }
+  }
 }
 
 
@@ -76,11 +84,11 @@ extension PostDetailsViewController: UITableViewDataSource {
       } else if product.makerInside == false {
         titleCell.makerImageView.hidden = true
       }
-      titleCell.selectionStyle = UITableViewCellSelectionStyle.None
+      titleCell.selectionStyle = .None
       return titleCell
     } else if indexPath.row == 1 {
       imageCell.activityIndicator.startAnimating()
-      imageCell.selectionStyle = UITableViewCellSelectionStyle.None
+      imageCell.selectionStyle = .None
       
       let imageQueue: dispatch_queue_t = dispatch_queue_create("filter queue", nil)
       
@@ -93,7 +101,7 @@ extension PostDetailsViewController: UITableViewDataSource {
             imageCell.screenshotImageView.image = UIImage(data: data!)
           } else {
             imageCell.screenshotImageView.image = UIImage(named: "kitty")
-            imageCell.screenshotImageView.contentMode = UIViewContentMode.Center
+            imageCell.screenshotImageView.contentMode = .Center
           }
           imageCell.activityIndicator.stopAnimating()
         })
@@ -103,9 +111,10 @@ extension PostDetailsViewController: UITableViewDataSource {
       statsCell.idLabel.text = "\(product.id)"
       let daysBetweenDates = NSDate.daysBetween(date1: mainVC.filterDate, date2: NSDate())
       statsCell.daysAgoLabel.text = "\(daysBetweenDates)"
-      statsCell.selectionStyle = UITableViewCellSelectionStyle.None
+      statsCell.selectionStyle = .None
       return statsCell
     } else {
+      buttonCell.selectionStyle = .None
       return buttonCell
     }
   }
@@ -121,8 +130,7 @@ extension PostDetailsViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if indexPath.row == 3 {
-      let url = NSURL(string: product.phURL)!
-      UIApplication.sharedApplication().openURL(url)
+      performSegueWithIdentifier("modalWebVC", sender: self)
     }
   }
 }
