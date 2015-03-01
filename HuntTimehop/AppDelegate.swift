@@ -8,19 +8,6 @@
 
 import UIKit
 
-// MARK: - PH API Constants (REMOVE BEFORE PUSHING TO GITHUB)
-let kAPIKey = "XXX"
-let kAPISecret = "YYY"
-
-// MARK: - NSUserDefaults Variables
-var accessToken = "accessTokenKey"
-var expiresOn = "expiresOnKey"
-
-// MARK: - Other Constants
-let kDaysBetweenDates = NSDate.daysBetween(date1: Date.toDate(year: 2013, month: 11, day: 24), date2: NSDate())
-let kScreenRect = UIScreen.mainScreen().bounds
-
-// MARK: - AppDelegate
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   

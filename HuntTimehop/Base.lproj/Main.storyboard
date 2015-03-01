@@ -448,19 +448,25 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HFg-8s-yo3">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="BrP-Th-SkA" secondAttribute="trailing" constant="-16" id="1Ux-3f-kbM"/>
+                            <constraint firstAttribute="centerY" secondItem="HFg-8s-yo3" secondAttribute="centerY" id="5xJ-WZ-6vZ"/>
                             <constraint firstItem="BrP-Th-SkA" firstAttribute="leading" secondItem="x90-OM-lV5" secondAttribute="leadingMargin" constant="-16" id="XMR-NS-9Wn"/>
                             <constraint firstItem="mdK-hE-Fe3" firstAttribute="leading" secondItem="x90-OM-lV5" secondAttribute="leadingMargin" constant="-16" id="a2d-Ig-yWO"/>
                             <constraint firstItem="BrP-Th-SkA" firstAttribute="top" secondItem="Frg-pN-QAd" secondAttribute="bottom" constant="-20" id="h0J-6m-vI7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mdK-hE-Fe3" secondAttribute="trailing" constant="-16" id="uFO-Af-DEh"/>
+                            <constraint firstAttribute="centerX" secondItem="HFg-8s-yo3" secondAttribute="centerX" id="vzi-g0-ysh"/>
                             <constraint firstItem="3p7-Jp-cWD" firstAttribute="top" secondItem="BrP-Th-SkA" secondAttribute="bottom" id="wer-NQ-zOa"/>
                             <constraint firstItem="3p7-Jp-cWD" firstAttribute="top" secondItem="mdK-hE-Fe3" secondAttribute="bottom" id="zhv-yf-XYG"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="HFg-8s-yo3" id="bDF-qo-uLT"/>
                         <outlet property="toolbar" destination="mdK-hE-Fe3" id="dKB-Ti-7JY"/>
                         <outlet property="webView" destination="BrP-Th-SkA" id="PnI-jt-Ys3"/>
                     </connections>
