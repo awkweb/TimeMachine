@@ -35,10 +35,10 @@ class PostDetailsViewController: UIViewController {
   }
   
   @IBAction func shareBarButtonItemPressed(sender: UIBarButtonItem) {
-    let firstActivityItem = "\(product.name): \(product.tagline)"
-    let secondActivityItem : NSURL = NSURL(string: "\(product.phURL)")!
-    let activityViewController : UIActivityViewController = UIActivityViewController(
-      activityItems: [firstActivityItem, secondActivityItem], applicationActivities: nil)
+    let nameActivityItem = "\(product.name): \(product.tagline)"
+    let urlActivityItem = NSURL(string: "\(product.phURL)")!
+    let activityViewController = UIActivityViewController(
+      activityItems: [nameActivityItem, urlActivityItem], applicationActivities: [UIActivityTypeOpenInSafari()])
     
     activityViewController.excludedActivityTypes = [
       UIActivityTypePostToWeibo,
@@ -57,7 +57,7 @@ class PostDetailsViewController: UIViewController {
     if segue.identifier == "modalWebVC" {
       let webVC: WebViewController = segue.destinationViewController as WebViewController
       webVC.detailVC = self
-      webVC.webProduct = product
+      webVC.product = product
     }
   }
 }

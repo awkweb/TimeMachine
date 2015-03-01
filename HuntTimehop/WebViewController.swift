@@ -15,7 +15,7 @@ class WebViewController: UIViewController {
   @IBOutlet weak var toolbar: UIToolbar!
   @IBOutlet weak var progressView: UIProgressView!
   
-  var webProduct: ProductModel!
+  var product: ProductModel!
   var detailVC: PostDetailsViewController!
   var progressComplete = false
   var progressTimer = NSTimer()
@@ -48,8 +48,22 @@ class WebViewController: UIViewController {
   }
   
   @IBAction func actionButtonPressed(sender: AnyObject) {
-    let url = NSURL(string: webProduct.phURL)!
-    UIApplication.sharedApplication().openURL(url)
+    let nameActivityItem = "\(product.name): \(product.tagline)"
+    let urlActivityItem = NSURL(string: "\(product.phURL)")!
+    let activityViewController = UIActivityViewController(
+      activityItems: [nameActivityItem, urlActivityItem], applicationActivities: [UIActivityTypeOpenInSafari()])
+    
+    activityViewController.excludedActivityTypes = [
+      UIActivityTypePostToWeibo,
+      UIActivityTypePrint,
+      UIActivityTypeAssignToContact,
+      UIActivityTypeSaveToCameraRoll,
+      UIActivityTypePostToFlickr,
+      UIActivityTypePostToVimeo,
+      UIActivityTypePostToTencentWeibo
+    ]
+    
+    self.presentViewController(activityViewController, animated: true, completion: nil)
   }
   
   @IBAction func refreshButtonPressed(sender: AnyObject) {
@@ -68,7 +82,7 @@ class WebViewController: UIViewController {
 extension WebViewController: UIWebViewDelegate {
   
   func openSite() {
-    let phURL = NSURL(string: webProduct.phURL)!
+    let phURL = NSURL(string: product.phURL)!
     let request = NSURLRequest(URL: phURL)
     webView.loadRequest(request)
   }

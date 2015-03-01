@@ -20,6 +20,7 @@
 		054B998F1A57166A000E4CCB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B998E1A57166A000E4CCB /* AboutViewController.swift */; };
 		054B99911A57267B000E4CCB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B99901A57267B000E4CCB /* DateExtension.swift */; };
 		056EF0DC1A533B67008C9DDB /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EF0DB1A533B67008C9DDB /* PostDetailsViewController.swift */; };
+		058770401AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0587703F1AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift */; };
 		05A0F26A1A5AEA36003B0F52 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0F2691A5AEA36003B0F52 /* ProductModel.swift */; };
 		05A0F26C1A5AF060003B0F52 /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0F26B1A5AF060003B0F52 /* TitleCell.swift */; };
 		05A0F26E1A5AF0C9003B0F52 /* StatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0F26D1A5AF0C9003B0F52 /* StatsCell.swift */; };
@@ -61,6 +62,7 @@
 		054B998E1A57166A000E4CCB /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		054B99901A57267B000E4CCB /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		056EF0DB1A533B67008C9DDB /* PostDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
+		0587703F1AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIActivityTypeOpenInSafari.swift; sourceTree = "<group>"; };
 		05A0F2691A5AEA36003B0F52 /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		05A0F26B1A5AF060003B0F52 /* TitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
 		05A0F26D1A5AF0C9003B0F52 /* StatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCell.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		053509811A4A18DB00774B67 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0587703F1AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift */,
 				05160F891AA2A66300353453 /* Constants.swift */,
 				053509A61A4A34A000774B67 /* DataController.swift */,
 				054B4E991A4EFDEC00B05D65 /* Date.swift */,
@@ -284,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05F7E0101AA2683900A444BA /* WebViewController.swift in Sources */,
+				058770401AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift in Sources */,
 				05D79BAA1A64502B004D959E /* TokenModel.swift in Sources */,
 				05D986911A5053690016A133 /* FilterViewController.swift in Sources */,
 				053509891A4A18DB00774B67 /* ViewController.swift in Sources */,
