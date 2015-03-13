@@ -22,14 +22,14 @@ class FilterViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    titleLabel.textColor = UIColor.grayD()
-    hintLabel.textColor = UIColor.gray()
-    datePicker.backgroundColor = UIColor.white()
-    datePicker.tintColor = UIColor.grayD()
-    cancelButton.backgroundColor = UIColor.blue()
-    cancelButton.tintColor = UIColor.white()
-    getHuntsOnDateButton.backgroundColor = UIColor.orange()
-    getHuntsOnDateButton.tintColor = UIColor.white()
+    titleLabel.textColor = .grayD()
+    hintLabel.textColor = .gray()
+    datePicker.backgroundColor = .white()
+    datePicker.tintColor = .grayD()
+    cancelButton.backgroundColor = .blue()
+    cancelButton.tintColor = .white()
+    getHuntsOnDateButton.backgroundColor = .orange()
+    getHuntsOnDateButton.tintColor = .white()
     
     datePicker.minimumDate = Date.toDate(year: 2013, month: 11, day: 24)
     datePicker.maximumDate = NSDate()

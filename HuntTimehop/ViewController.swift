@@ -19,7 +19,7 @@ class ViewController: UIViewController {
   var apiAccessToken: [TokenModel] = []
   var apiHuntsList: [ProductModel] = []
   var jsonResponse: NSDictionary!
-  var filterDate: NSDate = NSDate().minusYears(1)
+  var filterDate = NSDate().minusYears(1)
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,9 +29,9 @@ class ViewController: UIViewController {
     
     checkForTokenAndShowPosts()
     
-    navigationController?.navigationBar.barTintColor = UIColor.white()
-    navigationController?.navigationBar.tintColor = UIColor.orange()
-    tableView.backgroundColor = UIColor.grayL()
+    navigationController?.navigationBar.barTintColor = .white()
+    navigationController?.navigationBar.tintColor = .orange()
+    tableView.backgroundColor = .grayL()
     
     let kittyImage = UIImage(named: "kitty")
     let hiddenImageView = UIImageView(frame: CGRect(x: kScreenRect.width/2 - 25, y: -75, width: 50, height: 46))
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     tableView.estimatedRowHeight = 80.0
     
     activityIndicator.hidesWhenStopped = true
-    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -62,12 +62,12 @@ class ViewController: UIViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "popoverFilterVC" {
-      let filterVC: FilterViewController = segue.destinationViewController as FilterViewController
+      let filterVC = segue.destinationViewController as FilterViewController
       filterVC.mainVC = self
-      filterVC.modalPresentationStyle = UIModalPresentationStyle.Popover
+      filterVC.modalPresentationStyle = .Popover
       filterVC.popoverPresentationController!.delegate = self
     } else if segue.identifier == "showPostDetailsVC" {
-      let detailVC: PostDetailsViewController = segue.destinationViewController as PostDetailsViewController
+      let detailVC = segue.destinationViewController as PostDetailsViewController
       let indexPath = tableView.indexPathForSelectedRow()
       let product = apiHuntsList[indexPath!.row]
       detailVC.product = product
@@ -93,8 +93,8 @@ class ViewController: UIViewController {
   }
   
   func showAlertWithText(header: String, message: String, actionMessage: String) {
-    let alert = UIAlertController(title: header, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-    alert.addAction(UIAlertAction(title: actionMessage, style: UIAlertActionStyle.Default, handler: nil))
+    let alert = UIAlertController(title: header, message: message, preferredStyle: .Alert)
+    alert.addAction(UIAlertAction(title: actionMessage, style: .Default, handler: nil))
     presentViewController(alert, animated: true, completion: nil)
   }
   
@@ -188,7 +188,7 @@ extension ViewController {
     var task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error2) -> Void in
       
       var conversionError: NSError?
-      var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
+      var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &conversionError) as? NSDictionary
       
       // Parsing checks
       if conversionError != nil {
@@ -228,7 +228,7 @@ extension ViewController {
     var task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error2) -> Void in
       
       var conversionError: NSError?
-      var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves, error: &conversionError) as? NSDictionary
+      var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &conversionError) as? NSDictionary
       
       // Parsing checks
       if conversionError != nil {
@@ -267,7 +267,7 @@ extension ViewController {
 extension ViewController: UIPopoverPresentationControllerDelegate {
   
   func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-    return UIModalPresentationStyle.None
+    return .None
   }
 }
 

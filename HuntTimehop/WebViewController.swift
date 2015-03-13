@@ -26,9 +26,9 @@ class WebViewController: UIViewController {
     
     openSite()
     
-    toolbar.barTintColor = UIColor.white()
-    toolbar.tintColor = UIColor.orange()
-    progressView.tintColor = UIColor.orange()
+    toolbar.barTintColor = .white()
+    toolbar.tintColor = .orange()
+    progressView.tintColor = .orange()
   }
   
   override func prefersStatusBarHidden() -> Bool {

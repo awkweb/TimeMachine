@@ -55,7 +55,7 @@ class PostDetailsViewController: UIViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "modalWebVC" {
-      let webVC: WebViewController = segue.destinationViewController as WebViewController
+      let webVC = segue.destinationViewController as WebViewController
       webVC.detailVC = self
       webVC.product = product
     }

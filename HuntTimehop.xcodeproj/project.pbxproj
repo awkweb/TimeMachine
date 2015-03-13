@@ -132,12 +132,12 @@
 		053509811A4A18DB00774B67 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0587703F1AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift */,
 				05160F891AA2A66300353453 /* Constants.swift */,
 				053509A61A4A34A000774B67 /* DataController.swift */,
 				054B4E991A4EFDEC00B05D65 /* Date.swift */,
 				054B99901A57267B000E4CCB /* DateExtension.swift */,
 				05102ACB1A63596F00951D74 /* ColorConstants.swift */,
+				0587703F1AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift */,
 				0539DCAF1A5CB3F0005965BD /* Cells */,
 				0539DCB01A5CB404005965BD /* Models */,
 				053509821A4A18DB00774B67 /* Info.plist */,

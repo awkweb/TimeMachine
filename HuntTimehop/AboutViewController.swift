@@ -23,9 +23,9 @@ class AboutViewController: UIViewController {
     tableView.dataSource = self
     
     navigationItem.title = "About"
-    tableView.backgroundColor = UIColor.grayL()
+    tableView.backgroundColor = .grayL()
     versionLabel.text = "Version \(version)"
-    versionLabel.textColor = UIColor.gray()
+    versionLabel.textColor = .gray()
     
     // Set up tableView items
     let about0 = AboutModel(title: "Tom Meagher", url: "http://thomasmeagher.com")

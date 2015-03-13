@@ -19,9 +19,9 @@ class ProductCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    votesLabel.textColor = UIColor.gray()
-    nameLabel.textColor = UIColor.grayD()
-    taglineLabel.textColor = UIColor.grayD()
-    commentsLabel.textColor = UIColor.gray()
+    votesLabel.textColor = .gray()
+    nameLabel.textColor = .grayD()
+    taglineLabel.textColor = .grayD()
+    commentsLabel.textColor = .gray()
   }
 }
