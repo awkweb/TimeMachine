@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 
 class ViewController: UIViewController {
   
@@ -73,14 +72,6 @@ class ViewController: UIViewController {
       let product = apiHuntsList[indexPath!.row]
       detailVC.product = product
       detailVC.mainVC = self
-      
-      let dimensions = [
-        "name" : "\(product.name)",
-        "tagline" : "\(product.tagline)",
-        "date/time": "\(NSDate())"
-      ]
-      
-      PFAnalytics.trackEventInBackground("read", dimensions: dimensions, block: nil)
     }
   }
   
