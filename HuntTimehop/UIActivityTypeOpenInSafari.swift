@@ -28,7 +28,7 @@ class UIActivityTypeOpenInSafari: UIActivity {
   }
   
   override func prepareWithActivityItems(activityItems: [AnyObject]) {
-    activityURL = activityItems[1] as NSURL
+    activityURL = activityItems[1] as! NSURL
   }
   
   override func performActivity() {

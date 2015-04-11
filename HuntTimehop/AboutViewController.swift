@@ -34,17 +34,18 @@ class AboutViewController: UIViewController {
     let aboutNP1 = AboutModel(title: "Jardson Almeida", url: "https://dribbble.com/jardson")
     let aboutNP2 = AboutModel(title: "Kiran Malladi", url: "http://thenounproject.com/ichiban")
     
-    let aboutPH0 = AboutModel(title: "Swift", url: "http://www.producthunt.com/posts/swift")
-    let aboutPH1 = AboutModel(title: "The Noun Project", url: "http://www.producthunt.com/posts/the-noun-project")
+    let aboutPH0 = AboutModel(title: "App Screenshot Builder", url: "http://www.producthunt.com/posts/app-screenshot-builder")
+    let aboutPH1 = AboutModel(title: "GitHub for Mac", url: "http://www.producthunt.com/posts/github-for-mac")
     let aboutPH2 = AboutModel(title: "Make App Icon", url: "http://www.producthunt.com/posts/make-app-icon")
-    let aboutPH3 = AboutModel(title: "The Complete iOS 8 Course", url: "http://www.producthunt.com/posts/the-complete-ios8-course")
-    let aboutPH4 = AboutModel(title: "Product Hunt API", url: "http://www.producthunt.com/posts/product-hunt-api-beta")
-    let aboutPH5 = AboutModel(title: "Sketch 3", url: "http://www.producthunt.com/posts/sketch-3")
-    let aboutPH6 = AboutModel(title: "GitHub for Mac", url: "http://www.producthunt.com/posts/github-for-mac")
+    let aboutPH3 = AboutModel(title: "Product Hunt API", url: "http://www.producthunt.com/posts/product-hunt-api-beta")
+    let aboutPH4 = AboutModel(title: "Sketch 3", url: "http://www.producthunt.com/posts/sketch-3")
+    let aboutPH5 = AboutModel(title: "Swift", url: "http://www.producthunt.com/posts/swift")
+    let aboutPH6 = AboutModel(title: "The Complete iOS 8 Course", url: "http://www.producthunt.com/posts/the-complete-ios8-course")
+    let aboutPH7 = AboutModel(title: "The Noun Project", url: "http://www.producthunt.com/posts/the-noun-project")
     
     var aboutArray = [about0]
     var aboutNPArray = [aboutNP0, aboutNP1, aboutNP2]
-    var aboutPHArray = [aboutPH0, aboutPH1, aboutPH2, aboutPH3, aboutPH4, aboutPH5, aboutPH6]
+    var aboutPHArray = [aboutPH0, aboutPH1, aboutPH2, aboutPH3, aboutPH4, aboutPH5, aboutPH6, aboutPH7]
     
     baseArray += [aboutArray, aboutNPArray, aboutPHArray]
     
@@ -65,7 +66,7 @@ extension AboutViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let thisAbout = baseArray[indexPath.section][indexPath.row]
-    let cell = tableView.dequeueReusableCellWithIdentifier("AboutCell") as AboutCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("AboutCell") as! AboutCell
     cell.itemLabel.text = thisAbout.title
     cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
     return cell
@@ -92,7 +93,7 @@ extension AboutViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let thisAbout = baseArray[indexPath.section][indexPath.row]
-    let cell = tableView.dequeueReusableCellWithIdentifier("AboutCell") as AboutCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("AboutCell") as! AboutCell
     let url = NSURL(string: thisAbout.url)!
     UIApplication.sharedApplication().openURL(url)
   }

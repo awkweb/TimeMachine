@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ViewController: UIViewController {
   
@@ -62,16 +63,24 @@ class ViewController: UIViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "popoverFilterVC" {
-      let filterVC = segue.destinationViewController as FilterViewController
+      let filterVC = segue.destinationViewController as! FilterViewController
       filterVC.mainVC = self
       filterVC.modalPresentationStyle = .Popover
       filterVC.popoverPresentationController!.delegate = self
     } else if segue.identifier == "showPostDetailsVC" {
-      let detailVC = segue.destinationViewController as PostDetailsViewController
+      let detailVC = segue.destinationViewController as! PostDetailsViewController
       let indexPath = tableView.indexPathForSelectedRow()
       let product = apiHuntsList[indexPath!.row]
       detailVC.product = product
       detailVC.mainVC = self
+      
+      let dimensions = [
+        "name" : "\(product.name)",
+        "tagline" : "\(product.tagline)",
+        "date/time": "\(NSDate())"
+      ]
+      
+      PFAnalytics.trackEventInBackground("read", dimensions: dimensions, block: nil)
     }
   }
   
@@ -82,7 +91,7 @@ class ViewController: UIViewController {
     tableView.hidden = true
     
     if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) != nil {
-      if Date.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as NSDate)) == Date.toString(date: NSDate()) {
+      if Date.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as! NSDate)) == Date.toString(date: NSDate()) {
         getToken()
       } else {
         getPosts()
@@ -117,8 +126,8 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
-    let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonCell") as ButtonCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCell
+    let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonCell") as! ButtonCell
     
     if indexPath.row == apiHuntsList.count {
       return buttonCell
@@ -156,7 +165,7 @@ extension ViewController: UITableViewDelegate {
       checkForTokenAndShowPosts()
     } else {
       performSegueWithIdentifier("showPostDetailsVC", sender: self)
-      let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as ProductCell
+      let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCell
       cell.selectionStyle = UITableViewCellSelectionStyle.None
     }
   }
@@ -221,7 +230,7 @@ extension ViewController {
     var error: NSError?
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue("Bearer \(NSUserDefaults.standardUserDefaults().objectForKey(accessToken) as String)", forHTTPHeaderField: "Authorization")
+    request.addValue("Bearer \(NSUserDefaults.standardUserDefaults().objectForKey(accessToken) as! String)", forHTTPHeaderField: "Authorization")
     request.addValue("api.producthunt.com", forHTTPHeaderField: "Host")
     request.HTTPBody = nil
     

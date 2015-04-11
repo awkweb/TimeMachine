@@ -55,7 +55,7 @@ class PostDetailsViewController: UIViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "modalWebVC" {
-      let webVC = segue.destinationViewController as WebViewController
+      let webVC = segue.destinationViewController as! WebViewController
       webVC.detailVC = self
       webVC.product = product
     }
@@ -67,10 +67,10 @@ class PostDetailsViewController: UIViewController {
 extension PostDetailsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let titleCell = tableView.dequeueReusableCellWithIdentifier("TitleCell") as TitleCell
-    let statsCell = tableView.dequeueReusableCellWithIdentifier("StatsCell") as StatsCell
-    let imageCell = tableView.dequeueReusableCellWithIdentifier("ImageCell") as ImageCell
-    let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonCell") as ButtonCell
+    let titleCell = tableView.dequeueReusableCellWithIdentifier("TitleCell") as! TitleCell
+    let statsCell = tableView.dequeueReusableCellWithIdentifier("StatsCell") as! StatsCell
+    let imageCell = tableView.dequeueReusableCellWithIdentifier("ImageCell") as! ImageCell
+    let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonCell") as! ButtonCell
     
     if indexPath.row == 0 {
       titleCell.votesLabel.text = "\(product.votes)"
