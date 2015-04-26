@@ -31,19 +31,6 @@
 		05CC03EA1A50B45D0067EFF9 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CC03E91A50B45D0067EFF9 /* ProductCell.swift */; };
 		05D79BAA1A64502B004D959E /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D79BA91A64502B004D959E /* TokenModel.swift */; };
 		05D986911A5053690016A133 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D986901A5053690016A133 /* FilterViewController.swift */; };
-		05E6C8221AD8B7C30028B481 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6C8201AD8B7C30028B481 /* Bolts.framework */; };
-		05E6C8231AD8B7C30028B481 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6C8211AD8B7C30028B481 /* Parse.framework */; };
-		05E6C8261AD8B8180028B481 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6C8251AD8B8180028B481 /* AudioToolbox.framework */; };
-		05E6C8281AD8B8220028B481 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6C8271AD8B8220028B481 /* CFNetwork.framework */; };
-		05E6C82A1AD8B82B0028B481 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6C8291AD8B82B0028B481 /* CoreGraphics.framework */; };
-		05E6C82C1AD8B8360028B481 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6C82B1AD8B8360028B481 /* CoreLocation.framework */; };
-		05E6C82E1AD8B8400028B481 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6C82D1AD8B8400028B481 /* MobileCoreServices.framework */; };
-		05E6C8301AD8B84C0028B481 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6C82F1AD8B84C0028B481 /* QuartzCore.framework */; };
-		05E6C8321AD8B8540028B481 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6C8311AD8B8540028B481 /* Security.framework */; };
-		05E6C8341AD8B85C0028B481 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6C8331AD8B85C0028B481 /* StoreKit.framework */; };
-		05E6C8361AD8B8650028B481 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6C8351AD8B8650028B481 /* SystemConfiguration.framework */; };
-		05E6C8381AD8B8710028B481 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6C8371AD8B8710028B481 /* libz.dylib */; };
-		05E6C83A1AD8B87C0028B481 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6C8391AD8B87C0028B481 /* libsqlite3.dylib */; };
 		05F7E0101AA2683900A444BA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7E00F1AA2683900A444BA /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,19 +73,6 @@
 		05CC03E91A50B45D0067EFF9 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		05D79BA91A64502B004D959E /* TokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 		05D986901A5053690016A133 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
-		05E6C8201AD8B7C30028B481 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		05E6C8211AD8B7C30028B481 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		05E6C8251AD8B8180028B481 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		05E6C8271AD8B8220028B481 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		05E6C8291AD8B82B0028B481 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		05E6C82B1AD8B8360028B481 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		05E6C82D1AD8B8400028B481 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		05E6C82F1AD8B84C0028B481 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		05E6C8311AD8B8540028B481 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		05E6C8331AD8B85C0028B481 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		05E6C8351AD8B8650028B481 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		05E6C8371AD8B8710028B481 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		05E6C8391AD8B87C0028B481 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		05F7E00F1AA2683900A444BA /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,19 +81,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05E6C83A1AD8B87C0028B481 /* libsqlite3.dylib in Frameworks */,
-				05E6C8381AD8B8710028B481 /* libz.dylib in Frameworks */,
-				05E6C8361AD8B8650028B481 /* SystemConfiguration.framework in Frameworks */,
-				05E6C8341AD8B85C0028B481 /* StoreKit.framework in Frameworks */,
-				05E6C8321AD8B8540028B481 /* Security.framework in Frameworks */,
-				05E6C8301AD8B84C0028B481 /* QuartzCore.framework in Frameworks */,
-				05E6C82E1AD8B8400028B481 /* MobileCoreServices.framework in Frameworks */,
-				05E6C82C1AD8B8360028B481 /* CoreLocation.framework in Frameworks */,
-				05E6C82A1AD8B82B0028B481 /* CoreGraphics.framework in Frameworks */,
-				05E6C8281AD8B8220028B481 /* CFNetwork.framework in Frameworks */,
-				05E6C8261AD8B8180028B481 /* AudioToolbox.framework in Frameworks */,
-				05E6C8231AD8B7C30028B481 /* Parse.framework in Frameworks */,
-				05E6C8221AD8B7C30028B481 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,15 +116,10 @@
 			isa = PBXGroup;
 			children = (
 				053509831A4A18DB00774B67 /* AppDelegate.swift */,
-				053509881A4A18DB00774B67 /* ViewController.swift */,
-				056EF0DB1A533B67008C9DDB /* PostDetailsViewController.swift */,
-				05D986901A5053690016A133 /* FilterViewController.swift */,
-				054B998E1A57166A000E4CCB /* AboutViewController.swift */,
-				05F7E00F1AA2683900A444BA /* WebViewController.swift */,
+				05D448211AEC884800326139 /* View Controllers */,
 				0535098A1A4A18DB00774B67 /* Main.storyboard */,
 				0535098D1A4A18DB00774B67 /* Images.xcassets */,
 				0535098F1A4A18DB00774B67 /* LaunchScreen.xib */,
-				05E6C8241AD8B7D50028B481 /* Frameworks */,
 				053509811A4A18DB00774B67 /* Supporting Files */,
 			);
 			path = HuntTimehop;
@@ -225,25 +181,16 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		05E6C8241AD8B7D50028B481 /* Frameworks */ = {
+		05D448211AEC884800326139 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				05E6C8391AD8B87C0028B481 /* libsqlite3.dylib */,
-				05E6C8371AD8B8710028B481 /* libz.dylib */,
-				05E6C8351AD8B8650028B481 /* SystemConfiguration.framework */,
-				05E6C8331AD8B85C0028B481 /* StoreKit.framework */,
-				05E6C8311AD8B8540028B481 /* Security.framework */,
-				05E6C82F1AD8B84C0028B481 /* QuartzCore.framework */,
-				05E6C82D1AD8B8400028B481 /* MobileCoreServices.framework */,
-				05E6C82B1AD8B8360028B481 /* CoreLocation.framework */,
-				05E6C8291AD8B82B0028B481 /* CoreGraphics.framework */,
-				05E6C8271AD8B8220028B481 /* CFNetwork.framework */,
-				05E6C8251AD8B8180028B481 /* AudioToolbox.framework */,
-				05E6C8201AD8B7C30028B481 /* Bolts.framework */,
-				05E6C8211AD8B7C30028B481 /* Parse.framework */,
+				053509881A4A18DB00774B67 /* ViewController.swift */,
+				056EF0DB1A533B67008C9DDB /* PostDetailsViewController.swift */,
+				05D986901A5053690016A133 /* FilterViewController.swift */,
+				054B998E1A57166A000E4CCB /* AboutViewController.swift */,
+				05F7E00F1AA2683900A444BA /* WebViewController.swift */,
 			);
-			name = Frameworks;
-			path = ..;
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

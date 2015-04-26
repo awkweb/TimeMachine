@@ -159,6 +159,7 @@ extension ViewController: UITableViewDelegate {
       let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCell
       cell.selectionStyle = UITableViewCellSelectionStyle.None
     }
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
 }
 

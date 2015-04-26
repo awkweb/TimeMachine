@@ -96,5 +96,6 @@ extension AboutViewController: UITableViewDelegate {
     let cell = tableView.dequeueReusableCellWithIdentifier("AboutCell") as! AboutCell
     let url = NSURL(string: thisAbout.url)!
     UIApplication.sharedApplication().openURL(url)
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
 }

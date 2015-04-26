@@ -131,6 +131,7 @@ extension PostDetailsViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if indexPath.row == 3 {
       performSegueWithIdentifier("modalWebVC", sender: self)
+      tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
   }
 }

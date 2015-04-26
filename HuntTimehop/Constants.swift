@@ -12,10 +12,6 @@ import UIKit
 let kAPIKey = "XXX"
 let kAPISecret = "YYY"
 
-// MARK: - Parse API Constants
-let kParseID = "ZZZ"
-let kParseKey = "OOO"
-
 // MARK: - NSUserDefaults Variables
 var accessToken = "accessTokenKey"
 var expiresOn = "expiresOnKey"
