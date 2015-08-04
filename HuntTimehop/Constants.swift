@@ -19,4 +19,4 @@ var expiresOn = "expiresOnKey"
 // MARK: - Other Constants
 let kDaysBetweenDates = NSDate.daysBetween(date1: Date.toDate(year: 2013, month: 11, day: 24), date2: NSDate())
 let kScreenRect = UIScreen.mainScreen().bounds
-let version = "1.2.0"
+let version = "1.3.0"
