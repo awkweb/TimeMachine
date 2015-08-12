@@ -7,8 +7,8 @@ Time Machine brings you back to the future of Product Hunt so you can re-discove
 ## Links
 
 * [App Store](https://itunes.apple.com/us/app/product-hunt-time-machine/id956311358)
-* [Website](http://thomasmeagher.com/ProductHuntTimeMachine/)
-* [Product Hunt](http://www.producthunt.com/posts/product-hunt-timemachine)
+* [Website](http://thomasmeagher.com/TimeMachine/)
+* [Product Hunt](http://www.producthunt.com/tech/time-machine)
 
 ## Props
 Some of the awesome products I used to build Time Machine:
