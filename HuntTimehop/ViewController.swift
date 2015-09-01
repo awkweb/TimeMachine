@@ -15,6 +15,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
   // MARK: - API Variables
+  let apiController = ApiController()
   let baseURL = "https://api.producthunt.com/v1"
   var apiAccessToken: [TokenModel] = []
   var apiHuntsList: [ProductModel] = []
@@ -83,7 +84,36 @@ class ViewController: UIViewController {
     
     if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) != nil {
       if Date.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as! NSDate)) == Date.toString(date: NSDate()) {
-        getToken()
+        apiController.getClientOnlyAuthenticationToken {
+          success, error in
+          if (error != nil) {
+            self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
+          } else {
+            self.apiController.getPostsForDate(self.filterDate) {
+              objects, error in
+              if let objects = objects as [ProductModel]! {
+                self.apiHuntsList = objects
+                
+                if self.apiHuntsList.count == 0 {
+                  self.showAlertWithText("Hey", message: "There aren't any posts on \(Date.toPrettyString(date: self.filterDate)).", actionMessage: "Okay")
+                }
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                  self.navigationItem.title = Date.toPrettyString(date: self.filterDate)
+                  self.tableView.reloadData()
+                  self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+                  self.activityIndicator.stopAnimating()
+                  self.tableView.hidden = false
+                  if self.filterDate == Date.toDate(year: 2013, month: 11, day: 24) {
+                    self.showAlertWithText("Hey 😺", message: "You made it back to Product Hunt's first day!", actionMessage: "Okay")
+                  }
+                }
+              } else {
+                self.showAlertWithText("Oops", message: "Unable to get posts", actionMessage: "Okay")
+              }
+            }
+          }
+        }
       } else {
         getPosts()
       }
@@ -104,7 +134,6 @@ class ViewController: UIViewController {
     checkForTokenAndShowPosts()
   }
   
-  // Detect shake and show posts
   override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
     if motion == .MotionShake {
       getRandomDate()
