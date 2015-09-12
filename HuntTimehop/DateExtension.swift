@@ -8,9 +8,37 @@
 
 import Foundation
 
-// From Alex Leite: https://github.com/al7/SwiftDateExtension
-
 extension NSDate {
+  
+  class func stringToDate(#year: Int, month: Int, day: Int) -> NSDate {
+    var components = NSDateComponents()
+    components.year = year
+    components.month = month
+    components.day = day
+    
+    var gregorianCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+    var date = gregorianCalendar!.dateFromComponents(components)
+    
+    return date!
+  }
+  
+  class func toString(#date: NSDate) -> String {
+    let dateStringFormatter = NSDateFormatter()
+    dateStringFormatter.dateFormat = "yyyy-MM-dd"
+    let dateString = dateStringFormatter.stringFromDate(date)
+    
+    return dateString
+  }
+  
+  class func toPrettyString(#date: NSDate) -> String {
+    let dateStringFormatter = NSDateFormatter()
+    dateStringFormatter.dateFormat = "E MMM d yyyy"
+    let dateString = dateStringFormatter.stringFromDate(date)
+    
+    return dateString
+  }
+  
+  // From Alex Leite: https://github.com/al7/SwiftDateExtension
   
   func plusDays(d: UInt) -> NSDate {
     return self.addComponentsToDate(seconds: 0, minutes: 0, hours: 0, days: Int(d), weeks: 0, months: 0, years: 0)
@@ -36,4 +64,5 @@ extension NSDate {
     dc.year = yrs
     return NSCalendar.currentCalendar().dateByAddingComponents(dc, toDate: self, options: nil)!
   }
+  
 }

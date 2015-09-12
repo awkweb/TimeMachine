@@ -11,29 +11,20 @@ import UIKit
 
 class DataController {
   
-  // Parse oauth token request
   class func jsonTokenParser(json: NSDictionary) -> [TokenModel] {
-    
     var tokenList: [TokenModel] = []
-    var token: TokenModel
     
     if json["access_token"] != nil {
-      
       let accessToken: String = json["access_token"]! as! String
       let expiresOn: NSDate = NSDate().plusDays(60)
-      
-      token = TokenModel(accessToken: accessToken, expiresOn: expiresOn)
+      let token = TokenModel(accessToken: accessToken, expiresOn: expiresOn)
       tokenList += [token]
-      
     }
     return tokenList
   }
   
-  // Parse posts request
   class func jsonPostsParser(json: NSDictionary) -> [ProductModel] {
-    
     var huntsList: [ProductModel] = []
-    var hunt: ProductModel
     
     if json["posts"] != nil {
       let posts: [AnyObject] = json["posts"]! as! [AnyObject]
@@ -55,10 +46,11 @@ class DataController {
         let userDictionary = post["user"] as! NSDictionary
         let hunter: String = userDictionary["name"]! as! String
         
-        hunt = ProductModel(id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, screenshotURL: screenshotURL, makerInside: makerInside, hunter: hunter)
+        let hunt = ProductModel(id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, screenshotURL: screenshotURL, makerInside: makerInside, hunter: hunter)
         huntsList += [hunt]
       }
     }
     return huntsList
   }
+  
 }

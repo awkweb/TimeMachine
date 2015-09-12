@@ -10,16 +10,12 @@
 		05102ACC1A63596F00951D74 /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05102ACB1A63596F00951D74 /* ColorConstants.swift */; };
 		05160F8A1AA2A66300353453 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05160F891AA2A66300353453 /* Constants.swift */; };
 		053509841A4A18DB00774B67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053509831A4A18DB00774B67 /* AppDelegate.swift */; };
-		053509891A4A18DB00774B67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053509881A4A18DB00774B67 /* ViewController.swift */; };
 		0535098C1A4A18DB00774B67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0535098A1A4A18DB00774B67 /* Main.storyboard */; };
 		0535098E1A4A18DB00774B67 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0535098D1A4A18DB00774B67 /* Images.xcassets */; };
 		053509911A4A18DB00774B67 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0535098F1A4A18DB00774B67 /* LaunchScreen.xib */; };
 		0535099D1A4A18DB00774B67 /* HuntTimehopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0535099C1A4A18DB00774B67 /* HuntTimehopTests.swift */; };
 		053509A71A4A34A100774B67 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053509A61A4A34A000774B67 /* DataController.swift */; };
-		054B4E9A1A4EFDEC00B05D65 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B4E991A4EFDEC00B05D65 /* Date.swift */; };
-		054B998F1A57166A000E4CCB /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B998E1A57166A000E4CCB /* AboutViewController.swift */; };
 		054B99911A57267B000E4CCB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B99901A57267B000E4CCB /* DateExtension.swift */; };
-		056EF0DC1A533B67008C9DDB /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056EF0DB1A533B67008C9DDB /* PostDetailsViewController.swift */; };
 		057FE1E51B8F4C2000EE6CDB /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057FE1E41B8F4C2000EE6CDB /* ApiController.swift */; };
 		058770401AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0587703F1AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift */; };
 		05A0F26A1A5AEA36003B0F52 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A0F2691A5AEA36003B0F52 /* ProductModel.swift */; };
@@ -30,9 +26,12 @@
 		05A1574F1A59EF2A00575912 /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A1574E1A59EF2A00575912 /* AboutCell.swift */; };
 		05A157511A5A00E400575912 /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A157501A5A00E400575912 /* AboutModel.swift */; };
 		05CC03EA1A50B45D0067EFF9 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CC03E91A50B45D0067EFF9 /* ProductCell.swift */; };
+		05D3EF251BA45D5A004BA4E8 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF201BA45D5A004BA4E8 /* AboutViewController.swift */; };
+		05D3EF261BA45D5A004BA4E8 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF211BA45D5A004BA4E8 /* FilterViewController.swift */; };
+		05D3EF271BA45D5A004BA4E8 /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF221BA45D5A004BA4E8 /* PostDetailsViewController.swift */; };
+		05D3EF281BA45D5A004BA4E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF231BA45D5A004BA4E8 /* ViewController.swift */; };
+		05D3EF291BA45D5A004BA4E8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF241BA45D5A004BA4E8 /* WebViewController.swift */; };
 		05D79BAA1A64502B004D959E /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D79BA91A64502B004D959E /* TokenModel.swift */; };
-		05D986911A5053690016A133 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D986901A5053690016A133 /* FilterViewController.swift */; };
-		05F7E0101AA2683900A444BA /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F7E00F1AA2683900A444BA /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +50,6 @@
 		0535097E1A4A18DB00774B67 /* HuntTimehop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuntTimehop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		053509821A4A18DB00774B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		053509831A4A18DB00774B67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		053509881A4A18DB00774B67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0535098B1A4A18DB00774B67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0535098D1A4A18DB00774B67 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		053509901A4A18DB00774B67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -59,10 +57,7 @@
 		0535099B1A4A18DB00774B67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0535099C1A4A18DB00774B67 /* HuntTimehopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuntTimehopTests.swift; sourceTree = "<group>"; };
 		053509A61A4A34A000774B67 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		054B4E991A4EFDEC00B05D65 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		054B998E1A57166A000E4CCB /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		054B99901A57267B000E4CCB /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		056EF0DB1A533B67008C9DDB /* PostDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
 		057FE1E41B8F4C2000EE6CDB /* ApiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; };
 		0587703F1AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIActivityTypeOpenInSafari.swift; sourceTree = "<group>"; };
 		05A0F2691A5AEA36003B0F52 /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
@@ -73,9 +68,12 @@
 		05A1574E1A59EF2A00575912 /* AboutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
 		05A157501A5A00E400575912 /* AboutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutModel.swift; sourceTree = "<group>"; };
 		05CC03E91A50B45D0067EFF9 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		05D3EF201BA45D5A004BA4E8 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = ViewControllers/AboutViewController.swift; sourceTree = "<group>"; };
+		05D3EF211BA45D5A004BA4E8 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterViewController.swift; path = ViewControllers/FilterViewController.swift; sourceTree = "<group>"; };
+		05D3EF221BA45D5A004BA4E8 /* PostDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostDetailsViewController.swift; path = ViewControllers/PostDetailsViewController.swift; sourceTree = "<group>"; };
+		05D3EF231BA45D5A004BA4E8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ViewControllers/ViewController.swift; sourceTree = "<group>"; };
+		05D3EF241BA45D5A004BA4E8 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ViewControllers/WebViewController.swift; sourceTree = "<group>"; };
 		05D79BA91A64502B004D959E /* TokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
-		05D986901A5053690016A133 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
-		05F7E00F1AA2683900A444BA /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +131,6 @@
 				05160F891AA2A66300353453 /* Constants.swift */,
 				057FE1E41B8F4C2000EE6CDB /* ApiController.swift */,
 				053509A61A4A34A000774B67 /* DataController.swift */,
-				054B4E991A4EFDEC00B05D65 /* Date.swift */,
 				054B99901A57267B000E4CCB /* DateExtension.swift */,
 				05102ACB1A63596F00951D74 /* ColorConstants.swift */,
 				0587703F1AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift */,
@@ -187,11 +184,11 @@
 		05D448211AEC884800326139 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				053509881A4A18DB00774B67 /* ViewController.swift */,
-				056EF0DB1A533B67008C9DDB /* PostDetailsViewController.swift */,
-				05D986901A5053690016A133 /* FilterViewController.swift */,
-				054B998E1A57166A000E4CCB /* AboutViewController.swift */,
-				05F7E00F1AA2683900A444BA /* WebViewController.swift */,
+				05D3EF201BA45D5A004BA4E8 /* AboutViewController.swift */,
+				05D3EF211BA45D5A004BA4E8 /* FilterViewController.swift */,
+				05D3EF221BA45D5A004BA4E8 /* PostDetailsViewController.swift */,
+				05D3EF231BA45D5A004BA4E8 /* ViewController.swift */,
+				05D3EF241BA45D5A004BA4E8 /* WebViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -297,26 +294,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05F7E0101AA2683900A444BA /* WebViewController.swift in Sources */,
 				058770401AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift in Sources */,
+				05D3EF291BA45D5A004BA4E8 /* WebViewController.swift in Sources */,
 				05D79BAA1A64502B004D959E /* TokenModel.swift in Sources */,
-				05D986911A5053690016A133 /* FilterViewController.swift in Sources */,
-				053509891A4A18DB00774B67 /* ViewController.swift in Sources */,
 				05102ACC1A63596F00951D74 /* ColorConstants.swift in Sources */,
-				054B4E9A1A4EFDEC00B05D65 /* Date.swift in Sources */,
 				05A0F26E1A5AF0C9003B0F52 /* StatsCell.swift in Sources */,
 				05A0F26C1A5AF060003B0F52 /* TitleCell.swift in Sources */,
 				05A157511A5A00E400575912 /* AboutModel.swift in Sources */,
-				054B998F1A57166A000E4CCB /* AboutViewController.swift in Sources */,
 				05A0F2721A5AF115003B0F52 /* ButtonCell.swift in Sources */,
 				054B99911A57267B000E4CCB /* DateExtension.swift in Sources */,
+				05D3EF271BA45D5A004BA4E8 /* PostDetailsViewController.swift in Sources */,
 				053509A71A4A34A100774B67 /* DataController.swift in Sources */,
 				057FE1E51B8F4C2000EE6CDB /* ApiController.swift in Sources */,
 				05A0F26A1A5AEA36003B0F52 /* ProductModel.swift in Sources */,
+				05D3EF251BA45D5A004BA4E8 /* AboutViewController.swift in Sources */,
+				05D3EF261BA45D5A004BA4E8 /* FilterViewController.swift in Sources */,
 				053509841A4A18DB00774B67 /* AppDelegate.swift in Sources */,
 				05160F8A1AA2A66300353453 /* Constants.swift in Sources */,
 				05A1574F1A59EF2A00575912 /* AboutCell.swift in Sources */,
-				056EF0DC1A533B67008C9DDB /* PostDetailsViewController.swift in Sources */,
+				05D3EF281BA45D5A004BA4E8 /* ViewController.swift in Sources */,
 				05CC03EA1A50B45D0067EFF9 /* ProductCell.swift in Sources */,
 				05A0F2701A5AF0F3003B0F52 /* ImageCell.swift in Sources */,
 			);

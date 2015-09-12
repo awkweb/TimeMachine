@@ -78,12 +78,7 @@ extension PostDetailsViewController: UITableViewDataSource {
       titleCell.taglineLabel.text = product.tagline
       titleCell.commentsLabel.text = "\(product.comments)"
       titleCell.hunterLabel.text = "via \(product.hunter)"
-      
-      if product.makerInside {
-        titleCell.makerImageView.hidden = false
-      } else if product.makerInside == false {
-        titleCell.makerImageView.hidden = true
-      }
+      titleCell.makerImageView.hidden = product.makerInside ? false : true
       titleCell.selectionStyle = .None
       return titleCell
     } else if indexPath.row == 1 {
@@ -92,11 +87,11 @@ extension PostDetailsViewController: UITableViewDataSource {
       
       let imageQueue: dispatch_queue_t = dispatch_queue_create("filter queue", nil)
       
-      dispatch_async(imageQueue, { () -> Void in
+      dispatch_async(imageQueue) {
         let url = NSURL(string: self.product.screenshotURL)!
         let data = NSData(contentsOfURL: url)
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        dispatch_async(dispatch_get_main_queue()) {
           if data != nil {
             imageCell.screenshotImageView.image = UIImage(data: data!)
           } else {
@@ -104,8 +99,8 @@ extension PostDetailsViewController: UITableViewDataSource {
             imageCell.screenshotImageView.contentMode = .Center
           }
           imageCell.activityIndicator.stopAnimating()
-        })
-      })
+        }
+      }
       return imageCell
     } else if indexPath.row == 2 {
       statsCell.idLabel.text = "\(product.id)"
@@ -122,6 +117,7 @@ extension PostDetailsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 4
   }
+  
 }
 
 
@@ -134,4 +130,5 @@ extension PostDetailsViewController: UITableViewDelegate {
       tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
   }
+  
 }

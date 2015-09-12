@@ -23,9 +23,7 @@ class WebViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     webView.delegate = self
-    
     openSite()
-    
     toolbar.barTintColor = .white()
     toolbar.tintColor = .orange()
     progressView.tintColor = .orange()

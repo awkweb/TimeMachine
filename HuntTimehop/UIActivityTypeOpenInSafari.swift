@@ -9,6 +9,7 @@
 import UIKit
 
 class UIActivityTypeOpenInSafari: UIActivity {
+  
   var activityURL = NSURL()
   
   override class func activityCategory() -> UIActivityCategory {
@@ -35,4 +36,5 @@ class UIActivityTypeOpenInSafari: UIActivity {
     UIApplication.sharedApplication().openURL(activityURL)
     self.activityDidFinish(true)
   }
+  
 }

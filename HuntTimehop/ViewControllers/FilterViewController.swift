@@ -31,7 +31,7 @@ class FilterViewController: UIViewController {
     getHuntsOnDateButton.backgroundColor = .orange()
     getHuntsOnDateButton.tintColor = .white()
     
-    datePicker.minimumDate = Date.toDate(year: 2013, month: 11, day: 24)
+    datePicker.minimumDate = NSDate.stringToDate(year: 2013, month: 11, day: 24)
     datePicker.maximumDate = NSDate()
     datePicker.date = mainVC.filterDate
   }
@@ -51,6 +51,6 @@ class FilterViewController: UIViewController {
   @IBAction func getPostsButtonPressed(sender: UIButton) {
     mainVC.filterDate = datePicker.date
     dismissViewControllerAnimated(true, completion: nil)
-    mainVC.checkForTokenAndShowPosts()
+    mainVC.authenticateAndGetPosts()
   }
 }
