@@ -13,7 +13,6 @@ class DataController {
   
   class func jsonTokenParser(json: NSDictionary) -> [TokenModel] {
     var tokenList: [TokenModel] = []
-    
     if json["access_token"] != nil {
       let accessToken: String = json["access_token"]! as! String
       let expiresOn: NSDate = NSDate().plusDays(60)
@@ -25,12 +24,10 @@ class DataController {
   
   class func jsonPostsParser(json: NSDictionary) -> [ProductModel] {
     var huntsList: [ProductModel] = []
-    
     if json["posts"] != nil {
       let posts: [AnyObject] = json["posts"]! as! [AnyObject]
       
       for post in posts {
-        
         let id: Int = post["id"]! as! Int
         let name: String = post["name"]! as! String
         let tagline: String = post["tagline"]! as! String

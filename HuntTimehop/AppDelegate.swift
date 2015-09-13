@@ -8,6 +8,11 @@
 
 import UIKit
 
+let accessToken = "accessTokenKey"
+let expiresOn = "expiresOnKey"
+let version = "1.3.0"
+let screenRect = UIScreen.mainScreen().bounds
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
@@ -17,5 +22,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     return true
   }
+  
 }
-

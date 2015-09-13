@@ -10,7 +10,6 @@ import UIKit
 
 class FilterViewController: UIViewController {
   
-  // MARK: - UI Elements
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var hintLabel: UILabel!
   @IBOutlet weak var datePicker: UIDatePicker!
@@ -19,9 +18,8 @@ class FilterViewController: UIViewController {
   
   var mainVC: ViewController!
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
     titleLabel.textColor = .grayD()
     hintLabel.textColor = .gray()
     datePicker.backgroundColor = .white()
@@ -36,10 +34,10 @@ class FilterViewController: UIViewController {
     datePicker.date = mainVC.filterDate
   }
   
-  // Detect shake
   override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
     if motion == .MotionShake {
-      mainVC.getRandomDate()
+      mainVC.filterDate = NSDate.getRandomDate()
+      mainVC.authenticateAndGetPosts()
       dismissViewControllerAnimated(true, completion: nil)
     }
   }
@@ -53,4 +51,5 @@ class FilterViewController: UIViewController {
     dismissViewControllerAnimated(true, completion: nil)
     mainVC.authenticateAndGetPosts()
   }
+  
 }

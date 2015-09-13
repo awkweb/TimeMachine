@@ -13,11 +13,11 @@ class UIActivityTypeOpenInSafari: UIActivity {
   var activityURL = NSURL()
   
   override class func activityCategory() -> UIActivityCategory {
-    return UIActivityCategory.Action
+    return .Action
   }
   
   override func activityTitle() -> String? {
-    return "Open In Safari"
+    return "Open in Safari"
   }
   
   override func activityImage() -> UIImage? {
@@ -34,7 +34,7 @@ class UIActivityTypeOpenInSafari: UIActivity {
   
   override func performActivity() {
     UIApplication.sharedApplication().openURL(activityURL)
-    self.activityDidFinish(true)
+    activityDidFinish(true)
   }
   
 }

@@ -18,10 +18,10 @@ class ProductCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    
     votesLabel.textColor = .gray()
     nameLabel.textColor = .grayD()
     taglineLabel.textColor = .grayD()
     commentsLabel.textColor = .gray()
   }
+  
 }

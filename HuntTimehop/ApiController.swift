@@ -10,20 +10,11 @@ import Foundation
 
 class ApiController {
   
+  private let apiConstants = ApiConstants()
   private let url = "https://api.producthunt.com/v1"
-  private let key = "246da01e5d0f2ce229ec3c995ea62296f31b2c56de446ff030fb31fa1d44bbca"
-  private let secret = "6350cf5d0aa725d897105b54723604f925d59df3e76070a24f9ccb57b6c2c498"
   
   func getUrl() -> String {
     return url
-  }
-  
-  func getKey() -> String {
-    return key
-  }
-  
-  func getSecret() -> String {
-    return secret
   }
   
   func getClientOnlyAuthenticationToken(callback: (Bool?, NSError?) -> ()) {
@@ -34,8 +25,8 @@ class ApiController {
     request.HTTPMethod = "POST"
     
     var params = [
-      "client_id": getKey(),
-      "client_secret": getSecret(),
+      "client_id": apiConstants.getKey(),
+      "client_secret": apiConstants.getSecret(),
       "grant_type": "client_credentials"
     ]
     

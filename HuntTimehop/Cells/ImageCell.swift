@@ -15,7 +15,7 @@ class ImageCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    
     activityIndicator.hidesWhenStopped = true
   }
+  
 }

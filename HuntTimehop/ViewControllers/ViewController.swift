@@ -10,11 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  // MARK: - UI Elements
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
-  // MARK: - API Variables
   let apiController = ApiController()
   var apiHuntsList: [ProductModel] = []
   var filterDate = NSDate().minusYears(1)
@@ -34,7 +32,7 @@ class ViewController: UIViewController {
     tableView.estimatedRowHeight = 80.0
     
     let kittyImage = UIImage(named: "kitty")
-    let hiddenImageView = UIImageView(frame: CGRect(x: kScreenRect.width/2 - 25, y: -75, width: 50, height: 46))
+    let hiddenImageView = UIImageView(frame: CGRect(x: screenRect.width/2 - 25, y: -75, width: 50, height: 46))
     hiddenImageView.image = kittyImage
     tableView.addSubview(hiddenImageView)
     tableView.tableFooterView = UIView()
@@ -70,8 +68,6 @@ class ViewController: UIViewController {
       detailVC.mainVC = self
     }
   }
-  
-  // MARK: - Helpers
   
   func authenticateAndGetPosts() {
     activityIndicator.startAnimating()
@@ -134,31 +130,24 @@ class ViewController: UIViewController {
     presentViewController(alert, animated: true, completion: nil)
   }
   
-  func getRandomDate() {
-    let daysAdded = UInt(arc4random_uniform(UInt32(kDaysBetweenDates)))
-    filterDate = NSDate.stringToDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
-    authenticateAndGetPosts()
-  }
-  
   override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
     if motion == .MotionShake {
-      getRandomDate()
+      filterDate = NSDate.getRandomDate()
+      authenticateAndGetPosts()
     }
   }
   
 }
 
 
-// MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCell
-    let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonCell") as! ButtonCell
-    
     if indexPath.row == apiHuntsList.count {
+      let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonCell") as! ButtonCell
       return buttonCell
     } else {
+      let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCell
       let product = apiHuntsList[indexPath.row]
       cell.votesLabel.text = "\(product.votes)"
       cell.nameLabel.text = product.name
@@ -181,9 +170,7 @@ extension ViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if indexPath.row == self.apiHuntsList.count {
-      let daysAdded = UInt(arc4random_uniform(UInt32(kDaysBetweenDates)))
-      let randomDate = NSDate.stringToDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
-      filterDate = randomDate
+      filterDate = NSDate.getRandomDate()
       authenticateAndGetPosts()
     } else {
       performSegueWithIdentifier("showPostDetailsVC", sender: self)

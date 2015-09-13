@@ -1,8 +1,8 @@
 //
-//  ColorConstants.swift
+//  ColorExtension.swift
 //  HuntTimehop
 //
-//  Created by thomas on 1/11/15.
+//  Created by thomas on 9/13/15.
 //  Copyright (c) 2015 thomas. All rights reserved.
 //
 

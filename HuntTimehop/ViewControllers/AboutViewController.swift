@@ -10,15 +10,13 @@ import UIKit
 
 class AboutViewController: UIViewController {
   
-  // MARK: - UI Elements
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var versionLabel: UILabel!
   
   var baseArray: [[AboutModel]] = []
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
     tableView.delegate = self
     tableView.dataSource = self
     
@@ -27,7 +25,6 @@ class AboutViewController: UIViewController {
     versionLabel.text = "Version \(version)"
     versionLabel.textColor = .gray()
     
-    // Set up tableView items
     let about0 = AboutModel(title: "Tom Meagher", url: "http://thomasmeagher.com")
     
     let aboutNP0 = AboutModel(title: "Austin Condiff", url: "http://www.austincondiff.com")
@@ -50,14 +47,14 @@ class AboutViewController: UIViewController {
     baseArray += [aboutArray, aboutNPArray, aboutPHArray]
     
     let tRexImage = UIImage(named: "trex")
-    let hiddenImageView = UIImageView(frame: CGRect(x: kScreenRect.width/2 - 37.5, y: -75, width: 75, height: 75))
+    let hiddenImageView = UIImageView(frame: CGRect(x: screenRect.width/2 - 37.5, y: -75, width: 75, height: 75))
     hiddenImageView.image = tRexImage
     tableView.addSubview(hiddenImageView)
   }
+  
 }
 
 
-// MARK: - UITableViewDataSource
 extension AboutViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -85,10 +82,10 @@ extension AboutViewController: UITableViewDataSource {
       return "Products Used"
     }
   }
+  
 }
 
 
-// MARK: - UITableViewDelegate
 extension AboutViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -98,4 +95,5 @@ extension AboutViewController: UITableViewDelegate {
     UIApplication.sharedApplication().openURL(url)
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
+  
 }

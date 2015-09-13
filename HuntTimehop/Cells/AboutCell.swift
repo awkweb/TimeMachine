@@ -14,7 +14,7 @@ class AboutCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    
     itemLabel.textColor = .grayD()
   }
+  
 }

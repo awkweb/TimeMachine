@@ -10,26 +10,20 @@ import UIKit
 
 class PostDetailsViewController: UIViewController {
   
-  // MARK: - UI Elements
   @IBOutlet weak var tableView: UITableView!
   
   var product: ProductModel!
   var mainVC: ViewController!
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
     tableView.delegate = self
     tableView.dataSource = self
     
     navigationItem.title = "Details"
     
-    if kScreenRect.width < 375.0 {
-      tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 40))
-    } else {
-      tableView.tableFooterView = UIView()
-    }
-    
+    tableView.tableFooterView = screenRect.width < 375.0 ?
+      UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 40)) : UIView()
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 100.0
   }
@@ -60,10 +54,10 @@ class PostDetailsViewController: UIViewController {
       webVC.product = product
     }
   }
+  
 }
 
 
-// MARK: - UITableViewDataSource
 extension PostDetailsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -121,7 +115,6 @@ extension PostDetailsViewController: UITableViewDataSource {
 }
 
 
-// MARK: - UITableViewDelegate
 extension PostDetailsViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

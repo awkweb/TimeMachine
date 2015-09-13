@@ -38,6 +38,14 @@ extension NSDate {
     return dateString
   }
   
+  class func getRandomDate() -> NSDate {
+    let firstDay = NSDate.stringToDate(year: 2013, month: 11, day: 24)
+    let daysBetweenFirstDayAndToday = NSDate.daysBetween(date1: firstDay, date2: NSDate())
+    let daysAdded = UInt(arc4random_uniform(UInt32(daysBetweenFirstDayAndToday)))
+    let randomDate = NSDate.stringToDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
+    return randomDate
+  }
+  
   // From Alex Leite: https://github.com/al7/SwiftDateExtension
   
   func plusDays(d: UInt) -> NSDate {
