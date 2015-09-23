@@ -62,7 +62,7 @@ class ViewController: UIViewController {
       filterVC.popoverPresentationController!.delegate = self
     } else if segue.identifier == "showPostDetailsVC" {
       let detailVC = segue.destinationViewController as! PostDetailsViewController
-      let indexPath = tableView.indexPathForSelectedRow()
+      let indexPath = tableView.indexPathForSelectedRow
       let product = apiHuntsList[indexPath!.row]
       detailVC.product = product
       detailVC.mainVC = self
@@ -130,7 +130,7 @@ class ViewController: UIViewController {
     presentViewController(alert, animated: true, completion: nil)
   }
   
-  override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+  override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
     if motion == .MotionShake {
       filterDate = NSDate.getRandomDate()
       authenticateAndGetPosts()

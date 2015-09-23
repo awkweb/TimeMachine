@@ -34,7 +34,7 @@ class FilterViewController: UIViewController {
     datePicker.date = mainVC.filterDate
   }
   
-  override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+  override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
     if motion == .MotionShake {
       mainVC.filterDate = NSDate.getRandomDate()
       mainVC.authenticateAndGetPosts()

@@ -18,35 +18,40 @@ class ApiController {
   }
   
   func getClientOnlyAuthenticationToken(callback: (Bool?, NSError?) -> ()) {
-    
     let url = NSURL(string: "\(getUrl())/oauth/token")
-    let request = NSMutableURLRequest(URL: url!)
-    let session = NSURLSession.sharedSession()
-    request.HTTPMethod = "POST"
-    
-    var params = [
+    let params = [
       "client_id": apiConstants.getKey(),
       "client_secret": apiConstants.getSecret(),
       "grant_type": "client_credentials"
     ]
     
-    var error: NSError?
+    let request = NSMutableURLRequest(URL: url!)
+    let session = NSURLSession.sharedSession()
+    request.HTTPMethod = "POST"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue("application/json", forHTTPHeaderField: "Accept")
-    request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &error)
+    do {
+      request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: [])
+    } catch {
+      request.HTTPBody = nil
+    }
     
-    var task = session.dataTaskWithRequest(request) {
+    let task = session.dataTaskWithRequest(request) {
       data, response, error in
-
-      var conversionError: NSError?
-      var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &conversionError) as? NSDictionary
-    
-      if let json = jsonDictionary {
-        let apiAccessToken = DataController.jsonTokenParser(json)
-        NSUserDefaults.standardUserDefaults().setObject(apiAccessToken[0].accessToken, forKey: accessToken)
-        NSUserDefaults.standardUserDefaults().setObject(apiAccessToken[0].expiresOn, forKey: expiresOn)
-        callback(true, nil)
-      } else {
+      
+      guard data != nil else {
+        callback(nil, error)
+        return
+      }
+      
+      do {
+        if let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary {
+          let apiAccessToken = DataController.jsonTokenParser(jsonDictionary)
+          NSUserDefaults.standardUserDefaults().setObject(apiAccessToken[0].accessToken, forKey: accessToken)
+          NSUserDefaults.standardUserDefaults().setObject(apiAccessToken[0].expiresOn, forKey: expiresOn)
+          callback(true, nil)
+        }
+      } catch let error as NSError {
         callback(nil, error)
       }
     }
@@ -56,27 +61,25 @@ class ApiController {
   func getPostsForDate(date: NSDate, callback: ([ProductModel]?, NSError?) -> ()) {
     let filterDate = NSDate.toString(date: date)
     let url = NSURL(string: "\(getUrl())/posts?day=\(filterDate)")
+    
     let request = NSMutableURLRequest(URL: url!)
     let session = NSURLSession.sharedSession()
     request.HTTPMethod = "GET"
-    
-    var error: NSError?
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue("Bearer \(NSUserDefaults.standardUserDefaults().objectForKey(accessToken) as! String)", forHTTPHeaderField: "Authorization")
     request.addValue("api.producthunt.com", forHTTPHeaderField: "Host")
     request.HTTPBody = nil
     
-    var task = session.dataTaskWithRequest(request) {
+    let task = session.dataTaskWithRequest(request) {
       data, response, error in
       
-      var conversionError: NSError?
-      var jsonDictionary = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &conversionError) as? NSDictionary
-      
-      if let json = jsonDictionary {
-        let apiHuntsList = DataController.jsonPostsParser(json)
-        callback(apiHuntsList, nil)
-      } else {
+      do {
+        if let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary {
+          let apiHuntsList = DataController.jsonPostsParser(jsonDictionary)
+          callback(apiHuntsList, nil)
+        }
+      } catch let error as NSError {
         callback(nil, error)
       }
     }

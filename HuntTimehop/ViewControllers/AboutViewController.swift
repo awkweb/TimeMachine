@@ -40,9 +40,9 @@ class AboutViewController: UIViewController {
     let aboutPH6 = AboutModel(title: "The Complete iOS 8 Course", url: "http://www.producthunt.com/posts/the-complete-ios8-course")
     let aboutPH7 = AboutModel(title: "The Noun Project", url: "http://www.producthunt.com/posts/the-noun-project")
     
-    var aboutArray = [about0]
-    var aboutNPArray = [aboutNP0, aboutNP1, aboutNP2]
-    var aboutPHArray = [aboutPH0, aboutPH1, aboutPH2, aboutPH3, aboutPH4, aboutPH5, aboutPH6, aboutPH7]
+    let aboutArray = [about0]
+    let aboutNPArray = [aboutNP0, aboutNP1, aboutNP2]
+    let aboutPHArray = [aboutPH0, aboutPH1, aboutPH2, aboutPH3, aboutPH4, aboutPH5, aboutPH6, aboutPH7]
     
     baseArray += [aboutArray, aboutNPArray, aboutPHArray]
     

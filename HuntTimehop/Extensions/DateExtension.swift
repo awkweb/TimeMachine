@@ -10,19 +10,19 @@ import Foundation
 
 extension NSDate {
   
-  class func stringToDate(#year: Int, month: Int, day: Int) -> NSDate {
-    var components = NSDateComponents()
+  class func stringToDate(year year: Int, month: Int, day: Int) -> NSDate {
+    let components = NSDateComponents()
     components.year = year
     components.month = month
     components.day = day
     
-    var gregorianCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
-    var date = gregorianCalendar!.dateFromComponents(components)
+    let gregorianCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+    let date = gregorianCalendar!.dateFromComponents(components)
     
     return date!
   }
   
-  class func toString(#date: NSDate) -> String {
+  class func toString(date date: NSDate) -> String {
     let dateStringFormatter = NSDateFormatter()
     dateStringFormatter.dateFormat = "yyyy-MM-dd"
     let dateString = dateStringFormatter.stringFromDate(date)
@@ -30,7 +30,7 @@ extension NSDate {
     return dateString
   }
   
-  class func toPrettyString(#date: NSDate) -> String {
+  class func toPrettyString(date date: NSDate) -> String {
     let dateStringFormatter = NSDateFormatter()
     dateStringFormatter.dateFormat = "E MMM d yyyy"
     let dateString = dateStringFormatter.stringFromDate(date)
@@ -53,7 +53,7 @@ extension NSDate {
   }
   
   class func daysBetween(date1 d1: NSDate, date2 d2: NSDate) -> Int {
-    let dc = NSCalendar.currentCalendar().components(NSCalendarUnit.CalendarUnitDay, fromDate: d1, toDate: d2, options: nil)
+    let dc = NSCalendar.currentCalendar().components(NSCalendarUnit.Day, fromDate: d1, toDate: d2, options: [])
     return dc.day
   }
   
@@ -62,7 +62,7 @@ extension NSDate {
   }
   
   func addComponentsToDate(seconds sec: Int, minutes min: Int, hours hrs: Int, days d: Int, weeks wks: Int, months mts: Int, years yrs: Int) -> NSDate {
-    var dc:NSDateComponents = NSDateComponents()
+    let dc:NSDateComponents = NSDateComponents()
     dc.second = sec
     dc.minute = min
     dc.hour = hrs
@@ -70,7 +70,7 @@ extension NSDate {
     dc.weekOfYear = wks
     dc.month = mts
     dc.year = yrs
-    return NSCalendar.currentCalendar().dateByAddingComponents(dc, toDate: self, options: nil)!
+    return NSCalendar.currentCalendar().dateByAddingComponents(dc, toDate: self, options: [])!
   }
   
 }
