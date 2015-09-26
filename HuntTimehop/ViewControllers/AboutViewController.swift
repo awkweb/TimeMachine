@@ -90,7 +90,6 @@ extension AboutViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let thisAbout = baseArray[indexPath.section][indexPath.row]
-    let cell = tableView.dequeueReusableCellWithIdentifier("AboutCell") as! AboutCell
     let url = NSURL(string: thisAbout.url)!
     UIApplication.sharedApplication().openURL(url)
     tableView.deselectRowAtIndexPath(indexPath, animated: true)

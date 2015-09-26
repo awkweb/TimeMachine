@@ -36,9 +36,6 @@ class ViewController: UIViewController {
     hiddenImageView.image = kittyImage
     tableView.addSubview(hiddenImageView)
     tableView.tableFooterView = UIView()
-    
-    activityIndicator.hidesWhenStopped = true
-
   }
   
   override func viewDidLoad() {
@@ -70,6 +67,7 @@ class ViewController: UIViewController {
   }
   
   func authenticateAndGetPosts() {
+    activityIndicator.hidesWhenStopped = true
     activityIndicator.startAnimating()
     tableView.hidden = true
     let today = NSDate.toString(date: NSDate())
@@ -79,7 +77,8 @@ class ViewController: UIViewController {
       apiController.getClientOnlyAuthenticationToken {
         success, error in
         if (error != nil) {
-          self.showAlertWithHeaderTextAndMessage("Oops :(", message: "Unable to get posts", actionMessage: "Okay")
+          self.activityIndicator.stopAnimating()
+          self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error!.localizedDescription)", actionMessage: "Okay")
         } else {
           self.apiController.getPostsForDate(self.filterDate) {
             objects, error in
@@ -87,8 +86,8 @@ class ViewController: UIViewController {
               self.apiHuntsList = objects
               self.displayPostsInTableView()
             } else {
-              self.showAlertWithHeaderTextAndMessage("Oops", message: "Unable to get posts", actionMessage: "Okay")
               self.activityIndicator.stopAnimating()
+              self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error!.localizedDescription)", actionMessage: "Okay")
             }
           }
         }
@@ -100,8 +99,8 @@ class ViewController: UIViewController {
           self.apiHuntsList = objects
           self.displayPostsInTableView()
         } else {
-          self.showAlertWithHeaderTextAndMessage("Oops :(", message: "Unable to get posts", actionMessage: "Okay")
-          self.activityIndicator.stopAnimating() // TODO: Display kitty or something else
+          self.activityIndicator.stopAnimating()
+          self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error!.localizedDescription)", actionMessage: "Okay")
         }
       }
     }
@@ -191,5 +190,3 @@ extension ViewController: UIPopoverPresentationControllerDelegate {
   }
   
 }
-
-

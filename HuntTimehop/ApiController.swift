@@ -74,11 +74,15 @@ class ApiController {
     let task = session.dataTaskWithRequest(request) {
       data, response, error in
       
+      guard data != nil else {
+        callback(nil, error)
+        return
+      }
+      
       do {
-        if let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary {
-          let apiHuntsList = DataController.jsonPostsParser(jsonDictionary)
-          callback(apiHuntsList, nil)
-        }
+        let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
+        let apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
+        callback(apiHuntsList, nil)
       } catch let error as NSError {
         callback(nil, error)
       }
