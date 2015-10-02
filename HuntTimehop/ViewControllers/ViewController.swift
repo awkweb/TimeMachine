@@ -17,8 +17,11 @@ class ViewController: UIViewController {
   var apiHuntsList: [ProductModel] = []
   var filterDate = NSDate().minusYears(1)
   
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
+  var reloadImageView = UIImageView()
+  var reloadButton = UIButton()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     tableView.delegate = self
     tableView.dataSource = self
     
@@ -35,11 +38,23 @@ class ViewController: UIViewController {
     let hiddenImageView = UIImageView(frame: CGRect(x: screenRect.width/2 - 25, y: -75, width: 50, height: 46))
     hiddenImageView.image = kittyImage
     tableView.addSubview(hiddenImageView)
-    tableView.tableFooterView = UIView()
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
+    tableView.tableFooterView = UIView() // TODO: Remove?
+    
+    reloadImageView = UIImageView(frame: CGRect(x: screenRect.width/2 - 25, y: screenRect.height/2 - 65, width: 50, height: 46))
+    reloadImageView.image = kittyImage
+    reloadImageView.hidden = true
+    view.addSubview(reloadImageView)
+    
+    reloadButton = UIButton(frame: CGRect(x: screenRect.width/2 - 70, y: screenRect.height/2, width: 140, height: 36))
+    reloadButton.setTitle("Reload Posts", forState: .Normal)
+    reloadButton.titleLabel!.font = UIFont.boldSystemFontOfSize(16)
+    reloadButton.tintColor = .white()
+    reloadButton.backgroundColor = .orange()
+    reloadButton.layer.cornerRadius = reloadButton.frame.height/2
+    reloadButton.addTarget(self, action: "reloadButtonPressed:", forControlEvents: .TouchUpInside)
+    reloadButton.hidden = true
+    view.addSubview(reloadButton)
+    
     tableView.reloadData()
   }
   
@@ -70,6 +85,8 @@ class ViewController: UIViewController {
     activityIndicator.hidesWhenStopped = true
     activityIndicator.startAnimating()
     tableView.hidden = true
+    reloadImageView.hidden = true
+    reloadButton.hidden = true
     let today = NSDate.toString(date: NSDate())
     
     if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) == nil ||
@@ -77,7 +94,6 @@ class ViewController: UIViewController {
       apiController.getClientOnlyAuthenticationToken {
         success, error in
         if (error != nil) {
-          self.activityIndicator.stopAnimating()
           self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error!.localizedDescription)", actionMessage: "Okay")
         } else {
           self.apiController.getPostsForDate(self.filterDate) {
@@ -86,7 +102,6 @@ class ViewController: UIViewController {
               self.apiHuntsList = objects
               self.displayPostsInTableView()
             } else {
-              self.activityIndicator.stopAnimating()
               self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error!.localizedDescription)", actionMessage: "Okay")
             }
           }
@@ -99,28 +114,44 @@ class ViewController: UIViewController {
           self.apiHuntsList = objects
           self.displayPostsInTableView()
         } else {
-          self.activityIndicator.stopAnimating()
-          self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error!.localizedDescription)", actionMessage: "Okay")
+          self.displayReloadButtonForError(error)
         }
       }
     }
   }
   
   func displayPostsInTableView() {
-    if self.apiHuntsList.count == 0 {
-      self.showAlertWithHeaderTextAndMessage("Hey", message: "There aren't any posts on \(NSDate.toPrettyString(date: self.filterDate)).", actionMessage: "Okay")
-    }
-    
     dispatch_async(dispatch_get_main_queue()) {
+      if self.apiHuntsList.count == 0 {
+        self.showAlertWithHeaderTextAndMessage("Hey",
+          message: "There aren't any posts on \(NSDate.toPrettyString(date: self.filterDate)).", actionMessage: "Okay")
+      }
+      if self.filterDate == NSDate.stringToDate(year: 2013, month: 11, day: 24) {
+        self.showAlertWithHeaderTextAndMessage("Hey 😺",
+          message: "You made it back to Product Hunt's first day!", actionMessage: "Okay")
+      }
       self.navigationItem.title = NSDate.toPrettyString(date: self.filterDate)
       self.tableView.reloadData()
-      self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+      self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
+        atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
       self.activityIndicator.stopAnimating()
       self.tableView.hidden = false
-      if self.filterDate == NSDate.stringToDate(year: 2013, month: 11, day: 24) {
-        self.showAlertWithHeaderTextAndMessage("Hey 😺", message: "You made it back to Product Hunt's first day!", actionMessage: "Okay")
-      }
     }
+  }
+  
+  func displayReloadButtonForError(error: NSError?) {
+    dispatch_async(dispatch_get_main_queue()) {
+      if let error = error {
+        self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error.localizedDescription)", actionMessage: "Okay")
+      }
+      self.activityIndicator.stopAnimating()
+      self.reloadImageView.hidden = false
+      self.reloadButton.hidden = false
+    }
+  }
+  
+  func reloadButtonPressed(sender: UIButton!) {
+    authenticateAndGetPosts()
   }
   
   func showAlertWithHeaderTextAndMessage(header: String, message: String, actionMessage: String) {

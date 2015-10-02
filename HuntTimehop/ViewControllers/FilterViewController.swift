@@ -28,7 +28,7 @@ class FilterViewController: UIViewController {
     cancelButton.tintColor = .white()
     getHuntsOnDateButton.backgroundColor = .orange()
     getHuntsOnDateButton.tintColor = .white()
-    
+        
     datePicker.minimumDate = NSDate.stringToDate(year: 2013, month: 11, day: 24)
     datePicker.maximumDate = NSDate()
     datePicker.date = mainVC.filterDate

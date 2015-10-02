@@ -18,7 +18,6 @@ extension NSDate {
     
     let gregorianCalendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
     let date = gregorianCalendar!.dateFromComponents(components)
-    
     return date!
   }
   
@@ -26,7 +25,6 @@ extension NSDate {
     let dateStringFormatter = NSDateFormatter()
     dateStringFormatter.dateFormat = "yyyy-MM-dd"
     let dateString = dateStringFormatter.stringFromDate(date)
-    
     return dateString
   }
   
@@ -34,7 +32,6 @@ extension NSDate {
     let dateStringFormatter = NSDateFormatter()
     dateStringFormatter.dateFormat = "E MMM d yyyy"
     let dateString = dateStringFormatter.stringFromDate(date)
-    
     return dateString
   }
   
@@ -46,7 +43,7 @@ extension NSDate {
     return randomDate
   }
   
-  // From Alex Leite: https://github.com/al7/SwiftDateExtension
+  // Below from Alex Leite: https://github.com/al7/SwiftDateExtension
   
   func plusDays(d: UInt) -> NSDate {
     return self.addComponentsToDate(seconds: 0, minutes: 0, hours: 0, days: Int(d), weeks: 0, months: 0, years: 0)
@@ -61,7 +58,8 @@ extension NSDate {
     return self.addComponentsToDate(seconds: 0, minutes: 0, hours: 0, days: 0, weeks: 0, months: 0, years: -Int(y))
   }
   
-  func addComponentsToDate(seconds sec: Int, minutes min: Int, hours hrs: Int, days d: Int, weeks wks: Int, months mts: Int, years yrs: Int) -> NSDate {
+  func addComponentsToDate(seconds sec: Int, minutes min: Int, hours hrs: Int,
+    days d: Int, weeks wks: Int, months mts: Int, years yrs: Int) -> NSDate {
     let dc:NSDateComponents = NSDateComponents()
     dc.second = sec
     dc.minute = min
