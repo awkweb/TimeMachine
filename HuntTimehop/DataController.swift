@@ -39,11 +39,12 @@ class DataController {
         let screenshotURL: String = screenshotDictionary["850px"]! as! String
         
         let makerInside: Bool = post["maker_inside"]! as! Bool
+        let exclusive: String = post["exclusive"]! as! String
         
         let userDictionary = post["user"] as! NSDictionary
         let hunter: String = userDictionary["name"]! as! String
         
-        let hunt = ProductModel(id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, screenshotURL: screenshotURL, makerInside: makerInside, hunter: hunter)
+        let hunt = ProductModel(id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, screenshotURL: screenshotURL, makerInside: makerInside, exclusive: exclusive, hunter: hunter)
         huntsList += [hunt]
       }
     }

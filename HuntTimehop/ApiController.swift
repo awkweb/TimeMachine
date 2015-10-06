@@ -81,6 +81,7 @@ class ApiController {
       
       do {
         let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
+        print(jsonDictionary)
         let apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
         callback(apiHuntsList, nil)
       } catch let error as NSError {
