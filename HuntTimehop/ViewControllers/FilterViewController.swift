@@ -37,7 +37,7 @@ class FilterViewController: UIViewController {
   override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
     if motion == .MotionShake {
       mainVC.filterDate = NSDate.getRandomDate()
-      mainVC.authenticateAndGetPosts()
+      // mainVC.authenticateAndGetPosts()
       dismissViewControllerAnimated(true, completion: nil)
     }
   }
@@ -49,7 +49,7 @@ class FilterViewController: UIViewController {
   @IBAction func getPostsButtonPressed(sender: UIButton) {
     mainVC.filterDate = datePicker.date
     dismissViewControllerAnimated(true, completion: nil)
-    mainVC.authenticateAndGetPosts()
+    // mainVC.authenticateAndGetPosts()
   }
   
 }
