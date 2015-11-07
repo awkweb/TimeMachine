@@ -96,7 +96,7 @@ class ViewController: UIViewController {
         if (error != nil) {
           self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error!.localizedDescription)", actionMessage: "Okay")
         } else {
-          self.apiController.getPostsForDate(self.filterDate) {
+          self.apiController.getPostsForCategoryAndDate("tech", date: self.filterDate) {
             objects, error in
             if let objects = objects as [ProductModel]! {
               self.apiHuntsList = objects
@@ -108,7 +108,7 @@ class ViewController: UIViewController {
         }
       }
     } else {
-      self.apiController.getPostsForDate(self.filterDate) {
+      self.apiController.getPostsForCategoryAndDate("tech", date: self.filterDate) {
         objects, error in
         if let objects = objects as [ProductModel]! {
           self.apiHuntsList = objects

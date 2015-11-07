@@ -15,6 +15,7 @@
 		053509A71A4A34A100774B67 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053509A61A4A34A000774B67 /* DataController.swift */; };
 		057FE1E51B8F4C2000EE6CDB /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057FE1E41B8F4C2000EE6CDB /* ApiController.swift */; };
 		058770401AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0587703F1AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift */; };
+		05A408B51BED7FF100AF42AA /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A408B41BED7FF100AF42AA /* Categories.swift */; };
 		05D3EF251BA45D5A004BA4E8 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF201BA45D5A004BA4E8 /* AboutViewController.swift */; };
 		05D3EF261BA45D5A004BA4E8 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF211BA45D5A004BA4E8 /* FilterViewController.swift */; };
 		05D3EF271BA45D5A004BA4E8 /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF221BA45D5A004BA4E8 /* PostDetailsViewController.swift */; };
@@ -57,6 +58,7 @@
 		053509A61A4A34A000774B67 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		057FE1E41B8F4C2000EE6CDB /* ApiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; };
 		0587703F1AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIActivityTypeOpenInSafari.swift; sourceTree = "<group>"; };
+		05A408B41BED7FF100AF42AA /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		05D3EF201BA45D5A004BA4E8 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = ViewControllers/AboutViewController.swift; sourceTree = "<group>"; };
 		05D3EF211BA45D5A004BA4E8 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterViewController.swift; path = ViewControllers/FilterViewController.swift; sourceTree = "<group>"; };
 		05D3EF221BA45D5A004BA4E8 /* PostDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostDetailsViewController.swift; path = ViewControllers/PostDetailsViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				0539DCAF1A5CB3F0005965BD /* Cells */,
 				0539DCB01A5CB404005965BD /* Models */,
 				053509821A4A18DB00774B67 /* Info.plist */,
+				05A408B41BED7FF100AF42AA /* Categories.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				05ECCDBB1BA5AAA400C1DF09 /* ApiConstants.swift in Sources */,
 				05ECCDAC1BA5A84100C1DF09 /* ProductCell.swift in Sources */,
 				05ECCDB41BA5A87100C1DF09 /* TokenModel.swift in Sources */,
+				05A408B51BED7FF100AF42AA /* Categories.swift in Sources */,
 				053509841A4A18DB00774B67 /* AppDelegate.swift in Sources */,
 				05D3EF281BA45D5A004BA4E8 /* ViewController.swift in Sources */,
 				05ECCDB31BA5A87100C1DF09 /* ProductModel.swift in Sources */,

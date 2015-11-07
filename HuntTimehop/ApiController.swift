@@ -58,9 +58,9 @@ class ApiController {
     task.resume()
   }
   
-  func getPostsForDate(date: NSDate, callback: ([ProductModel]?, NSError?) -> ()) {
+  func getPostsForCategoryAndDate(category: String, date: NSDate, callback: ([ProductModel]?, NSError?) -> ()) {
     let filterDate = NSDate.toString(date: date)
-    let url = NSURL(string: "\(getUrl())/posts?day=\(filterDate)")
+    let url = NSURL(string: "\(getUrl())/categories/\(category)/posts?day=\(filterDate)")
     
     let request = NSMutableURLRequest(URL: url!)
     let session = NSURLSession.sharedSession()
@@ -81,7 +81,6 @@ class ApiController {
       
       do {
         let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
-        print(jsonDictionary)
         let apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
         callback(apiHuntsList, nil)
       } catch let error as NSError {
