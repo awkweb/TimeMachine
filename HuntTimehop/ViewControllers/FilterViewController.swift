@@ -17,6 +17,7 @@ class FilterViewController: UIViewController {
   @IBOutlet weak var getHuntsOnDateButton: UIButton!
   
   var mainVC: ViewController!
+  var selectedVC: PostsViewController!
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -26,19 +27,19 @@ class FilterViewController: UIViewController {
     datePicker.tintColor = .grayD()
     cancelButton.backgroundColor = .blue()
     cancelButton.tintColor = .white()
-    getHuntsOnDateButton.backgroundColor = .orange()
+    getHuntsOnDateButton.backgroundColor = .red()
     getHuntsOnDateButton.tintColor = .white()
         
-    datePicker.minimumDate = NSDate.stringToDate(year: 2013, month: 11, day: 24)
+    datePicker.minimumDate = selectedVC.category!.origin
     datePicker.maximumDate = NSDate()
-    datePicker.date = mainVC.filterDate
+    datePicker.date = selectedVC.filterDate
   }
   
   override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
     if motion == .MotionShake {
-      mainVC.filterDate = NSDate.getRandomDate()
-      // mainVC.authenticateAndGetPosts()
+      selectedVC.filterDate = NSDate.getRandomDateWithOrigin(selectedVC.category!.origin)
       dismissViewControllerAnimated(true, completion: nil)
+      selectedVC.authenticateAndGetPosts()
     }
   }
   
@@ -47,9 +48,9 @@ class FilterViewController: UIViewController {
   }
   
   @IBAction func getPostsButtonPressed(sender: UIButton) {
-    mainVC.filterDate = datePicker.date
+    selectedVC.filterDate = datePicker.date
     dismissViewControllerAnimated(true, completion: nil)
-    // mainVC.authenticateAndGetPosts()
+    selectedVC.authenticateAndGetPosts()
   }
   
 }

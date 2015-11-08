@@ -16,30 +16,35 @@ class PostsViewController: UIViewController {
   let apiController = ApiController()
   var apiHuntsList: [ProductModel] = []
   var filterDate = NSDate().minusYears(1)
-  
+  var category: Category?
+
   var reloadImageView = UIImageView()
   var reloadButton = UIButton()
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    super.navigationItem.title = NSDate.toPrettyString(date: filterDate)
+    self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
+      atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.delegate = self
     tableView.dataSource = self
     
+    filterDate = filterDate.isLessThan(category!.origin) ? category!.origin : filterDate
     authenticateAndGetPosts()
     
     navigationController?.navigationBar.barTintColor = .white()
-    navigationController?.navigationBar.tintColor = .orange()
+    navigationController?.navigationBar.tintColor = .red()
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     tableView.backgroundColor = .grayL()
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 80.0
+    tableView.tableFooterView = UIView()
     
     let kittyImage = UIImage(named: "kitty")
-    let hiddenImageView = UIImageView(frame: CGRect(x: screenRect.width/2 - 25, y: -75, width: 50, height: 46))
-    hiddenImageView.image = kittyImage
-    tableView.addSubview(hiddenImageView)
-    tableView.tableFooterView = UIView() // TODO: Remove?
-    
     reloadImageView = UIImageView(frame: CGRect(x: screenRect.width/2 - 25, y: screenRect.height/2 - 65, width: 50, height: 46))
     reloadImageView.image = kittyImage
     reloadImageView.hidden = true
@@ -49,7 +54,7 @@ class PostsViewController: UIViewController {
     reloadButton.setTitle("Reload Posts", forState: .Normal)
     reloadButton.titleLabel!.font = UIFont.boldSystemFontOfSize(16)
     reloadButton.tintColor = .white()
-    reloadButton.backgroundColor = .orange()
+    reloadButton.backgroundColor = .red()
     reloadButton.layer.cornerRadius = reloadButton.frame.height/2
     reloadButton.addTarget(self, action: "reloadButtonPressed:", forControlEvents: .TouchUpInside)
     reloadButton.hidden = true
@@ -73,7 +78,7 @@ class PostsViewController: UIViewController {
           if (error != nil) {
             self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error!.localizedDescription)", actionMessage: "Okay")
           } else {
-            self.apiController.getPostsForCategoryAndDate("tech", date: self.filterDate) {
+            self.apiController.getPostsForCategoryAndDate(self.category!.name.lowercaseString, date: self.filterDate) {
               objects, error in
               if let objects = objects as [ProductModel]! {
                 self.apiHuntsList = objects
@@ -85,7 +90,7 @@ class PostsViewController: UIViewController {
           }
         }
     } else {
-      self.apiController.getPostsForCategoryAndDate("tech", date: self.filterDate) {
+      self.apiController.getPostsForCategoryAndDate(self.category!.name.lowercaseString, date: self.filterDate) {
         objects, error in
         if let objects = objects as [ProductModel]! {
           self.apiHuntsList = objects
@@ -139,7 +144,7 @@ class PostsViewController: UIViewController {
   
   override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
     if motion == .MotionShake {
-      filterDate = NSDate.getRandomDate()
+      filterDate = NSDate.getRandomDateWithOrigin(category!.origin)
       authenticateAndGetPosts()
     }
   }
@@ -177,7 +182,7 @@ extension PostsViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if indexPath.row == self.apiHuntsList.count {
-      filterDate = NSDate.getRandomDate()
+      filterDate = NSDate.getRandomDateWithOrigin(category!.origin)
       authenticateAndGetPosts()
     } else {
       performSegueWithIdentifier("showPostDetailsVC", sender: self)

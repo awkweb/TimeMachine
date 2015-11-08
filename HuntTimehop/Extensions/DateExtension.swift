@@ -35,11 +35,10 @@ extension NSDate {
     return dateString
   }
   
-  class func getRandomDate() -> NSDate {
-    let firstDay = NSDate.stringToDate(year: 2013, month: 11, day: 24)
-    let daysBetweenFirstDayAndToday = NSDate.daysBetween(date1: firstDay, date2: NSDate())
+  class func getRandomDateWithOrigin(origin: NSDate) -> NSDate {
+    let daysBetweenFirstDayAndToday = NSDate.daysBetween(date1: origin, date2: NSDate())
     let daysAdded = UInt(arc4random_uniform(UInt32(daysBetweenFirstDayAndToday)))
-    let randomDate = NSDate.stringToDate(year: 2013, month: 11, day: 24).plusDays(daysAdded)
+    let randomDate = origin.plusDays(daysAdded)
     return randomDate
   }
   
@@ -52,6 +51,10 @@ extension NSDate {
   class func daysBetween(date1 d1: NSDate, date2 d2: NSDate) -> Int {
     let dc = NSCalendar.currentCalendar().components(NSCalendarUnit.Day, fromDate: d1, toDate: d2, options: [])
     return dc.day
+  }
+  
+  public func isLessThan(date: NSDate) -> Bool {
+    return (self.compare(date) == .OrderedAscending)
   }
   
   func minusYears(y: UInt) -> NSDate {

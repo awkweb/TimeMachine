@@ -98,7 +98,7 @@ extension PostDetailsViewController: UITableViewDataSource {
       return imageCell
     } else if indexPath.row == 2 {
       statsCell.idLabel.text = "\(product.id)"
-      let daysBetweenDates = NSDate.daysBetween(date1: mainVC.filterDate, date2: NSDate())
+      let daysBetweenDates = NSDate.daysBetween(date1: NSDate(), date2: NSDate())
       statsCell.daysAgoLabel.text = "\(daysBetweenDates)"
       statsCell.selectionStyle = .None
       return statsCell

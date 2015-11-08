@@ -11,28 +11,36 @@ import UIKit
 
 extension UIColor {
   
-  class func orange() -> UIColor {
-    return UIColor(red: (241/255.0), green: (73/255.0), blue: (52/255.0), alpha: 1.0)
+  class func red() -> UIColor {
+    return UIColor(red: 0.85, green: 0.33, blue: 0.18, alpha: 1)
   }
   
   class func green() -> UIColor {
-    return UIColor(red: (72/255.0), green: (172/255.0), blue: (130/255.0), alpha: 1.0)
+    return UIColor(red: 0.16, green: 0.7, blue: 0.5, alpha: 1)
   }
   
   class func blue() -> UIColor {
-    return UIColor(red: (0/255.0), green: (139/255.0), blue: (218/255.0), alpha: 1.0)
+    return UIColor(red: 0.35, green: 0.6, blue: 0.95, alpha: 1)
   }
   
-  class func grayD() -> UIColor {
-    return UIColor(red: (64/255.0), green: (49/255.0), blue: (45/255.0), alpha: 1.0)
+  class func purple() -> UIColor {
+    return UIColor(red: 0.79, green: 0.4, blue: 0.91, alpha: 1)
+  }
+  
+  class func orange() -> UIColor {
+    return UIColor(red: 0.97, green: 0.73, blue: 0.33, alpha: 1)
   }
   
   class func gray() -> UIColor {
-    return UIColor(red: (153/255.0), green: (153/255.0), blue: (153/255.0), alpha: 1.0)
+    return UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+  }
+  
+  class func grayD() -> UIColor {
+    return UIColor(red: 0.25, green: 0.19, blue: 0.176, alpha: 1)
   }
   
   class func grayL() -> UIColor {
-    return UIColor(red: (237/255.0), green: (236/255.0), blue: (235/255.0), alpha: 1.0)
+    return UIColor(red: 0.929, green: 0.925, blue: 0.92, alpha: 1)
   }
   
   class func white() -> UIColor {

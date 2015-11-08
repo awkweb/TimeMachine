@@ -14,7 +14,7 @@
 		0535099D1A4A18DB00774B67 /* HuntTimehopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0535099C1A4A18DB00774B67 /* HuntTimehopTests.swift */; };
 		0574A1D11BEE458000917A0D /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1CF1BEE458000917A0D /* ApiController.swift */; };
 		0574A1D21BEE458000917A0D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D01BEE458000917A0D /* DataController.swift */; };
-		0574A1D41BEE459800917A0D /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D31BEE459800917A0D /* Categories.swift */; };
+		0574A1D41BEE459800917A0D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D31BEE459800917A0D /* Category.swift */; };
 		0574A1DC1BEE45C500917A0D /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D61BEE45C500917A0D /* AboutCell.swift */; };
 		0574A1DD1BEE45C500917A0D /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D71BEE45C500917A0D /* ButtonCell.swift */; };
 		0574A1DE1BEE45C500917A0D /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D81BEE45C500917A0D /* ImageCell.swift */; };
@@ -59,7 +59,7 @@
 		0535099C1A4A18DB00774B67 /* HuntTimehopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuntTimehopTests.swift; sourceTree = "<group>"; };
 		0574A1CF1BEE458000917A0D /* ApiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; };
 		0574A1D01BEE458000917A0D /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		0574A1D31BEE459800917A0D /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Categories.swift; path = Models/Categories.swift; sourceTree = "<group>"; };
+		0574A1D31BEE459800917A0D /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = Models/Category.swift; sourceTree = "<group>"; };
 		0574A1D61BEE45C500917A0D /* AboutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
 		0574A1D71BEE45C500917A0D /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		0574A1D81BEE45C500917A0D /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		0539DCB01A5CB404005965BD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0574A1D31BEE459800917A0D /* Categories.swift */,
+				0574A1D31BEE459800917A0D /* Category.swift */,
 				05ECCDAF1BA5A87100C1DF09 /* AboutModel.swift */,
 				05ECCDB01BA5A87100C1DF09 /* ProductModel.swift */,
 				05ECCDB11BA5A87100C1DF09 /* TokenModel.swift */,
@@ -336,7 +336,7 @@
 				05ECCDB91BA5A89B00C1DF09 /* DateExtension.swift in Sources */,
 				0574A1D11BEE458000917A0D /* ApiController.swift in Sources */,
 				058770401AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift in Sources */,
-				0574A1D41BEE459800917A0D /* Categories.swift in Sources */,
+				0574A1D41BEE459800917A0D /* Category.swift in Sources */,
 				05D3EF291BA45D5A004BA4E8 /* WebViewController.swift in Sources */,
 				0574A1E51BEE45E500917A0D /* PostsViewController.swift in Sources */,
 				05D3EF271BA45D5A004BA4E8 /* PostDetailsViewController.swift in Sources */,

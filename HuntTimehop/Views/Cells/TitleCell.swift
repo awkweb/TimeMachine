@@ -20,7 +20,7 @@ class TitleCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     votesLabel.textColor = .gray()
-    nameLabel.textColor = .orange()
+    nameLabel.textColor = .red()
     taglineLabel.textColor = .grayD()
     commentsLabel.textColor = .gray()
     hunterLabel.textColor = .gray()

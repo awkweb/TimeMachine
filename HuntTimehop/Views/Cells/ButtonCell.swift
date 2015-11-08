@@ -14,7 +14,7 @@ class ButtonCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    buttonLabel.textColor = .orange()
+    buttonLabel.textColor = .red()
   }
   
 }
