@@ -12,18 +12,23 @@ class PostsViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+  @IBOutlet weak var tabBar: UITabBar!
   
   let apiController = ApiController()
   var apiHuntsList: [ProductModel] = []
   var filterDate = NSDate().minusYears(1)
-  var category: Category?
+  
+  let techCategory = Category(name: "Tech", originDate: NSDate.stringToDate(year: 2013, month: 11, day: 24), color: .blue())
+  let gamesCategory = Category(name: "Games", originDate: NSDate.stringToDate(year: 2015, month: 5, day: 6), color: .purple())
+  let booksCategory = Category(name: "Books", originDate: NSDate.stringToDate(year: 2015, month: 6, day: 25), color: .orange())
+  let podcastsCategory = Category(name: "Podcasts", originDate: NSDate.stringToDate(year: 2015, month: 9, day: 18), color: .green())
+  var activeCategory: Category!
 
   var reloadImageView = UIImageView()
   var reloadButton = UIButton()
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
-    super.navigationItem.title = NSDate.toPrettyString(date: filterDate)
     self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
       atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
   }
@@ -33,12 +38,25 @@ class PostsViewController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     
-    filterDate = filterDate.isLessThan(category!.origin) ? category!.origin : filterDate
+    activeCategory = techCategory
+    
+    filterDate = filterDate.isLessThan(activeCategory.originDate) ? activeCategory.originDate : filterDate
     authenticateAndGetPosts()
     
+    navigationItem.title = "Tech"
     navigationController?.navigationBar.barTintColor = .white()
     navigationController?.navigationBar.tintColor = .red()
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+    
+    let techTabBarItem = UITabBarItem(title: "Tech", image: UIImage(named: "about"), selectedImage: UIImage(named: "close"))
+    let gamesTabBarItem = UITabBarItem(title: "Games", image: UIImage(named: "about"), selectedImage: UIImage(named: "close"))
+    let booksTabBarItem = UITabBarItem(title: "Books", image: UIImage(named: "about"), selectedImage: UIImage(named: "close"))
+    let podcastsTabBarItem = UITabBarItem(title: "Podcasts", image: UIImage(named: "about"), selectedImage: UIImage(named: "close"))
+    tabBar.items = [techTabBarItem, gamesTabBarItem, booksTabBarItem, podcastsTabBarItem]
+    tabBar.tintColor = .red()
+    tabBar.backgroundColor = .white()
+    tabBar.delegate = self
+    
     tableView.backgroundColor = .grayL()
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 80.0
@@ -63,6 +81,29 @@ class PostsViewController: UIViewController {
     tableView.reloadData()
   }
   
+  @IBAction func filterButtonTapped(sender: UIBarButtonItem) {
+    performSegueWithIdentifier("showFilterVC", sender: self)
+  }
+  
+  @IBAction func aboutButtonTapped(sender: UIBarButtonItem) {
+    performSegueWithIdentifier("showAboutVC", sender: self)
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "showPostDetailsVC" {
+      let detailVC = segue.destinationViewController as! PostDetailsViewController
+      let indexPath = tableView.indexPathForSelectedRow
+      let product = apiHuntsList[indexPath!.row]
+      detailVC.product = product
+      detailVC.filterDate = filterDate
+    } else if segue.identifier == "popoverFilterVC" {
+      let filterVC = segue.destinationViewController as! FilterViewController
+      filterVC.postsVC = self
+      filterVC.modalPresentationStyle = .Popover
+      filterVC.popoverPresentationController!.delegate = self
+    }
+  }
+  
   func authenticateAndGetPosts() {
     activityIndicator.hidesWhenStopped = true
     activityIndicator.startAnimating()
@@ -78,7 +119,7 @@ class PostsViewController: UIViewController {
           if (error != nil) {
             self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error!.localizedDescription)", actionMessage: "Okay")
           } else {
-            self.apiController.getPostsForCategoryAndDate(self.category!.name.lowercaseString, date: self.filterDate) {
+            self.apiController.getPostsForCategoryAndDate(self.activeCategory.name.lowercaseString, date: self.filterDate) {
               objects, error in
               if let objects = objects as [ProductModel]! {
                 self.apiHuntsList = objects
@@ -90,7 +131,7 @@ class PostsViewController: UIViewController {
           }
         }
     } else {
-      self.apiController.getPostsForCategoryAndDate(self.category!.name.lowercaseString, date: self.filterDate) {
+      self.apiController.getPostsForCategoryAndDate(self.activeCategory.name.lowercaseString, date: self.filterDate) {
         objects, error in
         if let objects = objects as [ProductModel]! {
           self.apiHuntsList = objects
@@ -144,7 +185,7 @@ class PostsViewController: UIViewController {
   
   override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
     if motion == .MotionShake {
-      filterDate = NSDate.getRandomDateWithOrigin(category!.origin)
+      filterDate = NSDate.getRandomDateWithOrigin(activeCategory.originDate)
       authenticateAndGetPosts()
     }
   }
@@ -170,8 +211,16 @@ extension PostsViewController: UITableViewDataSource {
     }
   }
   
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return 1
+  }
+  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return apiHuntsList.count + 1
+  }
+  
+  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return NSDate.toPrettyString(date: filterDate)
   }
   
 }
@@ -182,7 +231,7 @@ extension PostsViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if indexPath.row == self.apiHuntsList.count {
-      filterDate = NSDate.getRandomDateWithOrigin(category!.origin)
+      filterDate = NSDate.getRandomDateWithOrigin(activeCategory.originDate)
       authenticateAndGetPosts()
     } else {
       performSegueWithIdentifier("showPostDetailsVC", sender: self)
@@ -190,6 +239,27 @@ extension PostsViewController: UITableViewDelegate {
       cell.selectionStyle = UITableViewCellSelectionStyle.None
     }
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  }
+  
+}
+
+
+// MARK: - UITabBarDelegate
+extension PostsViewController: UITabBarDelegate {
+  
+  func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+    switch item.title! {
+    case "Books":
+      activeCategory = booksCategory
+    case "Games":
+      activeCategory = gamesCategory
+    case "Podcasts":
+      activeCategory = podcastsCategory
+    default:
+      activeCategory = techCategory
+    }
+    authenticateAndGetPosts()
+    tableView.reloadData()
   }
   
 }

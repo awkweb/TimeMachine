@@ -11,7 +11,6 @@ import UIKit
 class AboutViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var versionLabel: UILabel!
   
   var baseArray: [[AboutModel]] = []
   
@@ -22,8 +21,11 @@ class AboutViewController: UIViewController {
     
     navigationItem.title = "About"
     tableView.backgroundColor = .grayL()
-    versionLabel.text = "Version \(version)"
-    versionLabel.textColor = .gray()
+    
+    let tRexImage = UIImage(named: "trex")
+    let hiddenImageView = UIImageView(frame: CGRect(x: screenRect.width/2 - 37.5, y: -75, width: 75, height: 75))
+    hiddenImageView.image = tRexImage
+    tableView.addSubview(hiddenImageView)
     
     let about0 = AboutModel(title: "Tom Meagher", url: "http://thomasmeagher.com")
     
@@ -45,11 +47,6 @@ class AboutViewController: UIViewController {
     let aboutPHArray = [aboutPH0, aboutPH1, aboutPH2, aboutPH3, aboutPH4, aboutPH5, aboutPH6, aboutPH7]
     
     baseArray += [aboutArray, aboutNPArray, aboutPHArray]
-    
-    let tRexImage = UIImage(named: "trex")
-    let hiddenImageView = UIImageView(frame: CGRect(x: screenRect.width/2 - 37.5, y: -75, width: 75, height: 75))
-    hiddenImageView.image = tRexImage
-    tableView.addSubview(hiddenImageView)
   }
   
 }

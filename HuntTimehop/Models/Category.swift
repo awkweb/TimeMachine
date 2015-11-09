@@ -18,6 +18,6 @@ import UIKit
 
 struct Category {
   var name: String
-  var origin: NSDate
+  var originDate: NSDate
   var color: UIColor
 }
