@@ -27,22 +27,23 @@ class AboutViewController: UIViewController {
     hiddenImageView.image = tRexImage
     tableView.addSubview(hiddenImageView)
     
-    let about0 = AboutModel(title: "Tom Meagher", url: "http://thomasmeagher.com")
+    let about0 = AboutModel(title: "Tom Meagher", detail:  "@thomasmeagher", url: "http://thomasmeagher.com")
+    let about1 = AboutModel(title: "Version", detail: version, url: nil)
     
-    let aboutNP0 = AboutModel(title: "Austin Condiff", url: "http://www.austincondiff.com")
-    let aboutNP1 = AboutModel(title: "Jardson Almeida", url: "https://dribbble.com/jardson")
-    let aboutNP2 = AboutModel(title: "Kiran Malladi", url: "http://thenounproject.com/ichiban")
+    let aboutNP0 = AboutModel(title: "Austin Condiff", detail: nil, url: "http://www.austincondiff.com")
+    let aboutNP1 = AboutModel(title: "Jardson Almeida", detail: nil, url: "https://dribbble.com/jardson")
+    let aboutNP2 = AboutModel(title: "Kiran Malladi", detail: nil, url: "http://thenounproject.com/ichiban")
     
-    let aboutPH0 = AboutModel(title: "App Screenshot Builder", url: "http://www.producthunt.com/posts/app-screenshot-builder")
-    let aboutPH1 = AboutModel(title: "GitHub for Mac", url: "http://www.producthunt.com/posts/github-for-mac")
-    let aboutPH2 = AboutModel(title: "Make App Icon", url: "http://www.producthunt.com/posts/make-app-icon")
-    let aboutPH3 = AboutModel(title: "Product Hunt API", url: "http://www.producthunt.com/posts/product-hunt-api-beta")
-    let aboutPH4 = AboutModel(title: "Sketch 3", url: "http://www.producthunt.com/posts/sketch-3")
-    let aboutPH5 = AboutModel(title: "Swift", url: "http://www.producthunt.com/posts/swift")
-    let aboutPH6 = AboutModel(title: "The Complete iOS 8 Course", url: "http://www.producthunt.com/posts/the-complete-ios8-course")
-    let aboutPH7 = AboutModel(title: "The Noun Project", url: "http://www.producthunt.com/posts/the-noun-project")
+    let aboutPH0 = AboutModel(title: "App Screenshot Builder", detail: nil, url: "http://www.producthunt.com/posts/app-screenshot-builder")
+    let aboutPH1 = AboutModel(title: "GitHub for Mac", detail: nil, url: "http://www.producthunt.com/posts/github-for-mac")
+    let aboutPH2 = AboutModel(title: "Make App Icon", detail: nil, url: "http://www.producthunt.com/posts/make-app-icon")
+    let aboutPH3 = AboutModel(title: "Product Hunt API", detail: nil, url: "http://www.producthunt.com/posts/product-hunt-api-beta")
+    let aboutPH4 = AboutModel(title: "Sketch 3", detail: nil, url: "http://www.producthunt.com/posts/sketch-3")
+    let aboutPH5 = AboutModel(title: "Swift", detail: nil, url: "http://www.producthunt.com/posts/swift")
+    let aboutPH6 = AboutModel(title: "The Complete iOS 8 Course", detail: nil, url: "http://www.producthunt.com/posts/the-complete-ios8-course")
+    let aboutPH7 = AboutModel(title: "The Noun Project", detail: nil, url: "http://www.producthunt.com/posts/the-noun-project")
     
-    let aboutArray = [about0]
+    let aboutArray = [about0, about1]
     let aboutNPArray = [aboutNP0, aboutNP1, aboutNP2]
     let aboutPHArray = [aboutPH0, aboutPH1, aboutPH2, aboutPH3, aboutPH4, aboutPH5, aboutPH6, aboutPH7]
     
@@ -62,7 +63,14 @@ extension AboutViewController: UITableViewDataSource {
     let thisAbout = baseArray[indexPath.section][indexPath.row]
     let cell = tableView.dequeueReusableCellWithIdentifier("AboutCell") as! AboutCell
     cell.itemLabel.text = thisAbout.title
-    cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+    if let detail = thisAbout.detail {
+      cell.detailLabel.text = detail
+    } else {
+      cell.detailLabel.hidden = true
+    }
+    if thisAbout.url != nil {
+      cell.accessoryType = .DisclosureIndicator
+    }
     return cell
   }
   
@@ -87,8 +95,10 @@ extension AboutViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let thisAbout = baseArray[indexPath.section][indexPath.row]
-    let url = NSURL(string: thisAbout.url)!
-    UIApplication.sharedApplication().openURL(url)
+    if let url = thisAbout.url {
+      let url = NSURL(string: url)!
+      UIApplication.sharedApplication().openURL(url)
+    }
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
   

@@ -27,12 +27,6 @@ class PostsViewController: UIViewController {
   var reloadImageView = UIImageView()
   var reloadButton = UIButton()
   
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
-      atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
-  }
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.delegate = self
@@ -43,7 +37,7 @@ class PostsViewController: UIViewController {
     filterDate = filterDate.isLessThan(activeCategory.originDate) ? activeCategory.originDate : filterDate
     authenticateAndGetPosts()
     
-    navigationItem.title = "Tech"
+    navigationItem.title = activeCategory.name
     navigationController?.navigationBar.barTintColor = .white()
     navigationController?.navigationBar.tintColor = .red()
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
@@ -153,7 +147,6 @@ class PostsViewController: UIViewController {
         self.showAlertWithHeaderTextAndMessage("Hey 😺",
           message: "You made it back to Product Hunt's first day!", actionMessage: "Okay")
       }
-      self.navigationItem.title = NSDate.toPrettyString(date: self.filterDate)
       self.tableView.reloadData()
       self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
         atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
@@ -258,6 +251,8 @@ extension PostsViewController: UITabBarDelegate {
     default:
       activeCategory = techCategory
     }
+    navigationItem.title = activeCategory.name
+    filterDate = filterDate.isLessThan(activeCategory.originDate) ? activeCategory.originDate : filterDate
     authenticateAndGetPosts()
     tableView.reloadData()
   }

@@ -558,16 +558,26 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRo-LE-qIT">
+                                                    <rect key="frame" x="497" y="9" width="90" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstItem="NsR-yy-TfD" firstAttribute="leading" secondItem="D02-i7-FgW" secondAttribute="leadingMargin" constant="9" id="295-c8-Vfl"/>
                                                 <constraint firstAttribute="centerY" secondItem="NsR-yy-TfD" secondAttribute="centerY" id="ZW4-So-rqa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="oRo-LE-qIT" secondAttribute="trailing" constant="10" id="vtM-VF-KLX"/>
+                                                <constraint firstItem="oRo-LE-qIT" firstAttribute="top" secondItem="D02-i7-FgW" secondAttribute="topMargin" constant="1" id="wpP-ab-GnY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="detailLabel" destination="oRo-LE-qIT" id="SRH-KD-LHr"/>
                                             <outlet property="itemLabel" destination="NsR-yy-TfD" id="xUm-eE-Ydr"/>
                                         </connections>
                                     </tableViewCell>
@@ -604,13 +614,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="80" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="M4K-hw-flj" userLabel="Product table view">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M4K-hw-flj" userLabel="Product table view">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <animations/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationLevel="15" indentationWidth="0.0" reuseIdentifier="ProductCell" id="eWt-Px-nMH" userLabel="Product table view cell" customClass="ProductCell" customModule="HuntTimehop" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="114" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eWt-Px-nMH" id="sQ3-qC-3dA">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
@@ -718,7 +728,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationLevel="15" indentationWidth="15" reuseIdentifier="ButtonCell" id="U54-IU-RFe" userLabel="Button table view cell" customClass="ButtonCell" customModule="HuntTimehop" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="194" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="172" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U54-IU-RFe" id="wxC-WK-iAi">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
