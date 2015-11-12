@@ -11,19 +11,19 @@ import UIKit
 
 class DataController {
   
-  class func jsonTokenParser(json: NSDictionary) -> [TokenModel] {
-    var tokenList: [TokenModel] = []
+  class func jsonTokenParser(json: NSDictionary) -> [Token] {
+    var tokenList: [Token] = []
     if json["access_token"] != nil {
       let accessToken: String = json["access_token"]! as! String
       let expiresOn: NSDate = NSDate().plusDays(60)
-      let token = TokenModel(accessToken: accessToken, expiresOn: expiresOn)
+      let token = Token(accessToken: accessToken, expiresOn: expiresOn)
       tokenList += [token]
     }
     return tokenList
   }
   
-  class func jsonPostsParser(json: NSDictionary) -> [ProductModel] {
-    var huntsList: [ProductModel] = []
+  class func jsonPostsParser(json: NSDictionary) -> [Product] {
+    var huntsList: [Product] = []
     if json["posts"] != nil {
       let posts: [AnyObject] = json["posts"]! as! [AnyObject]
       
@@ -43,7 +43,7 @@ class DataController {
         let userDictionary = post["user"] as! NSDictionary
         let hunter: String = userDictionary["name"]! as! String
         
-        let hunt = ProductModel(id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, screenshotURL: screenshotURL, makerInside: makerInside, hunter: hunter)
+        let hunt = Product(id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, screenshotURL: screenshotURL, makerInside: makerInside, hunter: hunter)
         huntsList += [hunt]
       }
     }

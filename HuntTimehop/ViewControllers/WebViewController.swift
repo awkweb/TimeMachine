@@ -15,7 +15,7 @@ class WebViewController: UIViewController {
   @IBOutlet weak var toolbar: UIToolbar!
   @IBOutlet weak var progressView: UIProgressView!
   
-  var product: ProductModel!
+  var product: Product!
   var detailVC: PostDetailsViewController!
   var progressComplete = false
   var progressTimer = NSTimer()

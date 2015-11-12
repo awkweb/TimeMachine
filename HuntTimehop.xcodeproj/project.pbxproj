@@ -28,8 +28,8 @@
 		05D3EF271BA45D5A004BA4E8 /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF221BA45D5A004BA4E8 /* PostDetailsViewController.swift */; };
 		05D3EF291BA45D5A004BA4E8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF241BA45D5A004BA4E8 /* WebViewController.swift */; };
 		05ECCDB21BA5A87100C1DF09 /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECCDAF1BA5A87100C1DF09 /* AboutModel.swift */; };
-		05ECCDB31BA5A87100C1DF09 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECCDB01BA5A87100C1DF09 /* ProductModel.swift */; };
-		05ECCDB41BA5A87100C1DF09 /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECCDB11BA5A87100C1DF09 /* TokenModel.swift */; };
+		05ECCDB31BA5A87100C1DF09 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECCDB01BA5A87100C1DF09 /* Product.swift */; };
+		05ECCDB41BA5A87100C1DF09 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECCDB11BA5A87100C1DF09 /* Token.swift */; };
 		05ECCDB81BA5A89B00C1DF09 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECCDB61BA5A89B00C1DF09 /* ColorExtension.swift */; };
 		05ECCDB91BA5A89B00C1DF09 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECCDB71BA5A89B00C1DF09 /* DateExtension.swift */; };
 		05ECCDBB1BA5AAA400C1DF09 /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECCDBA1BA5AAA400C1DF09 /* ApiConstants.swift */; };
@@ -71,8 +71,8 @@
 		05D3EF221BA45D5A004BA4E8 /* PostDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostDetailsViewController.swift; path = ViewControllers/PostDetailsViewController.swift; sourceTree = "<group>"; };
 		05D3EF241BA45D5A004BA4E8 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ViewControllers/WebViewController.swift; sourceTree = "<group>"; };
 		05ECCDAF1BA5A87100C1DF09 /* AboutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutModel.swift; path = Models/AboutModel.swift; sourceTree = "<group>"; };
-		05ECCDB01BA5A87100C1DF09 /* ProductModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductModel.swift; path = Models/ProductModel.swift; sourceTree = "<group>"; };
-		05ECCDB11BA5A87100C1DF09 /* TokenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenModel.swift; path = Models/TokenModel.swift; sourceTree = "<group>"; };
+		05ECCDB01BA5A87100C1DF09 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Models/Product.swift; sourceTree = "<group>"; };
+		05ECCDB11BA5A87100C1DF09 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Token.swift; path = Models/Token.swift; sourceTree = "<group>"; };
 		05ECCDB61BA5A89B00C1DF09 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = Extensions/ColorExtension.swift; sourceTree = "<group>"; };
 		05ECCDB71BA5A89B00C1DF09 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateExtension.swift; path = Extensions/DateExtension.swift; sourceTree = "<group>"; };
 		05ECCDBA1BA5AAA400C1DF09 /* ApiConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
@@ -163,8 +163,8 @@
 			children = (
 				0574A1D31BEE459800917A0D /* Category.swift */,
 				05ECCDAF1BA5A87100C1DF09 /* AboutModel.swift */,
-				05ECCDB01BA5A87100C1DF09 /* ProductModel.swift */,
-				05ECCDB11BA5A87100C1DF09 /* TokenModel.swift */,
+				05ECCDB01BA5A87100C1DF09 /* Product.swift */,
+				05ECCDB11BA5A87100C1DF09 /* Token.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -341,10 +341,10 @@
 				0574A1DC1BEE45C500917A0D /* AboutCell.swift in Sources */,
 				0574A1E01BEE45C500917A0D /* StatsCell.swift in Sources */,
 				0574A1E11BEE45C500917A0D /* TitleCell.swift in Sources */,
-				05ECCDB41BA5A87100C1DF09 /* TokenModel.swift in Sources */,
+				05ECCDB41BA5A87100C1DF09 /* Token.swift in Sources */,
 				053509841A4A18DB00774B67 /* AppDelegate.swift in Sources */,
 				0574A1D21BEE458000917A0D /* DataController.swift in Sources */,
-				05ECCDB31BA5A87100C1DF09 /* ProductModel.swift in Sources */,
+				05ECCDB31BA5A87100C1DF09 /* Product.swift in Sources */,
 				05ECCDB81BA5A89B00C1DF09 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

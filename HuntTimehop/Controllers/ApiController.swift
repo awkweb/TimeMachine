@@ -58,7 +58,7 @@ class ApiController {
     task.resume()
   }
   
-  func getPostsForCategoryAndDate(category: String, date: NSDate, callback: ([ProductModel]?, NSError?) -> ()) {
+  func getPostsForCategoryAndDate(category: String, date: NSDate, callback: ([Product]?, NSError?) -> ()) {
     let filterDate = NSDate.toString(date: date)
     let url = NSURL(string: "\(getUrl())/categories/\(category)/posts?day=\(filterDate)")
     

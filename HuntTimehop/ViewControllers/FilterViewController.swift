@@ -31,12 +31,12 @@ class FilterViewController: UIViewController {
         
     datePicker.minimumDate = postsVC.activeCategory.originDate
     datePicker.maximumDate = NSDate()
-    datePicker.date = postsVC.filterDate
+    datePicker.date = postsVC.activeCategory.filterDate
   }
   
   override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
     if motion == .MotionShake {
-      postsVC.filterDate = NSDate.getRandomDateWithOrigin(postsVC.activeCategory.originDate)
+      postsVC.activeCategory.filterDate = NSDate.getRandomDateWithOrigin(postsVC.activeCategory.originDate)
       dismissViewControllerAnimated(true, completion: nil)
       postsVC.authenticateAndGetPosts()
     }
@@ -47,7 +47,7 @@ class FilterViewController: UIViewController {
   }
   
   @IBAction func getPostsButtonPressed(sender: UIButton) {
-    postsVC.filterDate = datePicker.date
+    postsVC.activeCategory.filterDate = datePicker.date
     dismissViewControllerAnimated(true, completion: nil)
     postsVC.authenticateAndGetPosts()
   }

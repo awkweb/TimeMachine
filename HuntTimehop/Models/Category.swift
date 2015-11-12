@@ -9,15 +9,17 @@
 import Foundation
 import UIKit
 
-//enum Categories: String {
-//  case Books = "books"
-//  case Games = "games"
-//  case Podcasts = "podcasts"
-//  case Tech = "tech"
-//}
-
-struct Category {
-  var name: String
-  var originDate: NSDate
-  var color: UIColor
+class Category {
+  var name: String!
+  var color: UIColor!
+  var originDate: NSDate!
+  var filterDate: NSDate = NSDate().minusYears(1)
+  var products: [Product] = []
+  
+  init(name: String, color: UIColor, originDate: NSDate) {
+    self.name = name
+    self.color = color
+    self.originDate = originDate
+  }
+  
 }

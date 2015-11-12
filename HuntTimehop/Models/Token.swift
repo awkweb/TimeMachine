@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TokenModel {
+struct Token {
   var accessToken: String
   var expiresOn: NSDate
 }

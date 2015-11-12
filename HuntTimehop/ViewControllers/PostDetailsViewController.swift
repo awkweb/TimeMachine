@@ -12,7 +12,7 @@ class PostDetailsViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
-  var product: ProductModel!
+  var product: Product!
   var filterDate: NSDate!
   
   override func viewWillAppear(animated: Bool) {
