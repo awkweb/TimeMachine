@@ -43,10 +43,10 @@ class PostsViewController: UIViewController {
     let booksTabBarItem = UITabBarItem(title: "Books", image: UIImage(named: "about"), selectedImage: UIImage(named: "close"))
     let podcastsTabBarItem = UITabBarItem(title: "Podcasts", image: UIImage(named: "about"), selectedImage: UIImage(named: "close"))
     tabBar.items = [techTabBarItem, gamesTabBarItem, booksTabBarItem, podcastsTabBarItem]
+    tabBar.selectedItem = techTabBarItem
     tabBar.tintColor = .red()
     tabBar.backgroundColor = .white()
     tabBar.delegate = self
-    // TODO: Make tabBar tech item active
     
     tableView.backgroundColor = .grayL()
     tableView.rowHeight = UITableViewAutomaticDimension
@@ -68,8 +68,6 @@ class PostsViewController: UIViewController {
     reloadButton.addTarget(self, action: "reloadButtonPressed:", forControlEvents: .TouchUpInside)
     reloadButton.hidden = true
     view.addSubview(reloadButton)
-    
-    tableView.reloadData()
   }
   
   @IBAction func filterButtonTapped(sender: UIBarButtonItem) {
@@ -87,6 +85,7 @@ class PostsViewController: UIViewController {
       let product = activeCategory.products[indexPath!.row]
       detailsVC.product = product
       detailsVC.filterDate = activeCategory.filterDate
+      detailsVC.color = activeCategory.color
     } else if segue.identifier == "popoverFilterVC" {
       let filterVC = segue.destinationViewController as! FilterViewController // TODO: Is this true MVC?
       filterVC.postsVC = self
@@ -95,7 +94,7 @@ class PostsViewController: UIViewController {
     }
   }
   
-  func authenticateAndGetPosts() {
+  internal func authenticateAndGetPosts() {
     activityIndicator.hidesWhenStopped = true
     activityIndicator.startAnimating()
     tableView.hidden = true
@@ -104,12 +103,12 @@ class PostsViewController: UIViewController {
     let today = NSDate.toString(date: NSDate())
     let filterDate = activeCategory.filterDate
     
-    if NSUserDefaults.standardUserDefaults().objectForKey(accessToken) == nil ||
-      NSDate.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiresOn) as! NSDate)) == today {
+    if NSUserDefaults.standardUserDefaults().objectForKey(key) == nil ||
+      NSDate.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiryDate) as! NSDate)) == today {
         apiController.getClientOnlyAuthenticationToken {
           success, error in
-          if (error != nil) {
-            self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error!.localizedDescription)", actionMessage: "Okay")
+          if let error = error {
+            self.displayReloadButtonWithError(error)
           } else {
             self.apiController.getPostsForCategoryAndDate(self.activeCategory.name.lowercaseString, date: filterDate) {
               objects, error in
@@ -129,13 +128,13 @@ class PostsViewController: UIViewController {
           self.activeCategory.products = objects
           self.displayPostsInTableView()
         } else {
-          self.displayReloadButtonForError(error)
+          self.displayReloadButtonWithError(error)
         }
       }
     }
   }
   
-  func displayPostsInTableView() {
+  private func displayPostsInTableView() {
     dispatch_async(dispatch_get_main_queue()) {
       let filterDate = self.activeCategory.filterDate
       if self.activeCategory.products.count == 0 {
@@ -154,7 +153,7 @@ class PostsViewController: UIViewController {
     }
   }
   
-  func displayReloadButtonForError(error: NSError?) {
+  private func displayReloadButtonWithError(error: NSError?) {
     dispatch_async(dispatch_get_main_queue()) {
       if let error = error {
         self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error.localizedDescription)", actionMessage: "Okay")
@@ -165,11 +164,11 @@ class PostsViewController: UIViewController {
     }
   }
   
-  func reloadButtonPressed(sender: UIButton!) {
+  private func reloadButtonPressed(sender: UIButton!) {
     authenticateAndGetPosts()
   }
   
-  func showAlertWithHeaderTextAndMessage(header: String, message: String, actionMessage: String) {
+  private func showAlertWithHeaderTextAndMessage(header: String, message: String, actionMessage: String) {
     let alert = UIAlertController(title: header, message: message, preferredStyle: .Alert)
     alert.addAction(UIAlertAction(title: actionMessage, style: .Default, handler: nil))
     presentViewController(alert, animated: true, completion: nil)
@@ -228,7 +227,7 @@ extension PostsViewController: UITableViewDelegate {
     } else {
       performSegueWithIdentifier("showPostDetailsVC", sender: self)
       let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCell
-      cell.selectionStyle = UITableViewCellSelectionStyle.None
+      cell.selectionStyle = .None
     }
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }

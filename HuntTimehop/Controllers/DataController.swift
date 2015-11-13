@@ -11,21 +11,20 @@ import UIKit
 
 class DataController {
   
-  class func jsonTokenParser(json: NSDictionary) -> [Token] {
-    var tokenList: [Token] = []
-    if json["access_token"] != nil {
-      let accessToken: String = json["access_token"]! as! String
-      let expiresOn: NSDate = NSDate().plusDays(60)
-      let token = Token(accessToken: accessToken, expiresOn: expiresOn)
-      tokenList += [token]
+  class func jsonTokenParser(json: NSDictionary) -> Token? {
+    var token: Token?
+    if let json = json["access_token"] {
+      let key: String = json as! String
+      let expiryDate: NSDate = NSDate().plusDays(60)
+      token = Token(key: key, expiryDate: expiryDate)
     }
-    return tokenList
+    return token
   }
   
   class func jsonPostsParser(json: NSDictionary) -> [Product] {
-    var huntsList: [Product] = []
-    if json["posts"] != nil {
-      let posts: [AnyObject] = json["posts"]! as! [AnyObject]
+    var products: [Product] = []
+    if let json = json["posts"] {
+      let posts: [AnyObject] = json as! [AnyObject]
       
       for post in posts {
         let id: Int = post["id"]! as! Int
@@ -40,14 +39,22 @@ class DataController {
         
         let makerInside: Bool = post["maker_inside"]! as! Bool
         
+        var exclusive: Bool?
+        if let exclusiveDictionary = post["exclusive"] as? NSDictionary {
+          let exclusiveNumber = exclusiveDictionary["exclusive"]! as! Int
+          exclusive = Bool.init(exclusiveNumber)
+        } else {
+          exclusive = false
+        }
+        
         let userDictionary = post["user"] as! NSDictionary
         let hunter: String = userDictionary["name"]! as! String
         
-        let hunt = Product(id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, screenshotURL: screenshotURL, makerInside: makerInside, hunter: hunter)
-        huntsList += [hunt]
+        let product = Product(id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, screenshotURL: screenshotURL, makerInside: makerInside, exclusive: exclusive!, hunter: hunter)
+        products += [product]
       }
     }
-    return huntsList
+    return products
   }
   
 }

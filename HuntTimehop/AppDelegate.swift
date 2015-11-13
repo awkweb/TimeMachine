@@ -8,8 +8,8 @@
 
 import UIKit
 
-let accessToken = "accessTokenKey"
-let expiresOn = "expiresOnKey"
+let key = "tokenKey"
+let expiryDate = "tokenExpiryDate"
 let version = "1.3.0"
 let screenRect = UIScreen.mainScreen().bounds
 

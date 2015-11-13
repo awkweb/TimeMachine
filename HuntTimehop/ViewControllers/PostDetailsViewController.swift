@@ -14,6 +14,7 @@ class PostDetailsViewController: UIViewController {
   
   var product: Product!
   var filterDate: NSDate!
+  var color: UIColor!
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -69,6 +70,7 @@ extension PostDetailsViewController: UITableViewDataSource {
     if indexPath.row == 0 {
       titleCell.votesLabel.text = "\(product.votes)"
       titleCell.nameLabel.text = product.name
+      titleCell.nameLabel.textColor = color
       titleCell.taglineLabel.text = product.tagline
       titleCell.commentsLabel.text = "\(product.comments)"
       titleCell.hunterLabel.text = "via \(product.hunter)"

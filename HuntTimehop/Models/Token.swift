@@ -9,6 +9,6 @@
 import Foundation
 
 struct Token {
-  var accessToken: String
-  var expiresOn: NSDate
+  var key: String
+  var expiryDate: NSDate
 }

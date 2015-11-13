@@ -17,5 +17,6 @@ struct Product {
   var phURL: String
   var screenshotURL: String
   var makerInside: Bool
+  var exclusive: Bool
   var hunter: String
 }
