@@ -8,13 +8,8 @@
 
 import UIKit
 
-class ButtonCell: UITableViewCell {
+class ButtonTableViewCell: UITableViewCell {
   
   @IBOutlet weak var buttonLabel: UILabel!
-  
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    buttonLabel.textColor = .red()
-  }
   
 }

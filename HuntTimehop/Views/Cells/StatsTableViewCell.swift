@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StatsCell: UITableViewCell {
+class StatsTableViewCell: UITableViewCell {
   
   @IBOutlet weak var idLabel: UILabel!
   @IBOutlet weak var daysAgoLabel: UILabel!

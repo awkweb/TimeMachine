@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageCell: UITableViewCell {
+class ImageTableViewCell: UITableViewCell {
   
   @IBOutlet weak var screenshotImageView: UIImageView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!

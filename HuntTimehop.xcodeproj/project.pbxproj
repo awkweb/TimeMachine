@@ -15,19 +15,19 @@
 		0574A1D11BEE458000917A0D /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1CF1BEE458000917A0D /* ApiController.swift */; };
 		0574A1D21BEE458000917A0D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D01BEE458000917A0D /* DataController.swift */; };
 		0574A1D41BEE459800917A0D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D31BEE459800917A0D /* Category.swift */; };
-		0574A1DC1BEE45C500917A0D /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D61BEE45C500917A0D /* AboutCell.swift */; };
-		0574A1DD1BEE45C500917A0D /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D71BEE45C500917A0D /* ButtonCell.swift */; };
-		0574A1DE1BEE45C500917A0D /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D81BEE45C500917A0D /* ImageCell.swift */; };
-		0574A1DF1BEE45C500917A0D /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D91BEE45C500917A0D /* ProductCell.swift */; };
-		0574A1E01BEE45C500917A0D /* StatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1DA1BEE45C500917A0D /* StatsCell.swift */; };
-		0574A1E11BEE45C500917A0D /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1DB1BEE45C500917A0D /* TitleCell.swift */; };
+		0574A1DC1BEE45C500917A0D /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D61BEE45C500917A0D /* AboutTableViewCell.swift */; };
+		0574A1DD1BEE45C500917A0D /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D71BEE45C500917A0D /* ButtonTableViewCell.swift */; };
+		0574A1DE1BEE45C500917A0D /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D81BEE45C500917A0D /* ImageTableViewCell.swift */; };
+		0574A1DF1BEE45C500917A0D /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1D91BEE45C500917A0D /* ProductTableViewCell.swift */; };
+		0574A1E01BEE45C500917A0D /* StatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1DA1BEE45C500917A0D /* StatsTableViewCell.swift */; };
+		0574A1E11BEE45C500917A0D /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1DB1BEE45C500917A0D /* TitleTableViewCell.swift */; };
 		0574A1E51BEE45E500917A0D /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0574A1E41BEE45E500917A0D /* PostsViewController.swift */; };
 		058770401AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0587703F1AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift */; };
 		05D3EF251BA45D5A004BA4E8 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF201BA45D5A004BA4E8 /* AboutViewController.swift */; };
 		05D3EF261BA45D5A004BA4E8 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF211BA45D5A004BA4E8 /* FilterViewController.swift */; };
 		05D3EF271BA45D5A004BA4E8 /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF221BA45D5A004BA4E8 /* PostDetailsViewController.swift */; };
 		05D3EF291BA45D5A004BA4E8 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D3EF241BA45D5A004BA4E8 /* WebViewController.swift */; };
-		05ECCDB21BA5A87100C1DF09 /* AboutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECCDAF1BA5A87100C1DF09 /* AboutModel.swift */; };
+		05ECCDB21BA5A87100C1DF09 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECCDAF1BA5A87100C1DF09 /* About.swift */; };
 		05ECCDB31BA5A87100C1DF09 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECCDB01BA5A87100C1DF09 /* Product.swift */; };
 		05ECCDB41BA5A87100C1DF09 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECCDB11BA5A87100C1DF09 /* Token.swift */; };
 		05ECCDB81BA5A89B00C1DF09 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05ECCDB61BA5A89B00C1DF09 /* ColorExtension.swift */; };
@@ -58,19 +58,19 @@
 		0574A1CF1BEE458000917A0D /* ApiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; };
 		0574A1D01BEE458000917A0D /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		0574A1D31BEE459800917A0D /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = Models/Category.swift; sourceTree = "<group>"; };
-		0574A1D61BEE45C500917A0D /* AboutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
-		0574A1D71BEE45C500917A0D /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
-		0574A1D81BEE45C500917A0D /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
-		0574A1D91BEE45C500917A0D /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
-		0574A1DA1BEE45C500917A0D /* StatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsCell.swift; sourceTree = "<group>"; };
-		0574A1DB1BEE45C500917A0D /* TitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
+		0574A1D61BEE45C500917A0D /* AboutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
+		0574A1D71BEE45C500917A0D /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		0574A1D81BEE45C500917A0D /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		0574A1D91BEE45C500917A0D /* ProductTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		0574A1DA1BEE45C500917A0D /* StatsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsTableViewCell.swift; sourceTree = "<group>"; };
+		0574A1DB1BEE45C500917A0D /* TitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		0574A1E41BEE45E500917A0D /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostsViewController.swift; path = ViewControllers/PostsViewController.swift; sourceTree = "<group>"; };
 		0587703F1AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIActivityTypeOpenInSafari.swift; sourceTree = "<group>"; };
 		05D3EF201BA45D5A004BA4E8 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = ViewControllers/AboutViewController.swift; sourceTree = "<group>"; };
 		05D3EF211BA45D5A004BA4E8 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterViewController.swift; path = ViewControllers/FilterViewController.swift; sourceTree = "<group>"; };
 		05D3EF221BA45D5A004BA4E8 /* PostDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostDetailsViewController.swift; path = ViewControllers/PostDetailsViewController.swift; sourceTree = "<group>"; };
 		05D3EF241BA45D5A004BA4E8 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = ViewControllers/WebViewController.swift; sourceTree = "<group>"; };
-		05ECCDAF1BA5A87100C1DF09 /* AboutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutModel.swift; path = Models/AboutModel.swift; sourceTree = "<group>"; };
+		05ECCDAF1BA5A87100C1DF09 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = About.swift; path = Models/About.swift; sourceTree = "<group>"; };
 		05ECCDB01BA5A87100C1DF09 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Product.swift; path = Models/Product.swift; sourceTree = "<group>"; };
 		05ECCDB11BA5A87100C1DF09 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Token.swift; path = Models/Token.swift; sourceTree = "<group>"; };
 		05ECCDB61BA5A89B00C1DF09 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorExtension.swift; path = Extensions/ColorExtension.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				0574A1D31BEE459800917A0D /* Category.swift */,
-				05ECCDAF1BA5A87100C1DF09 /* AboutModel.swift */,
+				05ECCDAF1BA5A87100C1DF09 /* About.swift */,
 				05ECCDB01BA5A87100C1DF09 /* Product.swift */,
 				05ECCDB11BA5A87100C1DF09 /* Token.swift */,
 			);
@@ -189,12 +189,12 @@
 		0574A1D51BEE45C500917A0D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				0574A1D61BEE45C500917A0D /* AboutCell.swift */,
-				0574A1D71BEE45C500917A0D /* ButtonCell.swift */,
-				0574A1D81BEE45C500917A0D /* ImageCell.swift */,
-				0574A1D91BEE45C500917A0D /* ProductCell.swift */,
-				0574A1DA1BEE45C500917A0D /* StatsCell.swift */,
-				0574A1DB1BEE45C500917A0D /* TitleCell.swift */,
+				0574A1D61BEE45C500917A0D /* AboutTableViewCell.swift */,
+				0574A1D71BEE45C500917A0D /* ButtonTableViewCell.swift */,
+				0574A1D81BEE45C500917A0D /* ImageTableViewCell.swift */,
+				0574A1D91BEE45C500917A0D /* ProductTableViewCell.swift */,
+				0574A1DA1BEE45C500917A0D /* StatsTableViewCell.swift */,
+				0574A1DB1BEE45C500917A0D /* TitleTableViewCell.swift */,
 			);
 			name = Cells;
 			path = Views/Cells;
@@ -324,8 +324,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0574A1DD1BEE45C500917A0D /* ButtonCell.swift in Sources */,
-				05ECCDB21BA5A87100C1DF09 /* AboutModel.swift in Sources */,
+				0574A1DD1BEE45C500917A0D /* ButtonTableViewCell.swift in Sources */,
+				05ECCDB21BA5A87100C1DF09 /* About.swift in Sources */,
 				05ECCDB91BA5A89B00C1DF09 /* DateExtension.swift in Sources */,
 				0574A1D11BEE458000917A0D /* ApiController.swift in Sources */,
 				058770401AA39AB200925CEF /* UIActivityTypeOpenInSafari.swift in Sources */,
@@ -333,14 +333,14 @@
 				05D3EF291BA45D5A004BA4E8 /* WebViewController.swift in Sources */,
 				0574A1E51BEE45E500917A0D /* PostsViewController.swift in Sources */,
 				05D3EF271BA45D5A004BA4E8 /* PostDetailsViewController.swift in Sources */,
-				0574A1DE1BEE45C500917A0D /* ImageCell.swift in Sources */,
+				0574A1DE1BEE45C500917A0D /* ImageTableViewCell.swift in Sources */,
 				05D3EF251BA45D5A004BA4E8 /* AboutViewController.swift in Sources */,
 				05D3EF261BA45D5A004BA4E8 /* FilterViewController.swift in Sources */,
-				0574A1DF1BEE45C500917A0D /* ProductCell.swift in Sources */,
+				0574A1DF1BEE45C500917A0D /* ProductTableViewCell.swift in Sources */,
 				05ECCDBB1BA5AAA400C1DF09 /* ApiConstants.swift in Sources */,
-				0574A1DC1BEE45C500917A0D /* AboutCell.swift in Sources */,
-				0574A1E01BEE45C500917A0D /* StatsCell.swift in Sources */,
-				0574A1E11BEE45C500917A0D /* TitleCell.swift in Sources */,
+				0574A1DC1BEE45C500917A0D /* AboutTableViewCell.swift in Sources */,
+				0574A1E01BEE45C500917A0D /* StatsTableViewCell.swift in Sources */,
+				0574A1E11BEE45C500917A0D /* TitleTableViewCell.swift in Sources */,
 				05ECCDB41BA5A87100C1DF09 /* Token.swift in Sources */,
 				053509841A4A18DB00774B67 /* AppDelegate.swift in Sources */,
 				0574A1D21BEE458000917A0D /* DataController.swift in Sources */,

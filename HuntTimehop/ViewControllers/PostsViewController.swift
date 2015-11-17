@@ -188,10 +188,10 @@ extension PostsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     if indexPath.row == activeCategory.products.count {
-      let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonCell") as! ButtonCell
+      let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonCell") as! ButtonTableViewCell
       return buttonCell
     } else {
-      let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCell
+      let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductTableViewCell
       let product = activeCategory.products[indexPath.row]
       cell.votesLabel.text = "\(product.votes)"
       cell.nameLabel.text = product.name
@@ -226,7 +226,7 @@ extension PostsViewController: UITableViewDelegate {
       authenticateAndGetPosts()
     } else {
       performSegueWithIdentifier("showPostDetailsVC", sender: self)
-      let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductCell
+      let cell = tableView.dequeueReusableCellWithIdentifier("ProductCell") as! ProductTableViewCell
       cell.selectionStyle = .None
     }
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
