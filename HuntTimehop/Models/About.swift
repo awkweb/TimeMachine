@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct AboutModel {
+struct About {
   var title: String
-  var url: String
+  var detail: String?
+  var url: String?
 }

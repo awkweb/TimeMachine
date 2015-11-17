@@ -12,8 +12,9 @@ class PostDetailsViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
-  var product: ProductModel!
-  var mainVC: ViewController!
+  var product: Product!
+  var filterDate: NSDate!
+  var color: UIColor!
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -23,7 +24,7 @@ class PostDetailsViewController: UIViewController {
     navigationItem.title = "Details"
     
     tableView.tableFooterView = screenRect.width < 375.0 ?
-      UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 40)) : UIView()
+      UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 40)) : UIView() // TODO: - Necessary?
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 100.0
   }
@@ -44,7 +45,7 @@ class PostDetailsViewController: UIViewController {
       UIActivityTypePostToTencentWeibo
     ]
     
-    self.presentViewController(activityViewController, animated: true, completion: nil)
+    presentViewController(activityViewController, animated: true, completion: nil)
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -61,30 +62,26 @@ class PostDetailsViewController: UIViewController {
 extension PostDetailsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let titleCell = tableView.dequeueReusableCellWithIdentifier("TitleCell") as! TitleCell
-    let statsCell = tableView.dequeueReusableCellWithIdentifier("StatsCell") as! StatsCell
-    let imageCell = tableView.dequeueReusableCellWithIdentifier("ImageCell") as! ImageCell
-    let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonCell") as! ButtonCell
-    
-    if indexPath.row == 0 {
+    switch (indexPath.row) {
+    case 0:
+      let titleCell = tableView.dequeueReusableCellWithIdentifier("TitleCell") as! TitleTableViewCell
       titleCell.votesLabel.text = "\(product.votes)"
       titleCell.nameLabel.text = product.name
+      titleCell.nameLabel.textColor = color
       titleCell.taglineLabel.text = product.tagline
       titleCell.commentsLabel.text = "\(product.comments)"
       titleCell.hunterLabel.text = "via \(product.hunter)"
       titleCell.makerImageView.hidden = product.makerInside ? false : true
       titleCell.selectionStyle = .None
       return titleCell
-    } else if indexPath.row == 1 {
+    case 1:
+      let imageCell = tableView.dequeueReusableCellWithIdentifier("ImageCell") as! ImageTableViewCell
       imageCell.activityIndicator.startAnimating()
       imageCell.selectionStyle = .None
-      
       let imageQueue: dispatch_queue_t = dispatch_queue_create("filter queue", nil)
-      
       dispatch_async(imageQueue) {
         let url = NSURL(string: self.product.screenshotURL)!
         let data = NSData(contentsOfURL: url)
-        
         dispatch_async(dispatch_get_main_queue()) {
           if data != nil {
             imageCell.screenshotImageView.image = UIImage(data: data!)
@@ -96,14 +93,17 @@ extension PostDetailsViewController: UITableViewDataSource {
         }
       }
       return imageCell
-    } else if indexPath.row == 2 {
+    case 2:
+      let statsCell = tableView.dequeueReusableCellWithIdentifier("StatsCell") as! StatsTableViewCell
       statsCell.idLabel.text = "\(product.id)"
-      let daysBetweenDates = NSDate.daysBetween(date1: mainVC.filterDate, date2: NSDate())
+      let daysBetweenDates = NSDate.daysBetween(date1: filterDate, date2: NSDate())
       statsCell.daysAgoLabel.text = "\(daysBetweenDates)"
       statsCell.selectionStyle = .None
       return statsCell
-    } else {
+    default:
+      let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonCell") as! ButtonTableViewCell
       buttonCell.selectionStyle = .None
+      buttonCell.buttonLabel.textColor = color
       return buttonCell
     }
   }

@@ -8,13 +8,15 @@
 
 import UIKit
 
-class AboutCell: UITableViewCell {
+class AboutTableViewCell: UITableViewCell {
   
   @IBOutlet weak var itemLabel: UILabel!
+  @IBOutlet weak var detailLabel: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
     itemLabel.textColor = .grayD()
+    detailLabel.textColor = .gray()
   }
   
 }

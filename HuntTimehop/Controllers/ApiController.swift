@@ -46,9 +46,9 @@ class ApiController {
       
       do {
         if let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary {
-          let apiAccessToken = DataController.jsonTokenParser(jsonDictionary)
-          NSUserDefaults.standardUserDefaults().setObject(apiAccessToken[0].accessToken, forKey: accessToken)
-          NSUserDefaults.standardUserDefaults().setObject(apiAccessToken[0].expiresOn, forKey: expiresOn)
+          let token = DataController.jsonTokenParser(jsonDictionary)!
+          NSUserDefaults.standardUserDefaults().setObject(token.key, forKey: key)
+          NSUserDefaults.standardUserDefaults().setObject(token.expiryDate, forKey: expiryDate)
           callback(true, nil)
         }
       } catch let error as NSError {
@@ -58,7 +58,7 @@ class ApiController {
     task.resume()
   }
   
-  func getPostsForCategoryAndDate(category: String, date: NSDate, callback: ([ProductModel]?, NSError?) -> ()) {
+  func getPostsForCategoryAndDate(category: String, date: NSDate, callback: ([Product]?, NSError?) -> ()) {
     let filterDate = NSDate.toString(date: date)
     let url = NSURL(string: "\(getUrl())/categories/\(category)/posts?day=\(filterDate)")
     
@@ -67,7 +67,7 @@ class ApiController {
     request.HTTPMethod = "GET"
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue("Bearer \(NSUserDefaults.standardUserDefaults().objectForKey(accessToken) as! String)", forHTTPHeaderField: "Authorization")
+    request.addValue("Bearer \(NSUserDefaults.standardUserDefaults().objectForKey(key) as! String)", forHTTPHeaderField: "Authorization")
     request.addValue("api.producthunt.com", forHTTPHeaderField: "Host")
     request.HTTPBody = nil
     
@@ -81,8 +81,8 @@ class ApiController {
       
       do {
         let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
-        let apiHuntsList = DataController.jsonPostsParser(jsonDictionary!)
-        callback(apiHuntsList, nil)
+        let products = DataController.jsonPostsParser(jsonDictionary!)
+        callback(products, nil)
       } catch let error as NSError {
         callback(nil, error)
       }

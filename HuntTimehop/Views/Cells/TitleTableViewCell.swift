@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TitleCell: UITableViewCell {
+class TitleTableViewCell: UITableViewCell {
   
   @IBOutlet weak var votesLabel: UILabel!
   @IBOutlet weak var nameLabel: UILabel!
@@ -20,7 +20,6 @@ class TitleCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     votesLabel.textColor = .gray()
-    nameLabel.textColor = .orange()
     taglineLabel.textColor = .grayD()
     commentsLabel.textColor = .gray()
     hunterLabel.textColor = .gray()
