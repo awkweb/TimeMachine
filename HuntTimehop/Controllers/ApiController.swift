@@ -11,14 +11,18 @@ import Foundation
 class ApiController {
   
   private let apiConstants = ApiConstants()
-  private let url = "https://api.producthunt.com/v1"
+  private let host = "api.producthunt.com"
   
-  func getUrl() -> String {
-    return url
+  func getHost() -> String {
+    return host
   }
   
   func getClientOnlyAuthenticationToken(callback: (Bool?, NSError?) -> ()) {
-    let url = NSURL(string: "\(getUrl())/oauth/token")
+    let components = NSURLComponents()
+    components.scheme = "https"
+    components.host = getHost()
+    components.path = "/v1/oauth/token"
+    let url = components.URL
     let params = [
       "client_id": apiConstants.getKey(),
       "client_secret": apiConstants.getSecret(),
@@ -60,7 +64,14 @@ class ApiController {
   
   func getPostsForCategoryAndDate(category: String, date: NSDate, callback: ([Product]?, NSError?) -> ()) {
     let filterDate = NSDate.toString(date: date)
-    let url = NSURL(string: "\(getUrl())/categories/\(category)/posts?day=\(filterDate)")
+    let components = NSURLComponents()
+    components.scheme = "https"
+    components.host = getHost()
+    components.path = "/v1/categories/\(category)/posts"
+    components.queryItems = [
+      NSURLQueryItem(name: "day", value: "\(filterDate)")
+    ]
+    let url = components.URL
     
     let request = NSMutableURLRequest(URL: url!)
     let session = NSURLSession.sharedSession()

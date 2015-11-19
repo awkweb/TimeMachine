@@ -64,7 +64,7 @@ extension PostDetailsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     switch (indexPath.row) {
     case 0:
-      let titleCell = tableView.dequeueReusableCellWithIdentifier("TitleCell") as! TitleTableViewCell
+      let titleCell = tableView.dequeueReusableCellWithIdentifier("TitleTableViewCell") as! TitleTableViewCell
       titleCell.votesLabel.text = "\(product.votes)"
       titleCell.nameLabel.text = product.name
       titleCell.nameLabel.textColor = color
@@ -75,7 +75,7 @@ extension PostDetailsViewController: UITableViewDataSource {
       titleCell.selectionStyle = .None
       return titleCell
     case 1:
-      let imageCell = tableView.dequeueReusableCellWithIdentifier("ImageCell") as! ImageTableViewCell
+      let imageCell = tableView.dequeueReusableCellWithIdentifier("ImageTableViewCell") as! ImageTableViewCell
       imageCell.activityIndicator.startAnimating()
       imageCell.selectionStyle = .None
       let imageQueue: dispatch_queue_t = dispatch_queue_create("filter queue", nil)
@@ -94,14 +94,20 @@ extension PostDetailsViewController: UITableViewDataSource {
       }
       return imageCell
     case 2:
-      let statsCell = tableView.dequeueReusableCellWithIdentifier("StatsCell") as! StatsTableViewCell
-      statsCell.idLabel.text = "\(product.id)"
+      let statsCell = tableView.dequeueReusableCellWithIdentifier("StatsTableViewCell") as! StatsTableViewCell
+
+      let formatter = NSNumberFormatter()
+      formatter.groupingSeparator = ","
+      formatter.groupingSize = 3
+      formatter.usesGroupingSeparator = true
+      
+      statsCell.idLabel.text = formatter.stringFromNumber(product.id)
       let daysBetweenDates = NSDate.daysBetween(date1: filterDate, date2: NSDate())
-      statsCell.daysAgoLabel.text = "\(daysBetweenDates)"
+      statsCell.daysAgoLabel.text = formatter.stringFromNumber(daysBetweenDates)
       statsCell.selectionStyle = .None
       return statsCell
     default:
-      let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonCell") as! ButtonTableViewCell
+      let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonTableViewCell") as! ButtonTableViewCell
       buttonCell.selectionStyle = .None
       buttonCell.buttonLabel.textColor = color
       return buttonCell

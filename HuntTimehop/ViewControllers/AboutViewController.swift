@@ -61,7 +61,7 @@ extension AboutViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let thisAbout = baseArray[indexPath.section][indexPath.row]
-    let cell = tableView.dequeueReusableCellWithIdentifier("AboutCell") as! AboutTableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("AboutTableViewCell") as! AboutTableViewCell
     cell.itemLabel.text = thisAbout.title
     if let detail = thisAbout.detail {
       cell.detailLabel.text = detail

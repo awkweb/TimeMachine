@@ -136,7 +136,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleCell" rowHeight="110" id="AG0-uQ-sqQ" userLabel="Title table view cell" customClass="TitleCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleCell" rowHeight="110" id="AG0-uQ-sqQ" userLabel="Title table view cell" customClass="TitleTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="86" width="600" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AG0-uQ-sqQ" id="H5N-00-GFZ">
@@ -255,7 +255,7 @@
                                             <outlet property="votesLabel" destination="9QC-1r-WFU" id="YZu-bw-aGi"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="250" id="nXd-fO-cnu" userLabel="Image table view cell" customClass="ImageCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="250" id="nXd-fO-cnu" userLabel="Image table view cell" customClass="ImageTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="196" width="600" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nXd-fO-cnu" id="9z6-bh-hfO">
@@ -291,7 +291,7 @@
                                             <outlet property="screenshotImageView" destination="gwk-IU-1UP" id="To2-SE-xpD"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatsCell" rowHeight="80" id="LRW-he-CXD" userLabel="Stats table view cell" customClass="StatsCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatsCell" rowHeight="80" id="LRW-he-CXD" userLabel="Stats table view cell" customClass="StatsTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="446" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LRW-he-CXD" id="dfd-x7-bzR">
@@ -374,7 +374,7 @@
                                             <outlet property="idUnitLabel" destination="DEq-jF-bfw" id="HEJ-x3-l7K"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonCell" rowHeight="90" id="RmI-mX-dAx" userLabel="Button table view cell" customClass="ButtonCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonCell" rowHeight="90" id="RmI-mX-dAx" userLabel="Button table view cell" customClass="ButtonTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="526" width="600" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RmI-mX-dAx" id="zdy-Hw-pOJ">
@@ -540,7 +540,7 @@
                                 <animations/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AboutCell" id="E9b-Io-uCS" userLabel="About table view cell" customClass="AboutCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AboutTableViewCell" id="E9b-Io-uCS" userLabel="About table view cell" customClass="AboutTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="114" width="605" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E9b-Io-uCS" id="D02-i7-FgW">
@@ -562,7 +562,7 @@
                                                     <rect key="frame" x="497" y="9" width="90" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -619,7 +619,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationLevel="15" indentationWidth="0.0" reuseIdentifier="ProductCell" id="eWt-Px-nMH" userLabel="Product table view cell" customClass="ProductCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationLevel="15" indentationWidth="0.0" reuseIdentifier="ProductTableViewCell" id="eWt-Px-nMH" userLabel="Product table view cell" customClass="ProductTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eWt-Px-nMH" id="sQ3-qC-3dA">
@@ -727,7 +727,7 @@
                                             <outlet property="votesLabel" destination="tNR-Vh-z56" id="n4x-fC-udn"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationLevel="15" indentationWidth="15" reuseIdentifier="ButtonCell" id="U54-IU-RFe" userLabel="Button table view cell" customClass="ButtonCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationLevel="15" indentationWidth="15" reuseIdentifier="ButtonTableViewCell" id="U54-IU-RFe" userLabel="Button table view cell" customClass="ButtonTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="172" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U54-IU-RFe" id="wxC-WK-iAi">
