@@ -14,25 +14,17 @@ class AboutViewController: UIViewController {
   
   var baseArray: [[About]] = []
   
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
+  override func viewDidLoad() {
+    super.viewDidLoad()
     tableView.delegate = self
     tableView.dataSource = self
     
     navigationItem.title = "About"
     tableView.backgroundColor = .grayL()
     
-    let tRexImage = UIImage(named: "trex")
-    let hiddenImageView = UIImageView(frame: CGRect(x: screenRect.width/2 - 37.5, y: -75, width: 75, height: 75))
-    hiddenImageView.image = tRexImage
-    tableView.addSubview(hiddenImageView)
-    
-    let about0 = About(title: "Tom Meagher", detail:  "@thomasmeagher", url: "http://thomasmeagher.com")
+    let about0 = About(title: "Built By", detail:  "@thomasmeagher", url: "http://thomasmeagher.com")
     let about1 = About(title: "Version", detail: version, url: nil)
-    
-    let aboutNP0 = About(title: "Austin Condiff", detail: nil, url: "http://www.austincondiff.com")
-    let aboutNP1 = About(title: "Jardson Almeida", detail: nil, url: "https://dribbble.com/jardson")
-    let aboutNP2 = About(title: "Kiran Malladi", detail: nil, url: "http://thenounproject.com/ichiban")
+    let about2 = About(title: "Support", detail: nil, url: "https://meagher.typeform.com/to/TMUHaE")
     
     let aboutPH0 = About(title: "App Screenshot Builder", detail: nil, url: "http://www.producthunt.com/posts/app-screenshot-builder")
     let aboutPH1 = About(title: "GitHub for Mac", detail: nil, url: "http://www.producthunt.com/posts/github-for-mac")
@@ -43,11 +35,15 @@ class AboutViewController: UIViewController {
     let aboutPH6 = About(title: "The Complete iOS 8 Course", detail: nil, url: "http://www.producthunt.com/posts/the-complete-ios8-course")
     let aboutPH7 = About(title: "The Noun Project", detail: nil, url: "http://www.producthunt.com/posts/the-noun-project")
     
-    let aboutArray = [about0, about1]
-    let aboutNPArray = [aboutNP0, aboutNP1, aboutNP2]
-    let aboutPHArray = [aboutPH0, aboutPH1, aboutPH2, aboutPH3, aboutPH4, aboutPH5, aboutPH6, aboutPH7]
+    let aboutNP0 = About(title: "Austin Condiff", detail: "@austincondiff", url: "https://twitter.com/austincondiff")
+    let aboutNP1 = About(title: "Jardson Almeida", detail: "@heyjardson", url: "https://twitter.com/HeyJardson")
+    let aboutNP2 = About(title: "Kiran Malladi", detail: nil, url: "http://thenounproject.com/ichiban")
     
-    baseArray += [aboutArray, aboutNPArray, aboutPHArray]
+    let aboutArray = [about0, about1, about2]
+    let aboutPHArray = [aboutPH0, aboutPH1, aboutPH2, aboutPH3, aboutPH4, aboutPH5, aboutPH6, aboutPH7]
+    let aboutNPArray = [aboutNP0, aboutNP1, aboutNP2]
+    
+    baseArray += [aboutArray, aboutPHArray, aboutNPArray]
   }
   
 }
@@ -68,9 +64,6 @@ extension AboutViewController: UITableViewDataSource {
     } else {
       cell.detailLabel.hidden = true
     }
-    if thisAbout.url != nil {
-      cell.accessoryType = .DisclosureIndicator
-    }
     return cell
   }
   
@@ -81,11 +74,11 @@ extension AboutViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     switch (section) {
     case 0:
-      return "Built By"
+      return "General"
     case 1:
-      return "Icons By"
-    default:
       return "Products Used"
+    default:
+      return "Acknowledgments"
     }
   }
   

@@ -61,7 +61,7 @@ class WebViewController: UIViewController {
       UIActivityTypePostToTencentWeibo
     ]
     
-    self.presentViewController(activityViewController, animated: true, completion: nil)
+    presentViewController(activityViewController, animated: true, completion: nil)
   }
   
   @IBAction func refreshButtonPressed(sender: AnyObject) {
@@ -75,6 +75,7 @@ class WebViewController: UIViewController {
   @IBAction func forwardButtonPressed(sender: AnyObject) {
     webView.goForward()
   }
+  
 }
 
 extension WebViewController: UIWebViewDelegate {
@@ -112,4 +113,5 @@ extension WebViewController: UIWebViewDelegate {
       progressView.progress += 0.01
     }
   }
+  
 }

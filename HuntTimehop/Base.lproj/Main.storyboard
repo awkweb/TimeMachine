@@ -136,7 +136,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleCell" rowHeight="110" id="AG0-uQ-sqQ" userLabel="Title table view cell" customClass="TitleTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleTableViewCell" rowHeight="110" id="AG0-uQ-sqQ" userLabel="Title table view cell" customClass="TitleTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="86" width="600" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AG0-uQ-sqQ" id="H5N-00-GFZ">
@@ -255,7 +255,7 @@
                                             <outlet property="votesLabel" destination="9QC-1r-WFU" id="YZu-bw-aGi"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="250" id="nXd-fO-cnu" userLabel="Image table view cell" customClass="ImageTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageTableViewCell" rowHeight="250" id="nXd-fO-cnu" userLabel="Image table view cell" customClass="ImageTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="196" width="600" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nXd-fO-cnu" id="9z6-bh-hfO">
@@ -291,7 +291,7 @@
                                             <outlet property="screenshotImageView" destination="gwk-IU-1UP" id="To2-SE-xpD"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatsCell" rowHeight="80" id="LRW-he-CXD" userLabel="Stats table view cell" customClass="StatsTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatsTableViewCell" rowHeight="80" id="LRW-he-CXD" userLabel="Stats table view cell" customClass="StatsTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="446" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LRW-he-CXD" id="dfd-x7-bzR">
@@ -374,7 +374,7 @@
                                             <outlet property="idUnitLabel" destination="DEq-jF-bfw" id="HEJ-x3-l7K"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonCell" rowHeight="90" id="RmI-mX-dAx" userLabel="Button table view cell" customClass="ButtonTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonTableViewCell" rowHeight="90" id="RmI-mX-dAx" userLabel="Button table view cell" customClass="ButtonTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="526" width="600" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RmI-mX-dAx" id="zdy-Hw-pOJ">
@@ -554,14 +554,14 @@
                                                         <constraint firstAttribute="width" constant="270" id="TbO-IA-eET"/>
                                                         <constraint firstAttribute="height" constant="21" id="lr9-IX-wME"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRo-LE-qIT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Detail Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRo-LE-qIT">
                                                     <rect key="frame" x="497" y="9" width="90" height="21"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

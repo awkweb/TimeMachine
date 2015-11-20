@@ -142,12 +142,12 @@ class PostsViewController: UIViewController {
           message: "There aren't any posts on \(NSDate.toPrettyString(date: filterDate)).", actionMessage: "Okay")
       }
       if filterDate == NSDate.stringToDate(year: 2013, month: 11, day: 24) {
-        self.showAlertWithHeaderTextAndMessage("Hey 😺",
+        self.showAlertWithHeaderTextAndMessage("Hey :)",
           message: "You made it back to Product Hunt's first day!", actionMessage: "Okay")
       }
       self.tableView.reloadData()
       self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
-        atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+        atScrollPosition: .Top, animated: false)
       self.activityIndicator.stopAnimating()
       self.tableView.hidden = false
     }
@@ -189,6 +189,7 @@ extension PostsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     if indexPath.row == activeCategory.products.count {
       let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonTableViewCell") as! ButtonTableViewCell
+      buttonCell.buttonLabel.textColor = activeCategory.color
       return buttonCell
     } else {
       let cell = tableView.dequeueReusableCellWithIdentifier("ProductTableViewCell") as! ProductTableViewCell
@@ -212,6 +213,14 @@ extension PostsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return NSDate.toPrettyString(date: activeCategory.filterDate)
+  }
+  
+  func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+    header.contentView.backgroundColor = .grayL()
+    header.textLabel!.textColor = .gray()
+    header.textLabel!.textAlignment = .Center
+    header.textLabel!.font = UIFont.boldSystemFontOfSize(15)
   }
   
 }
