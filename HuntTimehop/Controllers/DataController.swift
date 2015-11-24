@@ -35,7 +35,7 @@ class DataController {
         let phURL: String = post["discussion_url"]! as! String
         
         let screenshotDictionary = post["screenshot_url"] as! NSDictionary
-        let screenshotURL: String = screenshotDictionary["850px"]! as! String
+        let screenshotUrl: String = screenshotDictionary["850px"]! as! String
         
         let makerInside: Bool = post["maker_inside"]! as! Bool
         
@@ -50,7 +50,7 @@ class DataController {
         let userDictionary = post["user"] as! NSDictionary
         let hunter: String = userDictionary["name"]! as! String
         
-        let product = Product(id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, screenshotURL: screenshotURL, makerInside: makerInside, exclusive: exclusive!, hunter: hunter)
+        let product = Product(id: id, name: name, tagline: tagline, comments: comments, votes: votes, phURL: phURL, screenshotUrl: screenshotUrl, makerInside: makerInside, exclusive: exclusive!, hunter: hunter)
         products += [product]
       }
     }

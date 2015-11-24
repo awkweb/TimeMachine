@@ -34,8 +34,9 @@ class PostsViewController: UIViewController {
     authenticateAndGetPosts()
     
     navigationItem.title = activeCategory.name
-    navigationController?.navigationBar.barTintColor = .white()
-    navigationController?.navigationBar.tintColor = .red()
+    navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.grayD()]
+    navigationController!.navigationBar.barTintColor = .white()
+    navigationController!.navigationBar.tintColor = .red()
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     
     let techTabBarItem = UITabBarItem(title: "Tech", image: UIImage(named: "about"), selectedImage: UIImage(named: "close"))
@@ -100,20 +101,19 @@ class PostsViewController: UIViewController {
     tableView.hidden = true
     reloadImageView.hidden = true
     reloadButton.hidden = true
-    let today = NSDate.toString(date: NSDate())
-    let filterDate = activeCategory.filterDate
     
-    if NSUserDefaults.standardUserDefaults().objectForKey(key) == nil ||
-      NSDate.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(expiryDate) as! NSDate)) == today {
+    let filterDate = activeCategory.filterDate
+    let lowercaseCategoryName = activeCategory.name.lowercaseString
+    if Token.hasTokenExpired() {
         apiController.getClientOnlyAuthenticationToken {
           success, error in
           if let error = error {
             self.displayReloadButtonWithError(error)
           } else {
-            self.apiController.getPostsForCategoryAndDate(self.activeCategory.name.lowercaseString, date: filterDate) {
+            self.apiController.getPostsForCategoryAndDate(lowercaseCategoryName, date: filterDate) {
               objects, error in
-              if let objects = objects as [Product]! {
-                self.activeCategory.products = objects
+              if let products = objects as [Product]! {
+                self.activeCategory.products = products
                 self.displayPostsInTableView()
               } else {
                 self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error!.localizedDescription)", actionMessage: "Okay")
@@ -122,10 +122,10 @@ class PostsViewController: UIViewController {
           }
         }
     } else {
-      self.apiController.getPostsForCategoryAndDate(self.activeCategory.name.lowercaseString, date: filterDate) {
+      self.apiController.getPostsForCategoryAndDate(lowercaseCategoryName, date: filterDate) {
         objects, error in
-        if let objects = objects as [Product]! {
-          self.activeCategory.products = objects
+        if let products = objects as [Product]! {
+          self.activeCategory.products = products
           self.displayPostsInTableView()
         } else {
           self.displayReloadButtonWithError(error)
@@ -189,7 +189,7 @@ extension PostsViewController: UITableViewDataSource {
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     if indexPath.row == activeCategory.products.count {
       let buttonCell = tableView.dequeueReusableCellWithIdentifier("ButtonTableViewCell") as! ButtonTableViewCell
-      buttonCell.buttonLabel.textColor = activeCategory.color
+      buttonCell.buttonLabel.textColor = .red()
       return buttonCell
     } else {
       let cell = tableView.dequeueReusableCellWithIdentifier("ProductTableViewCell") as! ProductTableViewCell
@@ -220,7 +220,7 @@ extension PostsViewController: UITableViewDataSource {
     header.contentView.backgroundColor = .grayL()
     header.textLabel!.textColor = .gray()
     header.textLabel!.textAlignment = .Center
-    header.textLabel!.font = UIFont.boldSystemFontOfSize(15)
+    header.textLabel!.font = UIFont.boldSystemFontOfSize(14)
   }
   
 }

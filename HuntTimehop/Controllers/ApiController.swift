@@ -51,8 +51,8 @@ class ApiController {
       do {
         if let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary {
           let token = DataController.jsonTokenParser(jsonDictionary)!
-          NSUserDefaults.standardUserDefaults().setObject(token.key, forKey: key)
-          NSUserDefaults.standardUserDefaults().setObject(token.expiryDate, forKey: expiryDate)
+          NSUserDefaults.standardUserDefaults().setObject(token.key, forKey: tokenKey)
+          NSUserDefaults.standardUserDefaults().setObject(token.expiryDate, forKey: tokenExpiryDate)
           callback(true, nil)
         }
       } catch let error as NSError {
@@ -78,7 +78,7 @@ class ApiController {
     request.HTTPMethod = "GET"
     request.addValue("application/json", forHTTPHeaderField: "Accept")
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue("Bearer \(NSUserDefaults.standardUserDefaults().objectForKey(key) as! String)", forHTTPHeaderField: "Authorization")
+    request.addValue("Bearer \(NSUserDefaults.standardUserDefaults().objectForKey(tokenKey) as! String)", forHTTPHeaderField: "Authorization")
     request.addValue("api.producthunt.com", forHTTPHeaderField: "Host")
     request.HTTPBody = nil
     

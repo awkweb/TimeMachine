@@ -15,8 +15,17 @@ struct Product {
   var comments: Int
   var votes: Int
   var phURL: String
-  var screenshotURL: String
+  var screenshotUrl: String
   var makerInside: Bool
   var exclusive: Bool
   var hunter: String
+  
+  func formatNumberWithComma(number: NSNumber) -> String {
+    let formatter = NSNumberFormatter()
+    formatter.groupingSeparator = ","
+    formatter.groupingSize = 3
+    formatter.usesGroupingSeparator = true
+    return formatter.stringFromNumber(number)!
+  }
+  
 }

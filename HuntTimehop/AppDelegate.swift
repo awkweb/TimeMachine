@@ -8,9 +8,9 @@
 
 import UIKit
 
-let key = "tokenKey"
-let expiryDate = "tokenExpiryDate"
-let version = "1.3.0"
+let tokenKey = "tokenKey"
+let tokenExpiryDate = "tokenExpiryDate"
+let version = "1.4.0"
 let screenRect = UIScreen.mainScreen().bounds
 
 @UIApplicationMain

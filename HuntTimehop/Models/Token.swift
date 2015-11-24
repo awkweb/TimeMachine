@@ -11,4 +11,11 @@ import Foundation
 struct Token {
   var key: String
   var expiryDate: NSDate
+  
+  static func hasTokenExpired() -> Bool {
+    let today = NSDate.toString(date: NSDate())
+    return NSUserDefaults.standardUserDefaults().objectForKey(tokenKey) == nil ||
+      NSDate.toString(date: (NSUserDefaults.standardUserDefaults().objectForKey(tokenExpiryDate) as! NSDate)) == today
+  }
+  
 }

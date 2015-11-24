@@ -80,7 +80,7 @@ extension PostDetailsViewController: UITableViewDataSource {
       imageCell.selectionStyle = .None
       let imageQueue: dispatch_queue_t = dispatch_queue_create("filter queue", nil)
       dispatch_async(imageQueue) {
-        let url = NSURL(string: self.product.screenshotURL)!
+        let url = NSURL(string: self.product.screenshotUrl)!
         let data = NSData(contentsOfURL: url)
         dispatch_async(dispatch_get_main_queue()) {
           if data != nil {
@@ -95,15 +95,10 @@ extension PostDetailsViewController: UITableViewDataSource {
       return imageCell
     case 2:
       let statsCell = tableView.dequeueReusableCellWithIdentifier("StatsTableViewCell") as! StatsTableViewCell
-
-      let formatter = NSNumberFormatter()
-      formatter.groupingSeparator = ","
-      formatter.groupingSize = 3
-      formatter.usesGroupingSeparator = true
       
-      statsCell.idLabel.text = formatter.stringFromNumber(product.id)
+      statsCell.idLabel.text = product.formatNumberWithComma(product.id)
       let daysBetweenDates = NSDate.daysBetween(date1: filterDate, date2: NSDate())
-      statsCell.daysAgoLabel.text = formatter.stringFromNumber(daysBetweenDates)
+      statsCell.daysAgoLabel.text = product.formatNumberWithComma(daysBetweenDates)
       statsCell.selectionStyle = .None
       return statsCell
     default:
