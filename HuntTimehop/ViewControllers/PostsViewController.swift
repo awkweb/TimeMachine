@@ -53,6 +53,7 @@ class PostsViewController: UIViewController {
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 80.0
     tableView.tableFooterView = UIView()
+    tableView.separatorColor = .grayL()
     
     let kittyImage = UIImage(named: "kitty")
     reloadImageView = UIImageView(frame: CGRect(x: screenRect.width/2 - 25, y: screenRect.height/2 - 65, width: 50, height: 46))
@@ -262,8 +263,11 @@ extension PostsViewController: UITabBarDelegate {
     activeCategory.filterDate = activeCategory.filterDate.isLessThan(activeCategory.originDate) ? activeCategory.originDate : activeCategory.filterDate
     if activeCategory.products.isEmpty {
         authenticateAndGetPosts()
+    } else {
+      tableView.reloadData()
+      self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
+        atScrollPosition: .Top, animated: false)
     }
-    tableView.reloadData()
   }
   
 }

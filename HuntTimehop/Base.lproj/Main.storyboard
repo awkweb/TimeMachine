@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cGR-iy-tQE">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -170,7 +169,7 @@
                                                     <animations/>
                                                 </imageView>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="maker" translatesAutoresizingMaskIntoConstraints="NO" id="aDV-lJ-WwI" userLabel="Maker image view">
-                                                    <rect key="frame" x="99" y="22" width="15" height="15"/>
+                                                    <rect key="frame" x="98" y="23" width="15" height="15"/>
                                                     <animations/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vote" translatesAutoresizingMaskIntoConstraints="NO" id="rna-ac-Vu5" userLabel="Vote image view">
@@ -181,11 +180,12 @@
                                                         <constraint firstAttribute="height" constant="15" id="ulq-yt-DqB"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iju-H3-6pT" userLabel="Name label">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iju-H3-6pT" userLabel="Name label">
                                                     <rect key="frame" x="53" y="20" width="40" height="21"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="BsE-6V-r6o"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="BsE-6V-r6o"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="261" id="DQu-Bp-KED"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -217,8 +217,9 @@
                                                 <constraint firstItem="rna-ac-Vu5" firstAttribute="top" secondItem="H5N-00-GFZ" secondAttribute="topMargin" constant="15" id="18X-rP-egc"/>
                                                 <constraint firstItem="b7Y-Sf-Wcg" firstAttribute="leading" secondItem="8xc-f8-20s" secondAttribute="trailing" constant="1" id="1E6-l3-bET"/>
                                                 <constraint firstItem="b7Y-Sf-Wcg" firstAttribute="leading" secondItem="8xc-f8-20s" secondAttribute="trailing" constant="4" id="7B5-U4-Ef9"/>
+                                                <constraint firstItem="8xc-f8-20s" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Iju-H3-6pT" secondAttribute="trailing" constant="6" id="7M2-5H-Y0v"/>
                                                 <constraint firstItem="Iju-H3-6pT" firstAttribute="leading" secondItem="rna-ac-Vu5" secondAttribute="trailing" constant="15" id="ELW-9m-vAx"/>
-                                                <constraint firstItem="aDV-lJ-WwI" firstAttribute="top" secondItem="H5N-00-GFZ" secondAttribute="topMargin" constant="14" id="FEA-8P-C3l"/>
+                                                <constraint firstItem="aDV-lJ-WwI" firstAttribute="top" secondItem="H5N-00-GFZ" secondAttribute="topMargin" constant="15" id="FEA-8P-C3l"/>
                                                 <constraint firstItem="ahb-hd-dcS" firstAttribute="top" secondItem="Iju-H3-6pT" secondAttribute="bottom" constant="-1" id="FEM-4H-CUh"/>
                                                 <constraint firstItem="9QC-1r-WFU" firstAttribute="top" secondItem="rna-ac-Vu5" secondAttribute="bottom" constant="-4" id="KA4-K8-2eL"/>
                                                 <constraint firstItem="pty-Jq-dxg" firstAttribute="leading" secondItem="ahb-hd-dcS" secondAttribute="leading" id="Kx1-fH-040"/>
@@ -233,12 +234,13 @@
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ahb-hd-dcS" secondAttribute="trailing" constant="45" id="hpC-WJ-NpB"/>
                                                 <constraint firstItem="9QC-1r-WFU" firstAttribute="leading" secondItem="H5N-00-GFZ" secondAttribute="leadingMargin" constant="-3" id="qfm-lw-dLA"/>
                                                 <constraint firstItem="Iju-H3-6pT" firstAttribute="leading" secondItem="ahb-hd-dcS" secondAttribute="leading" id="qlg-wB-yvc"/>
-                                                <constraint firstItem="aDV-lJ-WwI" firstAttribute="leading" secondItem="Iju-H3-6pT" secondAttribute="trailing" constant="6" id="tlS-bk-Fqu"/>
+                                                <constraint firstItem="aDV-lJ-WwI" firstAttribute="leading" secondItem="Iju-H3-6pT" secondAttribute="trailing" constant="5" id="tlS-bk-Fqu"/>
                                                 <constraint firstItem="8xc-f8-20s" firstAttribute="top" secondItem="H5N-00-GFZ" secondAttribute="topMargin" constant="15" id="v90-jH-RRk"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="MKR-l3-SML"/>
+                                                    <exclude reference="7M2-5H-Y0v"/>
                                                     <exclude reference="1E6-l3-bET"/>
                                                     <exclude reference="7B5-U4-Ef9"/>
                                                 </mask>
@@ -626,11 +628,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hK-QE-pOE" userLabel="Name label">
-                                                    <rect key="frame" x="53" y="20" width="40" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="name" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hK-QE-pOE" userLabel="Name label">
+                                                    <rect key="frame" x="53" y="20" width="40" height="22"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="AWD-eS-dD0"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="AWD-eS-dD0"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="261" id="Xej-wF-wzu"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -671,11 +674,11 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="maker" translatesAutoresizingMaskIntoConstraints="NO" id="FVP-YB-L7g" userLabel="Maker image view">
-                                                    <rect key="frame" x="99" y="22" width="15" height="15"/>
+                                                    <rect key="frame" x="98" y="23" width="15" height="15"/>
                                                     <animations/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tagline" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0n-EW-OJs" userLabel="Tagline label">
-                                                    <rect key="frame" x="53" y="40" width="261" height="19"/>
+                                                    <rect key="frame" x="53" y="41" width="261" height="18"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="261" id="27R-fM-PVR"/>
@@ -687,12 +690,12 @@
                                             </subviews>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstItem="FVP-YB-L7g" firstAttribute="top" secondItem="sQ3-qC-3dA" secondAttribute="topMargin" constant="14" id="0dt-V9-SYy"/>
+                                                <constraint firstItem="FVP-YB-L7g" firstAttribute="top" secondItem="sQ3-qC-3dA" secondAttribute="topMargin" constant="15" id="0dt-V9-SYy"/>
                                                 <constraint firstItem="T0n-EW-OJs" firstAttribute="leading" secondItem="5hK-QE-pOE" secondAttribute="leading" id="35O-pp-3LY"/>
                                                 <constraint firstItem="yLq-lz-a8G" firstAttribute="leading" secondItem="QLK-rV-6pk" secondAttribute="trailing" constant="1" id="36m-JW-Uri"/>
                                                 <constraint firstItem="NvD-tx-bRI" firstAttribute="leading" secondItem="sQ3-qC-3dA" secondAttribute="leadingMargin" constant="8" id="3uB-hz-Rih"/>
                                                 <constraint firstItem="yLq-lz-a8G" firstAttribute="leading" secondItem="QLK-rV-6pk" secondAttribute="trailing" constant="4" id="6N9-rF-iIE"/>
-                                                <constraint firstItem="FVP-YB-L7g" firstAttribute="leading" secondItem="5hK-QE-pOE" secondAttribute="trailing" constant="6" id="D0y-pf-FAV"/>
+                                                <constraint firstItem="FVP-YB-L7g" firstAttribute="leading" secondItem="5hK-QE-pOE" secondAttribute="trailing" constant="5" id="D0y-pf-FAV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="yLq-lz-a8G" secondAttribute="trailing" constant="8" id="GkO-iZ-gXB"/>
                                                 <constraint firstItem="tNR-Vh-z56" firstAttribute="leading" secondItem="sQ3-qC-3dA" secondAttribute="leadingMargin" constant="-3" id="J4m-Oh-4DD"/>
                                                 <constraint firstItem="NvD-tx-bRI" firstAttribute="top" secondItem="sQ3-qC-3dA" secondAttribute="topMargin" constant="15" id="Jpd-Sz-cpx"/>
