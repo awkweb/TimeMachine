@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "back.png",
+      "filename" : "books.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "back@2x.png",
+      "filename" : "books@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "back@3x.png",
+      "filename" : "books@3x.png",
       "scale" : "3x"
     }
   ],

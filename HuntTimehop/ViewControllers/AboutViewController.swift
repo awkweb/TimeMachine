@@ -35,9 +35,16 @@ class AboutViewController: UIViewController {
     let aboutPH6 = About(title: "The Complete iOS 8 Course", detail: nil, url: "http://www.producthunt.com/posts/the-complete-ios8-course")
     let aboutPH7 = About(title: "The Noun Project", detail: nil, url: "http://www.producthunt.com/posts/the-noun-project")
     
-    let aboutNP0 = About(title: "Austin Condiff", detail: "@austincondiff", url: "https://twitter.com/austincondiff")
-    let aboutNP1 = About(title: "Jardson Almeida", detail: "@heyjardson", url: "https://twitter.com/HeyJardson")
-    let aboutNP2 = About(title: "Kiran Malladi", detail: nil, url: "http://thenounproject.com/ichiban")
+    let aboutNP0 = About(title: "Anton Scherbik", detail: "@ascherbik", url: "https://twitter.com/AScherbik")
+    let aboutNP1 = About(title: "Austin Condiff", detail: "@austincondiff", url: "https://twitter.com/austincondiff")
+    let aboutNP2 = About(title: "Jardson Almeida", detail: "@heyjardson", url: "https://twitter.com/HeyJardson")
+    
+    /* Others that have contributed icons and are not on Twitter
+    let aboutNP3 = About(title: "Gediminas Baltaduonis", detail: nil, url: "https://dribbble.com/Baltaduonis")
+    let aboutNP4 = About(title: "Leyla Jacqueline", detail: nil, url: "https://thenounproject.com/leyla6")
+    let aboutNP5 = About(title: "Lucas Olaerts", detail: nil, url: "https://thenounproject.com/olaerts.lucas")
+    let aboutNP6 = About(title: "Sridharan S", detail: nil, url: "https://thenounproject.com/Sniper")
+    */
     
     let aboutArray = [about0, about1, about2]
     let aboutPHArray = [aboutPH0, aboutPH1, aboutPH2, aboutPH3, aboutPH4, aboutPH5, aboutPH6, aboutPH7]

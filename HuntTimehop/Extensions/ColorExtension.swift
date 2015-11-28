@@ -39,6 +39,10 @@ extension UIColor {
     return UIColor(red: 0.25, green: 0.19, blue: 0.176, alpha: 1)
   }
   
+  class func grayM() -> UIColor {
+    return UIColor(red: 0.4, green: 0.34, blue: 0.334, alpha: 1)
+  }
+  
   class func grayL() -> UIColor {
     return UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
   }

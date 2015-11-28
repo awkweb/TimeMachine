@@ -21,7 +21,7 @@ class UIActivityTypeOpenInSafari: UIActivity {
   }
   
   override func activityImage() -> UIImage? {
-    return UIImage(named: "link")
+    return UIImage(named: "safari")
   }
   
   override func canPerformWithActivityItems(activityItems: [AnyObject]) -> Bool {

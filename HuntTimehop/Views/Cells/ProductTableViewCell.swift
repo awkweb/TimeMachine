@@ -20,7 +20,7 @@ class ProductTableViewCell: UITableViewCell {
     super.awakeFromNib()
     votesLabel.textColor = .gray()
     nameLabel.textColor = .grayD()
-    taglineLabel.textColor = .grayD()
+    taglineLabel.textColor = .grayM()
     commentsLabel.textColor = .gray()
   }
   

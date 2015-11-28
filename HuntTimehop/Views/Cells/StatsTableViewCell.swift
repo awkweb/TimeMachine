@@ -17,8 +17,8 @@ class StatsTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    idLabel.textColor = .grayD()
-    daysAgoLabel.textColor = .grayD()
+    idLabel.textColor = .grayM()
+    daysAgoLabel.textColor = .grayM()
     idUnitLabel.textColor = .gray()
     daysAgoUnitLabel.textColor = .gray()
   }

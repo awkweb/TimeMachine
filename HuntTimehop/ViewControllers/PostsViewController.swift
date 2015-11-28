@@ -39,21 +39,21 @@ class PostsViewController: UIViewController {
     navigationController!.navigationBar.tintColor = .red()
     navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
     
-    let techTabBarItem = UITabBarItem(title: "Tech", image: UIImage(named: "about"), selectedImage: UIImage(named: "close"))
-    let gamesTabBarItem = UITabBarItem(title: "Games", image: UIImage(named: "about"), selectedImage: UIImage(named: "close"))
-    let booksTabBarItem = UITabBarItem(title: "Books", image: UIImage(named: "about"), selectedImage: UIImage(named: "close"))
-    let podcastsTabBarItem = UITabBarItem(title: "Podcasts", image: UIImage(named: "about"), selectedImage: UIImage(named: "close"))
+    let techTabBarItem = UITabBarItem(title: "Tech", image: UIImage(named: "tech"), selectedImage: UIImage(named: "tech"))
+    let gamesTabBarItem = UITabBarItem(title: "Games", image: UIImage(named: "games"), selectedImage: UIImage(named: "games"))
+    let booksTabBarItem = UITabBarItem(title: "Books", image: UIImage(named: "books"), selectedImage: UIImage(named: "books"))
+    let podcastsTabBarItem = UITabBarItem(title: "Podcasts", image: UIImage(named: "podcasts"), selectedImage: UIImage(named: "podcasts"))
     tabBar.items = [techTabBarItem, gamesTabBarItem, booksTabBarItem, podcastsTabBarItem]
     tabBar.selectedItem = techTabBarItem
     tabBar.tintColor = .red()
     tabBar.backgroundColor = .white()
+    
     tabBar.delegate = self
     
     tableView.backgroundColor = .grayL()
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 80.0
     tableView.tableFooterView = UIView()
-    tableView.separatorColor = .grayL()
     
     let kittyImage = UIImage(named: "kitty")
     reloadImageView = UIImageView(frame: CGRect(x: screenRect.width/2 - 25, y: screenRect.height/2 - 65, width: 50, height: 46))
