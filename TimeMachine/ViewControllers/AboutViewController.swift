@@ -39,6 +39,13 @@ class AboutViewController: UIViewController {
     let aboutNP1 = About(title: "Austin Condiff", detail: "@austincondiff", url: "https://twitter.com/austincondiff")
     let aboutNP2 = About(title: "Jardson Almeida", detail: "@heyjardson", url: "https://twitter.com/HeyJardson")
     
+    /* Others that have contributed icons through The Noun Project and are not on Twitter
+    let aboutNP3 = About(title: "Gediminas Baltaduonis", detail: nil, url: "https://dribbble.com/Baltaduonis")
+    let aboutNP4 = About(title: "Leyla Jacqueline", detail: nil, url: "https://thenounproject.com/leyla6")
+    let aboutNP5 = About(title: "Lucas Olaerts", detail: nil, url: "https://thenounproject.com/olaerts.lucas")
+    let aboutNP6 = About(title: "Sridharan S", detail: nil, url: "https://thenounproject.com/Sniper")
+    */
+    
     let aboutArray = [about0, about1, about2]
     let aboutPHArray = [aboutPH0, aboutPH1, aboutPH2, aboutPH3, aboutPH4, aboutPH5, aboutPH6, aboutPH7]
     let aboutNPArray = [aboutNP0, aboutNP1, aboutNP2]

@@ -8,7 +8,7 @@
         <!--Filter View Controller-->
         <scene sceneID="W42-YN-pbR">
             <objects>
-                <viewController id="yrw-4o-sJ0" customClass="FilterViewController" customModule="HuntTimehop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yrw-4o-sJ0" customClass="FilterViewController" customModule="TimeMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Uk3-hR-22J"/>
                         <viewControllerLayoutGuide type="bottom" id="gLw-QH-r95"/>
@@ -121,7 +121,7 @@
         <!--Post Details View Controller-->
         <scene sceneID="s05-xg-IZ0">
             <objects>
-                <viewController id="zQ9-YD-pSR" customClass="PostDetailsViewController" customModule="HuntTimehop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zQ9-YD-pSR" customClass="PostDetailsViewController" customModule="TimeMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KgT-Tn-SRf"/>
                         <viewControllerLayoutGuide type="bottom" id="gzv-lG-4cN"/>
@@ -135,7 +135,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleTableViewCell" rowHeight="110" id="AG0-uQ-sqQ" userLabel="Title table view cell" customClass="TitleTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleTableViewCell" rowHeight="110" id="AG0-uQ-sqQ" userLabel="Title table view cell" customClass="TitleTableViewCell" customModule="TimeMachine" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="86" width="600" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AG0-uQ-sqQ" id="H5N-00-GFZ">
@@ -153,8 +153,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comments" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xc-f8-20s" userLabel="Comments label">
-                                                    <rect key="frame" x="484" y="23" width="81" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="comments" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xc-f8-20s" userLabel="Comments label">
+                                                    <rect key="frame" x="-116" y="23" width="81" height="21"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="81" id="5pQ-dh-cqd"/>
@@ -164,8 +164,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="comment" translatesAutoresizingMaskIntoConstraints="NO" id="b7Y-Sf-Wcg" userLabel="Comment image view">
-                                                    <rect key="frame" x="569" y="27" width="15" height="13"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="comment" translatesAutoresizingMaskIntoConstraints="NO" id="b7Y-Sf-Wcg" userLabel="Comment image view">
+                                                    <rect key="frame" x="-31" y="27" width="15" height="13"/>
                                                     <animations/>
                                                 </imageView>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="maker" translatesAutoresizingMaskIntoConstraints="NO" id="aDV-lJ-WwI" userLabel="Maker image view">
@@ -229,6 +229,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="pty-Jq-dxg" secondAttribute="bottom" constant="5" id="Yvc-vc-AuS"/>
                                                 <constraint firstItem="b7Y-Sf-Wcg" firstAttribute="top" secondItem="H5N-00-GFZ" secondAttribute="topMargin" constant="19" id="c93-3w-it8"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="b7Y-Sf-Wcg" secondAttribute="trailing" constant="8" id="cYa-aF-UQc"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Iju-H3-6pT" secondAttribute="trailing" constant="45" id="ctG-ro-O0f"/>
                                                 <constraint firstItem="Iju-H3-6pT" firstAttribute="top" secondItem="H5N-00-GFZ" secondAttribute="topMargin" constant="12" id="dND-xn-wXQ"/>
                                                 <constraint firstItem="b7Y-Sf-Wcg" firstAttribute="leading" secondItem="8xc-f8-20s" secondAttribute="trailing" constant="4" id="dsd-7n-5JO"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ahb-hd-dcS" secondAttribute="trailing" constant="45" id="hpC-WJ-NpB"/>
@@ -257,7 +258,7 @@
                                             <outlet property="votesLabel" destination="9QC-1r-WFU" id="YZu-bw-aGi"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageTableViewCell" rowHeight="250" id="nXd-fO-cnu" userLabel="Image table view cell" customClass="ImageTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageTableViewCell" rowHeight="250" id="nXd-fO-cnu" userLabel="Image table view cell" customClass="ImageTableViewCell" customModule="TimeMachine" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="196" width="600" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nXd-fO-cnu" id="9z6-bh-hfO">
@@ -293,7 +294,7 @@
                                             <outlet property="screenshotImageView" destination="gwk-IU-1UP" id="To2-SE-xpD"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatsTableViewCell" rowHeight="80" id="LRW-he-CXD" userLabel="Stats table view cell" customClass="StatsTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StatsTableViewCell" rowHeight="80" id="LRW-he-CXD" userLabel="Stats table view cell" customClass="StatsTableViewCell" customModule="TimeMachine" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="446" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LRW-he-CXD" id="dfd-x7-bzR">
@@ -376,7 +377,7 @@
                                             <outlet property="idUnitLabel" destination="DEq-jF-bfw" id="HEJ-x3-l7K"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonTableViewCell" rowHeight="90" id="RmI-mX-dAx" userLabel="Button table view cell" customClass="ButtonTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ButtonTableViewCell" rowHeight="90" id="RmI-mX-dAx" userLabel="Button table view cell" customClass="ButtonTableViewCell" customModule="TimeMachine" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="526" width="600" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RmI-mX-dAx" id="zdy-Hw-pOJ">
@@ -445,7 +446,7 @@
         <!--Web View Controller-->
         <scene sceneID="Tqe-wV-Tph">
             <objects>
-                <viewController id="VRd-Sq-YzR" customClass="WebViewController" customModule="HuntTimehop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VRd-Sq-YzR" customClass="WebViewController" customModule="TimeMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Frg-pN-QAd"/>
                         <viewControllerLayoutGuide type="bottom" id="3p7-Jp-cWD"/>
@@ -528,7 +529,7 @@
         <!--About View Controller-->
         <scene sceneID="9BT-ue-33k">
             <objects>
-                <viewController id="Wfk-fD-eHO" customClass="AboutViewController" customModule="HuntTimehop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Wfk-fD-eHO" customClass="AboutViewController" customModule="TimeMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NAZ-ih-962"/>
                         <viewControllerLayoutGuide type="bottom" id="riS-ns-B4e"/>
@@ -542,7 +543,7 @@
                                 <animations/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AboutTableViewCell" id="E9b-Io-uCS" userLabel="About table view cell" customClass="AboutTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AboutTableViewCell" id="E9b-Io-uCS" userLabel="About table view cell" customClass="AboutTableViewCell" customModule="TimeMachine" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="114" width="605" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E9b-Io-uCS" id="D02-i7-FgW">
@@ -607,7 +608,7 @@
         <!--Posts View Controller-->
         <scene sceneID="nHD-zY-mEQ">
             <objects>
-                <viewController storyboardIdentifier="PostsViewController" id="kZa-H6-V9E" customClass="PostsViewController" customModule="HuntTimehop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostsViewController" id="kZa-H6-V9E" customClass="PostsViewController" customModule="TimeMachine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qla-dB-BD4"/>
                         <viewControllerLayoutGuide type="bottom" id="UuE-F6-MMk"/>
@@ -621,7 +622,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationLevel="15" indentationWidth="0.0" reuseIdentifier="ProductTableViewCell" id="eWt-Px-nMH" userLabel="Product table view cell" customClass="ProductTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationLevel="15" indentationWidth="0.0" reuseIdentifier="ProductTableViewCell" id="eWt-Px-nMH" userLabel="Product table view cell" customClass="ProductTableViewCell" customModule="TimeMachine" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eWt-Px-nMH" id="sQ3-qC-3dA">
@@ -696,8 +697,11 @@
                                                 <constraint firstItem="NvD-tx-bRI" firstAttribute="leading" secondItem="sQ3-qC-3dA" secondAttribute="leadingMargin" constant="8" id="3uB-hz-Rih"/>
                                                 <constraint firstItem="yLq-lz-a8G" firstAttribute="leading" secondItem="QLK-rV-6pk" secondAttribute="trailing" constant="4" id="6N9-rF-iIE"/>
                                                 <constraint firstItem="FVP-YB-L7g" firstAttribute="leading" secondItem="5hK-QE-pOE" secondAttribute="trailing" constant="5" id="D0y-pf-FAV"/>
+                                                <constraint firstItem="QLK-rV-6pk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5hK-QE-pOE" secondAttribute="trailing" id="EH0-km-tU3"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="5hK-QE-pOE" secondAttribute="trailing" constant="45" id="EWo-MO-f2r"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="yLq-lz-a8G" secondAttribute="trailing" constant="8" id="GkO-iZ-gXB"/>
                                                 <constraint firstItem="tNR-Vh-z56" firstAttribute="leading" secondItem="sQ3-qC-3dA" secondAttribute="leadingMargin" constant="-3" id="J4m-Oh-4DD"/>
+                                                <constraint firstItem="QLK-rV-6pk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5hK-QE-pOE" secondAttribute="trailing" id="Jeo-jt-tqP"/>
                                                 <constraint firstItem="NvD-tx-bRI" firstAttribute="top" secondItem="sQ3-qC-3dA" secondAttribute="topMargin" constant="15" id="Jpd-Sz-cpx"/>
                                                 <constraint firstItem="QLK-rV-6pk" firstAttribute="top" secondItem="sQ3-qC-3dA" secondAttribute="topMargin" constant="15" id="NtJ-xN-ODC"/>
                                                 <constraint firstItem="T0n-EW-OJs" firstAttribute="top" secondItem="5hK-QE-pOE" secondAttribute="bottom" constant="1" id="OBh-dR-t4j"/>
@@ -715,6 +719,8 @@
                                                 <mask key="constraints">
                                                     <exclude reference="OBh-dR-t4j"/>
                                                     <exclude reference="fXo-Ms-Swh"/>
+                                                    <exclude reference="EH0-km-tU3"/>
+                                                    <exclude reference="Jeo-jt-tqP"/>
                                                     <exclude reference="36m-JW-Uri"/>
                                                     <exclude reference="6N9-rF-iIE"/>
                                                 </mask>
@@ -730,7 +736,7 @@
                                             <outlet property="votesLabel" destination="tNR-Vh-z56" id="n4x-fC-udn"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationLevel="15" indentationWidth="15" reuseIdentifier="ButtonTableViewCell" id="U54-IU-RFe" userLabel="Button table view cell" customClass="ButtonTableViewCell" customModule="HuntTimehop" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationLevel="15" indentationWidth="15" reuseIdentifier="ButtonTableViewCell" id="U54-IU-RFe" userLabel="Button table view cell" customClass="ButtonTableViewCell" customModule="TimeMachine" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="172" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U54-IU-RFe" id="wxC-WK-iAi">

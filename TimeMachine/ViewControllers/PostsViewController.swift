@@ -21,7 +21,7 @@ class PostsViewController: UIViewController {
   var booksCategory = Category(name: "Books", color: .orange(), originDate: NSDate.stringToDate(year: 2015, month: 6, day: 25))
   var podcastsCategory = Category(name: "Podcasts", color: .green(), originDate: NSDate.stringToDate(year: 2015, month: 9, day: 18))
   var activeCategory: Category!
-
+  
   var reloadImageView = UIImageView()
   var reloadButton = UIButton()
   
@@ -89,7 +89,7 @@ class PostsViewController: UIViewController {
       detailsVC.filterDate = activeCategory.filterDate
       detailsVC.color = activeCategory.color
     } else if segue.identifier == "popoverFilterVC" {
-      let filterVC = segue.destinationViewController as! FilterViewController // TODO: Is this true MVC?
+      let filterVC = segue.destinationViewController as! FilterViewController
       filterVC.postsVC = self
       filterVC.modalPresentationStyle = .Popover
       filterVC.popoverPresentationController!.delegate = self
@@ -106,22 +106,22 @@ class PostsViewController: UIViewController {
     let filterDate = activeCategory.filterDate
     let lowercaseCategoryName = activeCategory.name.lowercaseString
     if Token.hasTokenExpired() {
-        apiController.getClientOnlyAuthenticationToken {
-          success, error in
-          if let error = error {
-            self.displayReloadButtonWithError(error)
-          } else {
-            self.apiController.getPostsForCategoryAndDate(lowercaseCategoryName, date: filterDate) {
-              objects, error in
-              if let products = objects as [Product]! {
-                self.activeCategory.products = products
-                self.displayPostsInTableView()
-              } else {
-                self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error!.localizedDescription)", actionMessage: "Okay")
-              }
+      apiController.getClientOnlyAuthenticationToken {
+        success, error in
+        if let error = error {
+          self.displayReloadButtonWithError(error)
+        } else {
+          self.apiController.getPostsForCategoryAndDate(lowercaseCategoryName, date: filterDate) {
+            objects, error in
+            if let products = objects as [Product]! {
+              self.activeCategory.products = products
+              self.displayPostsInTableView()
+            } else {
+              self.showAlertWithHeaderTextAndMessage("Oops :(", message: "\(error!.localizedDescription)", actionMessage: "Okay")
             }
           }
         }
+      }
     } else {
       self.apiController.getPostsForCategoryAndDate(lowercaseCategoryName, date: filterDate) {
         objects, error in
@@ -261,7 +261,7 @@ extension PostsViewController: UITabBarDelegate {
     navigationItem.title = activeCategory.name
     activeCategory.filterDate = activeCategory.filterDate.isLessThan(activeCategory.originDate) ? activeCategory.originDate : activeCategory.filterDate
     if activeCategory.products.isEmpty {
-        authenticateAndGetPosts()
+      authenticateAndGetPosts()
     } else {
       tableView.reloadData()
       self.tableView.scrollToRowAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
