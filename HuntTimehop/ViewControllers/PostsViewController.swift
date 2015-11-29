@@ -245,7 +245,6 @@ extension PostsViewController: UITableViewDelegate {
 }
 
 
-// MARK: - UITabBarDelegate
 extension PostsViewController: UITabBarDelegate {
   
   func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
@@ -273,7 +272,6 @@ extension PostsViewController: UITabBarDelegate {
 }
 
 
-// MARK: - UIPopoverPresentationControllerDelegate
 extension PostsViewController: UIPopoverPresentationControllerDelegate {
   
   func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {

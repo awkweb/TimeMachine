@@ -10,7 +10,6 @@ import UIKit
 
 class WebViewController: UIViewController {
   
-  // MARK: - UI Elements
   @IBOutlet weak var webView: UIWebView!
   @IBOutlet weak var toolbar: UIToolbar!
   @IBOutlet weak var progressView: UIProgressView!
