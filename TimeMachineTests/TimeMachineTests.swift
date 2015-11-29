@@ -1,15 +1,14 @@
 //
-//  HuntTimehopTests.swift
-//  HuntTimehopTests
+//  TimeMachineTests.swift
+//  TimeMachineTests
 //
-//  Created by thomas on 12/23/14.
-//  Copyright (c) 2014 thomas. All rights reserved.
+//  Created by thomas on 11/29/15.
+//  Copyright © 2015 thomas. All rights reserved.
 //
 
-import UIKit
 import XCTest
 
-class HuntTimehopTests: XCTestCase {
+class TimeMachineTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -23,12 +22,12 @@ class HuntTimehopTests: XCTestCase {
     
     func testExample() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measureBlock {
             // Put the code you want to measure the time of here.
         }
     }

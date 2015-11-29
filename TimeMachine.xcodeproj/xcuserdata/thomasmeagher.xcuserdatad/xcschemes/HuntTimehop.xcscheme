@@ -17,7 +17,7 @@
                BlueprintIdentifier = "0535097D1A4A18DB00774B67"
                BuildableName = "HuntTimehop.app"
                BlueprintName = "HuntTimehop"
-               ReferencedContainer = "container:HuntTimehop.xcodeproj">
+               ReferencedContainer = "container:TimeMachine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "053509951A4A18DB00774B67"
                BuildableName = "HuntTimehopTests.xctest"
                BlueprintName = "HuntTimehopTests"
-               ReferencedContainer = "container:HuntTimehop.xcodeproj">
+               ReferencedContainer = "container:TimeMachine.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -49,7 +49,27 @@
                BlueprintIdentifier = "053509951A4A18DB00774B67"
                BuildableName = "HuntTimehopTests.xctest"
                BlueprintName = "HuntTimehopTests"
-               ReferencedContainer = "container:HuntTimehop.xcodeproj">
+               ReferencedContainer = "container:TimeMachine.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "052471581C0B8E6C00FBEA68"
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
+               ReferencedContainer = "container:TimeMachine.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "052471661C0B8ED300FBEA68"
+               BuildableName = "TimeMachineTests.xctest"
+               BlueprintName = "TimeMachineTests"
+               ReferencedContainer = "container:TimeMachine.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -59,7 +79,7 @@
             BlueprintIdentifier = "0535097D1A4A18DB00774B67"
             BuildableName = "HuntTimehop.app"
             BlueprintName = "HuntTimehop"
-            ReferencedContainer = "container:HuntTimehop.xcodeproj">
+            ReferencedContainer = "container:TimeMachine.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -82,7 +102,7 @@
             BlueprintIdentifier = "0535097D1A4A18DB00774B67"
             BuildableName = "HuntTimehop.app"
             BlueprintName = "HuntTimehop"
-            ReferencedContainer = "container:HuntTimehop.xcodeproj">
+            ReferencedContainer = "container:TimeMachine.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -101,7 +121,7 @@
             BlueprintIdentifier = "0535097D1A4A18DB00774B67"
             BuildableName = "HuntTimehop.app"
             BlueprintName = "HuntTimehop"
-            ReferencedContainer = "container:HuntTimehop.xcodeproj">
+            ReferencedContainer = "container:TimeMachine.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
